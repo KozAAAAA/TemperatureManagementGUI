@@ -35,10 +35,31 @@ Window {
         text: loopclass.someVar
     }
 
-    Loop
+    Item
     {
         anchors.centerIn: parent
 
+        TextBox
+        {
+            id: time1
+            name: "Czas:"
+        }
+
+        TextBox
+        {
+            id: temp1
+            name: "Temperatura:"
+            anchors.top: time1.bottom
+            anchors.topMargin: 20
+        }
     }
+
+
+    Text
+    {
+        text: time1.input
+    }
+
+
 
 }

@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Loop.qml</file>
+        <file>TextBox.qml</file>
     </qresource>
 </RCC>
