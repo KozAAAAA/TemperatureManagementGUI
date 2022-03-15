@@ -1,12 +1,21 @@
 #include "loopclass.h"
 
 LoopClass::LoopClass(QObject *parent)
-    : QObject{parent}
+    : QObject{parent} , m_someVar("123")
 {
 
 }
 
-void LoopClass::changeValue(QString s)
+QString LoopClass::someVar()
 {
-    emit valueChanged(s);
+    return m_someVar;
+}
+
+void LoopClass::setSomeVar(QString newVar)
+{
+    if (m_someVar != newVar)
+    {
+        m_someVar = newVar;
+        emit someVarChanged();
+    }
 }

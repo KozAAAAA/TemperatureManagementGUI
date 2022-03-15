@@ -11,19 +11,16 @@ int main(int argc, char *argv[])
 
 
 
-    LoopClass* loopclass = new LoopClass;
+    LoopClass loopclass;
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
-
-    engine.rootContext()->setContextProperty("loopclass",loopclass);
+    engine.rootContext()->setContextProperty("loopclass",&loopclass);
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
             return -1;
 
-
-
     return app.exec();
-    delete loopclass;
+
 }

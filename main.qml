@@ -3,33 +3,42 @@ import QtQuick.Window 2.6
 
 Window {
     width: 1920
-    height: 1080
+    height:1080
     visible: true
     //visibility: "FullScreen"
     title: qsTr("Hello World")
 
 
-    TextInput
+    Rectangle
     {
-        id: input
-        text: "input text"
-        onTextChanged: loopclass.changeValue(input.text)
-    }
-
-
-    Text
-    {
-        id: output
-        y: 60
-        text: "output"
-        Connections
+        color: "red"
+        height: 50
+        width: 50
+        id:myButton
+        MouseArea
         {
-            target: loopclass
-
-            function onValueChanged(inputString)
-            {
-                output.text = inputString
-            }
+            anchors.fill: parent
+            onClicked: loopclass.setSomeVar("16")
         }
     }
+
+    TextInput
+    {
+        id:input
+        text: "wprowadz tutaj"
+        onEditingFinished: loopclass.setSomeVar(input.text)
+    }
+
+    Text {
+        id: myLabel
+        y:50
+        text: loopclass.someVar
+    }
+
+    Loop
+    {
+        anchors.centerIn: parent
+
+    }
+
 }
