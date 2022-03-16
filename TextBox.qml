@@ -8,9 +8,8 @@ import QtQuick 2.0
         property string name: "Unknown"
         readonly property string input: textinput.text
 
-
-        height: textname.height + textrect.height
-        width: textname.width + textrect.width
+        height: textname.height + textrect.height + textrect.anchors.topMargin
+        width: textrect.width
 
         Text
         {
@@ -49,6 +48,7 @@ import QtQuick 2.0
                 anchors.leftMargin: 14
                 anchors.topMargin: 14
                 font.pointSize: 28
+                validator: IntValidator {bottom: 0; top: 200}
             }
         }
     }

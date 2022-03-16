@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>TextBox.qml</file>
+        <file>SetupBlock.qml</file>
+        <file>GridSetupBlocs.qml</file>
     </qresource>
 </RCC>

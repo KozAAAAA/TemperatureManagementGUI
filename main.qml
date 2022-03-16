@@ -1,11 +1,12 @@
 import QtQuick 2.6
 import QtQuick.Window 2.6
 
+
 Window {
     width: 1920
     height:1080
     visible: true
-    //visibility: "FullScreen"
+    visibility: "FullScreen"
     title: qsTr("Hello World")
 
 
@@ -29,36 +30,28 @@ Window {
         onEditingFinished: loopclass.setSomeVar(input.text)
     }
 
-    Text {
+    Text
+    {
         id: myLabel
         y:50
         text: loopclass.someVar
     }
 
-    Item
+
+
+
+    GridSetupBlocs
     {
+        id: gridsetupblocs
         anchors.centerIn: parent
-
-        TextBox
-        {
-            id: time1
-            name: "Czas:"
-        }
-
-        TextBox
-        {
-            id: temp1
-            name: "Temperatura:"
-            anchors.top: time1.bottom
-            anchors.topMargin: 20
-        }
     }
-
 
     Text
     {
-        text: time1.input
+        text: gridsetupblocs.setupBlock_1_tempInput
     }
+
+
 
 
 

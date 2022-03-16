@@ -6,10 +6,10 @@
 class LoopClass : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString someVar READ someVar WRITE setSomeVar NOTIFY someVarChanged)
+    Q_PROPERTY(QString someVar READ getSomeVar WRITE setSomeVar NOTIFY someVarChanged)
 public:
     explicit LoopClass(QObject* parent = nullptr);
-    QString someVar();
+    QString getSomeVar();
 signals:
     void someVarChanged();
 public slots:

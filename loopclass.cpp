@@ -6,7 +6,7 @@ LoopClass::LoopClass(QObject *parent)
 
 }
 
-QString LoopClass::someVar()
+QString LoopClass::getSomeVar()
 {
     return m_someVar;
 }
