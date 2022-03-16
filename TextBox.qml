@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.6
 
 
 
@@ -48,7 +48,11 @@ import QtQuick 2.0
                 anchors.leftMargin: 14
                 anchors.topMargin: 14
                 font.pointSize: 28
-                validator: IntValidator {bottom: 0; top: 200}
+                focus: true
+                validator: IntValidator {bottom: 0; top: 999}
+                onTextChanged: text > 200 ? text = "200" : text < 0 ? text = 0 : text = text
+
+
             }
         }
     }
