@@ -1,8 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>TextBox.qml</file>
+        <file>InputBox.qml</file>
         <file>SetupBlock.qml</file>
         <file>GridSetupBlocs.qml</file>
+        <file>LoopBlock.qml</file>
+        <file>ShowBlock.qml</file>
+        <file>OutputBox.qml</file>
     </qresource>
 </RCC>

@@ -1,32 +1,44 @@
 import QtQuick 2.0
 
-Rectangle
+
+
+Item
 {
-    readonly property string timeInput: time.input
-    readonly property string tempInput: temp.input
+    readonly property int timeInput: time.input
+    readonly property int tempInput: temp.input
 
     width: 390
     height: 450
-    radius: 40
-    border.color: "lightblue"
+
+    Rectangle
+    {
+        anchors.fill: parent
+        radius: 40
+        color: "lightblue"
+        border.color: "darkblue"
+        border.width: 4
+        opacity: 0.4
+    }
 
     Column
     {
         anchors.centerIn: parent
-
         spacing: 20
 
-        TextBox
+        InputBox
         {
             id: temp
             name: "Temperatura (°C):"
+            maxNumber: 200
         }
 
-        TextBox
+        InputBox
         {
             id: time
             name: "Czas (h):"
+            maxNumber: 999
         }
 
     }
+
 }

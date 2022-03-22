@@ -2,12 +2,15 @@ import QtQuick 2.6
 import QtQuick.Window 2.6
 
 
+
 Window {
     width: 1920
     height:1080
     visible: true
     visibility: "FullScreen"
     title: qsTr("Hello World")
+
+
 
 
     Rectangle
@@ -40,17 +43,43 @@ Window {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     GridSetupBlocs
     {
         id: gridsetupblocs
         anchors.centerIn: parent
     }
 
-    Text
+    LoopBlock
     {
-        text: gridsetupblocs.setupBlock_1_tempInput
+        id: loopblock
+        anchors.right: parent.right
     }
 
+    Text
+    {
+        text: loopblock.loopInput
+    }
+
+    OutputBox
+    {
+        x: 200
+        y: 200
+    }
 
 
 
