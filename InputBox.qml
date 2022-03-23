@@ -4,8 +4,9 @@ import QtQuick.Controls 2.0
 Item
 {
 
-    property string name: "Unknown"
-    property int maxNumber: 0
+    property string name
+    property int maxNumber
+
     readonly property int input: input.value
 
     height: textname.height + input.height + input.anchors.topMargin
@@ -14,7 +15,7 @@ Item
     Text
     {
         id: textname
-        anchors {left: parent.left}
+        anchors.left: parent.left
 
         text: parent.name
         font.pointSize: 27
@@ -23,7 +24,12 @@ Item
     SpinBox
     {
         id: input
-        anchors {top: textname.bottom ; left: textname.left ; topMargin: 10}
+        anchors
+        {
+            top: textname.bottom
+            left: textname.left
+            topMargin: 10
+        }
 
         height: 67
         width: 290

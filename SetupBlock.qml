@@ -4,8 +4,8 @@ import QtQuick 2.0
 
 Item
 {
-    readonly property int timeInput: time.input
-    readonly property int tempInput: temp.input
+    readonly property int inputTime: time.input
+    readonly property int inputTemp: temp.input
 
     width: 390
     height: 450
@@ -15,14 +15,12 @@ Item
         anchors.fill: parent
         radius: 40
         color: "lightblue"
-        border.color: "darkblue"
-        border.width: 4
-        opacity: 0.4
     }
 
     Column
     {
         anchors.centerIn: parent
+
         spacing: 20
 
         InputBox

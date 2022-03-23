@@ -1,19 +1,14 @@
 import QtQuick 2.6
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.6
 
-Rectangle
+Item
 {
+    property string name
+    property int output
+    property string unit
 
-    property int input: 9
-    property string unit: "unit"
-    property string name: "Unknown"
-
-    height: 300
-    width: 300
-
-    border.color: "red"
-    border.width: 20
-
+    height: textname.height + output.height + textname.anchors.topMargin
+    width: output.width
 
     Text
     {
@@ -21,10 +16,10 @@ Rectangle
         anchors
         {
             horizontalCenter: parent.horizontalCenter
-
+            top: parent.top
         }
 
-        text: parent.input + " " + parent.unit
+        text: parent.output + parent.unit
         font.pointSize: 60
 
 
@@ -33,13 +28,17 @@ Rectangle
     Text
     {
         id: textname
-        anchors {horizontalCenter: parent.horizontalCenter}
+        anchors
+        {
+            horizontalCenter: parent.horizontalCenter
+            top:output.bottom
+            topMargin: 5
+        }
 
         text: parent.name
         font.pointSize: 27
 
-        anchors.top: output.bottom
 
-        anchors.topMargin: 5
+
     }
 }

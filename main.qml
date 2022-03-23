@@ -22,7 +22,7 @@ Window {
         MouseArea
         {
             anchors.fill: parent
-            onClicked: loopclass.setSomeVar("16")
+            onClicked: loopclass.setSomeVar(setupBlocks.timeInputOne)
         }
     }
 
@@ -60,8 +60,12 @@ Window {
 
     GridSetupBlocs
     {
-        id: gridsetupblocs
-        anchors.centerIn: parent
+        id: setupBlocks
+        anchors
+        {
+            verticalCenter: parent.verticalCenter
+            right: parent.right
+        }
     }
 
     LoopBlock
@@ -70,15 +74,36 @@ Window {
         anchors.right: parent.right
     }
 
-    Text
+    GridShowBlocks
     {
-        text: loopblock.loopInput
+        id: showBlocks
+        anchors
+        {
+            verticalCenter:parent.verticalCenter
+        }
+
+        currentTime:  0    //info z c++
+        currentTemp:  0    //info z c++
+        currentLoop:  0    //info z c++
+        currentBlock: 0    //info z c++
+
+        amountLoop: loopblock.inputLoop
     }
 
-    OutputBox
+    StartButton
     {
-        x: 200
-        y: 200
+        anchors
+        {
+            left: parent.left
+            bottom: parent.bottom
+        }
+
+        MouseArea
+        {
+            anchors.fill: parent
+            // onClicked - wysyła zmienne do c++ i restart
+            //onClicked: showBlocks.currentTime = setupBlocks.timeInputOne
+        }
     }
 
 

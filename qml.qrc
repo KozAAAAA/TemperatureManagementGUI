@@ -7,5 +7,7 @@
         <file>LoopBlock.qml</file>
         <file>ShowBlock.qml</file>
         <file>OutputBox.qml</file>
+        <file>GridShowBlocks.qml</file>
+        <file>StartButton.qml</file>
     </qresource>
 </RCC>

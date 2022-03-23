@@ -4,7 +4,8 @@ import QtQuick.Controls 2.0
 Item
 {
 
-    readonly property int loopInput: loop.input
+    readonly property int inputLoop: loop.input
+
     height: loop.height
     width: loop.width
 
