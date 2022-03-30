@@ -5,8 +5,18 @@ Grid {
     columns: 2
     spacing: 50
 
-    readonly property int timeInputOne:     setupBlockOne.inputTime
-    readonly property int tempInputOne:     setupBlockOne.inputTemp
+    property variant attributes:
+    [
+        setupBlockOne.inputTime,
+        setupBlockOne.inputTemp
+    ]
+
+
+
+
+
+    readonly property int timeInputOne:     attributes[0]
+    readonly property int tempInputOne:     attributes[1]
     readonly property int timeInputTwo:     setupBlockTwo.inputTime
     readonly property int tempInputTwo:     setupBlockTwo.inputTemp
     readonly property int timeInputThree:   setupBlockThree.inputTime

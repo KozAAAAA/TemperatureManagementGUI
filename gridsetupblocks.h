@@ -1,4 +1,4 @@
-#ifndef GRIDSETUPBLOCKS_H
+ifndef GRIDSETUPBLOCKS_H
 #define GRIDSETUPBLOCKS_H
 
 #include <QObject>

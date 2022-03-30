@@ -10,9 +10,6 @@ Window {
     visibility: "FullScreen"
     title: qsTr("Hello World")
 
-
-
-
     Rectangle
     {
         color: "red"
@@ -60,7 +57,7 @@ Window {
 
     GridSetupBlocs
     {
-        id: setupBlocks
+        id: setup
         anchors
         {
             verticalCenter: parent.verticalCenter
@@ -70,24 +67,23 @@ Window {
 
     LoopBlock
     {
-        id: loopblock
+        id: loop
         anchors.right: parent.right
     }
 
     GridShowBlocks
     {
-        id: showBlocks
+        id: show
         anchors
         {
             verticalCenter:parent.verticalCenter
         }
-
         currentTime:  0    //info z c++
         currentTemp:  0    //info z c++
         currentLoop:  0    //info z c++
         currentBlock: 0    //info z c++
 
-        amountLoop: loopblock.inputLoop
+        amountLoop: loop.inputLoop
     }
 
     StartButton
@@ -101,6 +97,15 @@ Window {
         MouseArea
         {
             anchors.fill: parent
+            onClicked:
+            {
+                _cppBackend.setInputParam("temp", setup.tempInputOne, 0)
+                _cppBackend.setInputParam("temp", setup.tempInputTwo, 1)
+                _cppBackend.setInputParam("temp", setup.tempInputThree, 2)
+                _cppBackend.setInputParam("temp", setup.tempInputFour, 3)
+
+                //showBlocks.currentTemp = _temperatureMenagment.getTemp(1)
+            }
             // onClicked - wysyła zmienne do c++ i restart
             //onClicked: showBlocks.currentTime = setupBlocks.timeInputOne
         }
