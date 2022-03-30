@@ -99,12 +99,14 @@ Window {
             anchors.fill: parent
             onClicked:
             {
-                _cppBackend.setInputParam("temp", setup.tempInputOne, 0)
-                _cppBackend.setInputParam("temp", setup.tempInputTwo, 1)
-                _cppBackend.setInputParam("temp", setup.tempInputThree, 2)
-                _cppBackend.setInputParam("temp", setup.tempInputFour, 3)
+                for (var i = 0; i<4 ; i++)
+                {
+                    _cppBackend.setInputParam("temp", setup.tempArray[i], i)
+                    _cppBackend.setInputParam("time", setup.timeArray[i], i)
+                }
+                _cppBackend.setInputParam("loop", loop.inputLoop)
 
-                //showBlocks.currentTemp = _temperatureMenagment.getTemp(1)
+                _cppBackend.printInputParam()
             }
             // onClicked - wysyła zmienne do c++ i restart
             //onClicked: showBlocks.currentTime = setupBlocks.timeInputOne

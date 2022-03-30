@@ -10,39 +10,36 @@ TemperatureMenagment::TemperatureMenagment(QObject *parent)
 
 }
 
-void TemperatureMenagment::setInputParam(const QString& parameter, const uint16_t& value, const uint8_t &index)
+void TemperatureMenagment::setInputParam(const QString& parameter, const int& value, const int &index)
 {
     if(parameter == "temp")
         m_tempInputVector.at(index) = value;
-    else if(parameter == "temp")
+    else if(parameter == "time")
         m_timeInputVector.at(index) = value;
     else
         qDebug()<<"There is no such parameter as:"<< parameter;
 }
 
-void TemperatureMenagment::setInputParam(const QString& parameter, const uint16_t& value)
+void TemperatureMenagment::setInputParam(const QString& parameter, const int& value)
 {
     if(parameter == "loop")
         m_loopInput= value;
     else qDebug()<<"There is no such parameter as:"<< parameter;
 }
 
-int TemperatureMenagment::getInputParam(int index)
+void TemperatureMenagment::printInputParam()
 {
-    return m_tempInputVector.at(index);
+    qDebug()<<"tempVector:";
+    for (uint16_t temp : m_tempInputVector)
+    {
+        qDebug()<<temp;
+    }
+    qDebug()<<"timeVector:";
+    for (uint16_t time : m_timeInputVector)
+    {
+        qDebug()<<time;
+    }
+    qDebug()<<"loop:"<< m_loopInput;
+
 }
-
-//int TemperatureMenagment::getTemp()
-//{
-//    return m_tempVector[index];
-//}
-
-//void TemperatureMenagment::setTemp(int& newTemp)
-//{
-
-
-//        m_tempVector = newTemp;
-//        emit tempChanged();
-
-//}
 

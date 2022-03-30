@@ -10,10 +10,10 @@ public:
 
     explicit TemperatureMenagment(QObject *parent = nullptr);
 
-    Q_INVOKABLE void setInputParam (const QString& parameter, const uint16_t& value,const uint8_t& index);
-    Q_INVOKABLE void setInputParam (const QString& parameter, const uint16_t& value);
+    Q_INVOKABLE void setInputParam (const QString& parameter, const int& value,const int& index);
+    Q_INVOKABLE void setInputParam (const QString& parameter, const int& value);
 
-    Q_INVOKABLE int getInputParam(int index);
+    Q_INVOKABLE void printInputParam();
 
 
 private:
