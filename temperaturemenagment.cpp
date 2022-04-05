@@ -5,11 +5,16 @@ TemperatureMenagment::TemperatureMenagment(QObject *parent)
     : QObject{parent},
       m_tempInputVector{0,0,0,0},
       m_timeInputVector{0,0,0,0},
-      m_loopInput{0}
+      m_loopInput{0},
+
+      m_tempOutput{0},
+      m_timeOutput{0},
+      m_loopOutput{0},
+      m_blockOutput{0}
 {
 
 }
-
+        //------------------------------INPUT-----------------------------//
 void TemperatureMenagment::setInputParam(const QString& parameter, const int& value, const int &index)
 {
     if(parameter == "temp")
@@ -41,5 +46,66 @@ void TemperatureMenagment::printInputParam()
     }
     qDebug()<<"loop:"<< m_loopInput;
 
+
+    //do wyjebania, testy!!!!
+    setTempOutput(m_tempInputVector[0]);
+    setTimeOutput(m_timeInputVector[0]);
+    setLoopOutput(m_loopInput);
+    setBlockOutput(m_loopInput);
+    //
+}
+        //----------------------------------------------------------------//
+
+        //-----------------------------OUTPUT-----------------------------//
+int TemperatureMenagment::getTempOutput()
+{
+    return m_tempOutput;
+}
+void TemperatureMenagment::setTempOutput(const uint16_t& newTemp)
+{
+    if (m_tempOutput != newTemp)
+    {
+        m_tempOutput = newTemp;
+        emit tempOutputChanged();
+    }
 }
 
+int TemperatureMenagment::getTimeOutput()
+{
+    return m_timeOutput;
+}
+void TemperatureMenagment::setTimeOutput(const uint16_t& newTime)
+{
+    if (m_timeOutput != newTime)
+    {
+        m_timeOutput = newTime;
+        emit timeOutputChanged();
+    }
+}
+
+int TemperatureMenagment::getLoopOutput()
+{
+    return m_loopOutput;
+}
+void TemperatureMenagment::setLoopOutput(const uint8_t& newLoop)
+{
+    if (m_loopOutput != newLoop)
+    {
+        m_loopOutput = newLoop;
+        emit loopOutputChanged();
+    }
+}
+
+int TemperatureMenagment::getBlockOutput()
+{
+    return m_blockOutput;
+}
+void TemperatureMenagment::setBlockOutput(const uint8_t& newBlock)
+{
+    if (m_blockOutput != newBlock)
+    {
+        m_blockOutput = newBlock;
+        emit blockOutputChanged();
+    }
+}
+        //----------------------------------------------------------------//

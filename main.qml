@@ -78,10 +78,10 @@ Window {
         {
             verticalCenter:parent.verticalCenter
         }
-        currentTime:  0    //info z c++
-        currentTemp:  0    //info z c++
-        currentLoop:  0    //info z c++
-        currentBlock: 0    //info z c++
+        currentTime:  _cppBackend.timeOutput    //info z c++
+        currentTemp:  _cppBackend.tempOutput    //info z c++
+        currentLoop:  _cppBackend.loopOutput    //info z c++
+        currentBlock: _cppBackend.blockOutput    //info z c++
 
         amountLoop: loop.inputLoop
     }
