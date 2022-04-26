@@ -56,6 +56,19 @@ signals:
     void loopOutputChanged();
     void blockOutputChanged();
         //----------------------------------------------------------------//
+
+        //-----------------------GPIO-(SPI-&-RELAY)-----------------------//
+private:
+    QString getTempSensor();
+    void setRelayOn();
+    void setRelayOff();
+
+    void temperatureControl();
+        //----------------------------------------------------------------//
+
+
 };
+
+
 
 #endif // TEMPERATUREMENAGMENT_H

@@ -1,5 +1,7 @@
 #include "temperaturemenagment.h"
 #include <QtDebug>
+#include <fstream>
+#include <QFile>
 
 TemperatureMenagment::TemperatureMenagment(QObject *parent)
     : QObject{parent},
@@ -12,7 +14,9 @@ TemperatureMenagment::TemperatureMenagment(QObject *parent)
       m_loopOutput{0},
       m_blockOutput{0}
 {
-
+    qDebug()<<getTempSensor();
+    setRelayOn();
+    setRelayOff();
 }
         //------------------------------INPUT-----------------------------//
 void TemperatureMenagment::setInputParam(const QString& parameter, const int& value, const int &index)
@@ -107,5 +111,31 @@ void TemperatureMenagment::setBlockOutput(const uint8_t& newBlock)
         m_blockOutput = newBlock;
         emit blockOutputChanged();
     }
+}
+        //----------------------------------------------------------------//
+        //-----------------------GPIO-(SPI-&-RELAY)-----------------------//
+QString TemperatureMenagment::getTempSensor()
+{
+    std::system("./MAX31865.py");
+    QFile file("tempSensor.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return 0;
+    QTextStream in(&file);
+    QString redTemp = in.readLine();
+    return redTemp;
+}
+void TemperatureMenagment::setRelayOn()
+{
+    qDebug()<<"heating on";
+    //coil trun on
+}
+void TemperatureMenagment::setRelayOff()
+{
+    qDebug()<<"heating off";
+    //coil turn off
+}
+void temperatureControl()
+{
+    //a very complicated code in here
 }
         //----------------------------------------------------------------//
