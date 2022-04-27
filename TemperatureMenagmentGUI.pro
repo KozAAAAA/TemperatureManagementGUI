@@ -5,7 +5,6 @@ QT += quick
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        loopclass.cpp \
         main.cpp \
         temperaturemenagment.cpp
 
@@ -23,5 +22,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    loopclass.h \
     temperaturemenagment.h
+
+# RealayOn, RelayOff methods need it (Rpi only):
+
+linux:contains(QMAKE_HOST.arch, armv7l):{
+    LIBS += -lwiringPi
+}

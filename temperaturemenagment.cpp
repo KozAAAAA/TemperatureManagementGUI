@@ -3,6 +3,12 @@
 #include <fstream>
 #include <QFile>
 
+
+#ifdef __arm__
+    #include <wiringPi.h>
+#endif
+
+
 TemperatureMenagment::TemperatureMenagment(QObject *parent)
     : QObject{parent},
       m_tempInputVector{0,0,0,0},
@@ -12,28 +18,33 @@ TemperatureMenagment::TemperatureMenagment(QObject *parent)
       m_tempOutput{0},
       m_timeOutput{0},
       m_loopOutput{0},
-      m_blockOutput{0}
+      m_blockOutput{0},
+
+      m_tempSensor{0}
+
 {
-    qDebug()<<getTempSensor();
-    setRelayOn();
+    #ifdef __arm__
+        wiringPiSetup();
+        pinMode(0,OUTPUT);
+    #endif
+
+    qDebug()<< getTempSensor();
     setRelayOff();
+
 }
         //------------------------------INPUT-----------------------------//
 void TemperatureMenagment::setInputParam(const QString& parameter, const int& value, const int &index)
 {
-    if(parameter == "temp")
+    if(parameter == TEMP)
         m_tempInputVector.at(index) = value;
-    else if(parameter == "time")
+    else if(parameter == TIME)
         m_timeInputVector.at(index) = value;
-    else
-        qDebug()<<"There is no such parameter as:"<< parameter;
 }
 
 void TemperatureMenagment::setInputParam(const QString& parameter, const int& value)
 {
-    if(parameter == "loop")
+    if(parameter == LOOP)
         m_loopInput= value;
-    else qDebug()<<"There is no such parameter as:"<< parameter;
 }
 
 void TemperatureMenagment::printInputParam()
@@ -113,8 +124,9 @@ void TemperatureMenagment::setBlockOutput(const uint8_t& newBlock)
     }
 }
         //----------------------------------------------------------------//
+
         //-----------------------GPIO-(SPI-&-RELAY)-----------------------//
-QString TemperatureMenagment::getTempSensor()
+float TemperatureMenagment::getTempSensor()
 {
     std::system("./MAX31865.py");
     QFile file("tempSensor.txt");
@@ -122,20 +134,26 @@ QString TemperatureMenagment::getTempSensor()
         return 0;
     QTextStream in(&file);
     QString redTemp = in.readLine();
-    return redTemp;
+    return redTemp.toFloat();
 }
 void TemperatureMenagment::setRelayOn()
 {
-    qDebug()<<"heating on";
-    //coil trun on
+    #ifdef __arm__
+        digitalWrite(0,HIGH);
+    #endif
+
+    qDebug()<<"heating is on";
 }
 void TemperatureMenagment::setRelayOff()
 {
-    qDebug()<<"heating off";
-    //coil turn off
+    #ifdef __arm__
+        digitalWrite(0,LOW);
+    #endif
+    qDebug()<<"heating is off";
 }
-void temperatureControl()
+void TemperatureMenagment::temperatureControl()
 {
-    //a very complicated code in here
+    for(;;)
+    {}
 }
         //----------------------------------------------------------------//

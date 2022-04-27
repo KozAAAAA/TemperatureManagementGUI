@@ -1,7 +1,12 @@
 #ifndef TEMPERATUREMENAGMENT_H
 #define TEMPERATUREMENAGMENT_H
+#define TEMP "temp"
+#define TIME "time"
+#define LOOP "loop"
 
 #include <QObject>
+
+
 
 class TemperatureMenagment : public QObject
 {
@@ -58,14 +63,16 @@ signals:
         //----------------------------------------------------------------//
 
         //-----------------------GPIO-(SPI-&-RELAY)-----------------------//
+public:
+    Q_INVOKABLE void temperatureControl();
 private:
-    QString getTempSensor();
+    float m_tempSensor;
+
+    float getTempSensor();
     void setRelayOn();
     void setRelayOff();
 
-    void temperatureControl();
         //----------------------------------------------------------------//
-
 
 };
 
