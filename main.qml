@@ -82,6 +82,10 @@ Window {
 
                     start.text = "STOP"
                     start.color = "red"
+
+                    _cppBackend.temperatureControl()
+
+                    //show.currentTemp = _cppBackend.tempInput
                 }
 
             }

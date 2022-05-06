@@ -1,4 +1,5 @@
 #ifndef TEMPERATUREMENAGMENT_H
+
 #define TEMPERATUREMENAGMENT_H
 #define TEMP "temp"
 #define TIME "time"
@@ -48,6 +49,14 @@ public slots:
     void setTimeOutput(const uint16_t& newTime);
     void setLoopOutput(const uint8_t& newLoop);
     void setBlockOutput(const uint8_t& newBlock);
+
+
+    //wyjebac
+    void print();
+
+
+
+
 
 private:
     uint16_t m_tempOutput;

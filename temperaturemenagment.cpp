@@ -1,12 +1,14 @@
-#include "temperaturemenagment.h"
 #include <QtDebug>
-#include <fstream>
 #include <QFile>
-
-
 #ifdef __arm__
     #include <wiringPi.h>
 #endif
+
+
+#include "worker.h"
+#include "temperaturemenagment.h"
+
+
 
 
 TemperatureMenagment::TemperatureMenagment(QObject *parent)
@@ -131,7 +133,7 @@ float TemperatureMenagment::getTempSensor()
     std::system("./MAX31865.py");
     QFile file("tempSensor.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return 0;
+        return -1;
     QTextStream in(&file);
     QString redTemp = in.readLine();
     return redTemp.toFloat();
@@ -153,7 +155,15 @@ void TemperatureMenagment::setRelayOff()
 }
 void TemperatureMenagment::temperatureControl()
 {
-    for(;;)
-    {}
+    setTempOutput(5);
+    auto worker = new Worker();
+    connect(worker, &Worker::mySignal, this, &TemperatureMenagment::print);
+    connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+    worker->start();
+}
+
+void TemperatureMenagment::print()
+{
+    qDebug()<<"signal!!";
 }
         //----------------------------------------------------------------//
