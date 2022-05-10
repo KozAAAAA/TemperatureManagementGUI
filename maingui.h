@@ -6,14 +6,15 @@
 #define LOOP "loop"
 
 #include <QObject>
+#include <QtDebug>
 
+#include "worker.h"
 
-
-class TemperatureMenagment : public QObject
+class MainGui : public QObject
 {
     Q_OBJECT
 public:
-    explicit TemperatureMenagment(QObject *parent = nullptr);
+    explicit MainGui(QObject *parent = nullptr);
 
 
         //------------------------------INPUT-----------------------------//
@@ -50,14 +51,6 @@ public slots:
     void setLoopOutput(const uint8_t& newLoop);
     void setBlockOutput(const uint8_t& newBlock);
 
-
-    //wyjebac
-    void print();
-
-
-
-
-
 private:
     uint16_t m_tempOutput;
     uint16_t m_timeOutput;
@@ -71,15 +64,17 @@ signals:
     void blockOutputChanged();
         //----------------------------------------------------------------//
 
-        //-----------------------GPIO-(SPI-&-RELAY)-----------------------//
-public:
-    Q_INVOKABLE void temperatureControl();
+        //----------------------THREAD-COMMUNICATION----------------------//
 private:
-    float m_tempSensor;
+    Worker* worker;
 
-    float getTempSensor();
-    void setRelayOn();
-    void setRelayOff();
+public:
+    Q_INVOKABLE void startTemperatureControl();
+    Q_INVOKABLE void endTemperatureControl();
+signals:
+    void exitThread();
+
+
 
         //----------------------------------------------------------------//
 

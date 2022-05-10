@@ -63,8 +63,9 @@ Window {
                 {
                     start.color = "green"
                     start.text = "START"
+                    _cppBackend.endTemperatureControl()
 
-                    //turn off the temperatureControl()
+                    //delete Worker
                     //set everything to the values of 0
                     //RelayOff
                 }
@@ -83,7 +84,7 @@ Window {
                     start.text = "STOP"
                     start.color = "red"
 
-                    _cppBackend.temperatureControl()
+                    _cppBackend.startTemperatureControl()
 
                     //show.currentTemp = _cppBackend.tempInput
                 }

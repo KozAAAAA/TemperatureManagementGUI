@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "loopclass.h"
-#include "temperaturemenagment.h"
+#include "maingui.h"
 
 
 int main(int argc, char *argv[])
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
-    TemperatureMenagment* temperatureMenagment = new TemperatureMenagment;
+    MainGui* temperatureMenagment = new MainGui;
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;

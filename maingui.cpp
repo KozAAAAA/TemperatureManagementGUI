@@ -1,17 +1,10 @@
-#include <QtDebug>
-#include <QFile>
-#ifdef __arm__
-    #include <wiringPi.h>
-#endif
-
-
 #include "worker.h"
-#include "temperaturemenagment.h"
+#include "maingui.h"
 
 
 
 
-TemperatureMenagment::TemperatureMenagment(QObject *parent)
+MainGui::MainGui(QObject *parent)
     : QObject{parent},
       m_tempInputVector{0,0,0,0},
       m_timeInputVector{0,0,0,0},
@@ -20,22 +13,18 @@ TemperatureMenagment::TemperatureMenagment(QObject *parent)
       m_tempOutput{0},
       m_timeOutput{0},
       m_loopOutput{0},
-      m_blockOutput{0},
+      m_blockOutput{0}
 
-      m_tempSensor{0}
 
 {
     #ifdef __arm__
         wiringPiSetup();
         pinMode(0,OUTPUT);
+        digitalWrite(0,LOW);
     #endif
-
-    qDebug()<< getTempSensor();
-    setRelayOff();
-
 }
         //------------------------------INPUT-----------------------------//
-void TemperatureMenagment::setInputParam(const QString& parameter, const int& value, const int &index)
+void MainGui::setInputParam(const QString& parameter, const int& value, const int &index)
 {
     if(parameter == TEMP)
         m_tempInputVector.at(index) = value;
@@ -43,13 +32,13 @@ void TemperatureMenagment::setInputParam(const QString& parameter, const int& va
         m_timeInputVector.at(index) = value;
 }
 
-void TemperatureMenagment::setInputParam(const QString& parameter, const int& value)
+void MainGui::setInputParam(const QString& parameter, const int& value)
 {
     if(parameter == LOOP)
         m_loopInput= value;
 }
 
-void TemperatureMenagment::printInputParam()
+void MainGui::printInputParam()
 {
     qDebug()<<"tempVector:";
     for (uint16_t temp : m_tempInputVector)
@@ -74,11 +63,11 @@ void TemperatureMenagment::printInputParam()
         //----------------------------------------------------------------//
 
         //-----------------------------OUTPUT-----------------------------//
-int TemperatureMenagment::getTempOutput()
+int MainGui::getTempOutput()
 {
     return m_tempOutput;
 }
-void TemperatureMenagment::setTempOutput(const uint16_t& newTemp)
+void MainGui::setTempOutput(const uint16_t& newTemp)
 {
     if (m_tempOutput != newTemp)
     {
@@ -87,11 +76,11 @@ void TemperatureMenagment::setTempOutput(const uint16_t& newTemp)
     }
 }
 
-int TemperatureMenagment::getTimeOutput()
+int MainGui::getTimeOutput()
 {
     return m_timeOutput;
 }
-void TemperatureMenagment::setTimeOutput(const uint16_t& newTime)
+void MainGui::setTimeOutput(const uint16_t& newTime)
 {
     if (m_timeOutput != newTime)
     {
@@ -100,11 +89,11 @@ void TemperatureMenagment::setTimeOutput(const uint16_t& newTime)
     }
 }
 
-int TemperatureMenagment::getLoopOutput()
+int MainGui::getLoopOutput()
 {
     return m_loopOutput;
 }
-void TemperatureMenagment::setLoopOutput(const uint8_t& newLoop)
+void MainGui::setLoopOutput(const uint8_t& newLoop)
 {
     if (m_loopOutput != newLoop)
     {
@@ -113,11 +102,11 @@ void TemperatureMenagment::setLoopOutput(const uint8_t& newLoop)
     }
 }
 
-int TemperatureMenagment::getBlockOutput()
+int MainGui::getBlockOutput()
 {
     return m_blockOutput;
 }
-void TemperatureMenagment::setBlockOutput(const uint8_t& newBlock)
+void MainGui::setBlockOutput(const uint8_t& newBlock)
 {
     if (m_blockOutput != newBlock)
     {
@@ -127,43 +116,20 @@ void TemperatureMenagment::setBlockOutput(const uint8_t& newBlock)
 }
         //----------------------------------------------------------------//
 
-        //-----------------------GPIO-(SPI-&-RELAY)-----------------------//
-float TemperatureMenagment::getTempSensor()
-{
-    std::system("./MAX31865.py");
-    QFile file("tempSensor.txt");
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return -1;
-    QTextStream in(&file);
-    QString redTemp = in.readLine();
-    return redTemp.toFloat();
-}
-void TemperatureMenagment::setRelayOn()
-{
-    #ifdef __arm__
-        digitalWrite(0,HIGH);
-    #endif
+        //----------------------THREAD-COMMUNICATION----------------------//
 
-    qDebug()<<"heating is on";
-}
-void TemperatureMenagment::setRelayOff()
+void MainGui::startTemperatureControl()
 {
-    #ifdef __arm__
-        digitalWrite(0,LOW);
-    #endif
-    qDebug()<<"heating is off";
-}
-void TemperatureMenagment::temperatureControl()
-{
-    setTempOutput(5);
-    auto worker = new Worker();
-    connect(worker, &Worker::mySignal, this, &TemperatureMenagment::print);
+    worker = new Worker();
+    connect(this, &MainGui::exitThread, worker, &Worker::setThreadNotActive);
     connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
     worker->start();
 }
 
-void TemperatureMenagment::print()
+void MainGui::endTemperatureControl()
 {
-    qDebug()<<"signal!!";
+    emit exitThread();
+    //usuń worker
 }
         //----------------------------------------------------------------//
+

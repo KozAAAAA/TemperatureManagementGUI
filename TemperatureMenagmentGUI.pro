@@ -6,7 +6,7 @@ QT += quick
 
 SOURCES += \
         main.cpp \
-        temperaturemenagment.cpp \
+        maingui.cpp \
         worker.cpp
 
 RESOURCES += qml.qrc
@@ -23,7 +23,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    temperaturemenagment.h \
+    maingui.h \
     worker.h
 
 # RealayOn, RelayOff methods need it (Rpi only):
