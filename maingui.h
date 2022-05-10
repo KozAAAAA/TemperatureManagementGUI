@@ -65,6 +65,7 @@ signals:
         //----------------------------------------------------------------//
 
         //----------------------THREAD-COMMUNICATION----------------------//
+
 private:
     Worker* worker;
 
@@ -73,8 +74,6 @@ public:
     Q_INVOKABLE void endTemperatureControl();
 signals:
     void exitThread();
-
-
 
         //----------------------------------------------------------------//
 

@@ -51,14 +51,6 @@ void MainGui::printInputParam()
         qDebug()<<time;
     }
     qDebug()<<"loop:"<< m_loopInput;
-
-
-    //do wyjebania, testy!!!!
-    setTempOutput(m_tempInputVector[0]);
-    setTimeOutput(m_timeInputVector[0]);
-    setLoopOutput(m_loopInput);
-    setBlockOutput(m_loopInput);
-    //
 }
         //----------------------------------------------------------------//
 
@@ -120,8 +112,16 @@ void MainGui::setBlockOutput(const uint8_t& newBlock)
 
 void MainGui::startTemperatureControl()
 {
-    worker = new Worker();
+    worker = new Worker(m_tempInputVector, m_timeInputVector, m_loopInput);
+
     connect(this, &MainGui::exitThread, worker, &Worker::setThreadNotActive);
+
+    connect(worker, &Worker::currentTemp, this, &MainGui::setTempOutput);
+    connect(worker, &Worker::currentTime, this, &MainGui::setTimeOutput);
+    connect(worker, &Worker::currentLoop, this, &MainGui::setLoopOutput);
+    connect(worker, &Worker::currentBlock, this, &MainGui::setBlockOutput);
+
+
     connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
     worker->start();
 }
@@ -129,7 +129,6 @@ void MainGui::startTemperatureControl()
 void MainGui::endTemperatureControl()
 {
     emit exitThread();
-    //usuń worker
 }
         //----------------------------------------------------------------//
 

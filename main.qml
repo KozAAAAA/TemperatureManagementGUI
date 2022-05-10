@@ -37,7 +37,6 @@ Window {
         currentLoop:  _cppBackend.loopOutput    //info z c++
         currentBlock: _cppBackend.blockOutput   //info z c++
 
-        amountLoop: loop.inputLoop
     }
 
     StartButton
@@ -64,6 +63,7 @@ Window {
                     start.color = "green"
                     start.text = "START"
                     _cppBackend.endTemperatureControl()
+                    show.amountLoop = 0
 
                     //delete Worker
                     //set everything to the values of 0
@@ -85,8 +85,8 @@ Window {
                     start.color = "red"
 
                     _cppBackend.startTemperatureControl()
+                    show.amountLoop = loop.inputLoop
 
-                    //show.currentTemp = _cppBackend.tempInput
                 }
 
             }
