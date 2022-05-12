@@ -27,7 +27,7 @@ MainGui::MainGui(QObject *parent)
         digitalWrite(0,LOW);
     #endif
 }
-        //------------------------------INPUT-----------------------------//
+    //------------------------------INPUT-----------------------------//
 void MainGui::setInputParam(const QString& parameter, const quint8& value, const quint8 &index)
 {
     if(parameter == TEMP)
@@ -56,9 +56,9 @@ void MainGui::printInputParam()
     }
     qDebug()<<"loop:"<< m_loopInput;
 }
-        //----------------------------------------------------------------//
+    //----------------------------------------------------------------//
 
-        //-----------------------------OUTPUT-----------------------------//
+    //-----------------------------OUTPUT-----------------------------//
 quint16 MainGui::getTempOutput()
 {
     return m_tempOutput;
@@ -110,10 +110,9 @@ void MainGui::setBlockOutput(const quint8& newBlock)
         emit blockOutputChanged();
     }
 }
-        //----------------------------------------------------------------//
+    //----------------------------------------------------------------//
 
-        //----------------------THREAD-COMMUNICATION----------------------//
-
+    //----------------------THREAD-COMMUNICATION----------------------//
 void MainGui::startTemperatureControl()
 {
     worker = new Worker(m_tempInputVector, m_timeInputVector, m_loopInput);
@@ -134,5 +133,5 @@ void MainGui::endTemperatureControl()
 {
     emit exitThread();
 }
-        //----------------------------------------------------------------//
+    //----------------------------------------------------------------//
 

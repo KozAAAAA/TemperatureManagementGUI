@@ -1,6 +1,7 @@
 #ifndef TEMPERATUREMENAGMENT_H
 
 #define TEMPERATUREMENAGMENT_H
+
 #define TEMP "temp"
 #define TIME "time"
 #define LOOP "loop"
@@ -16,8 +17,7 @@ class MainGui : public QObject
 public:
     explicit MainGui(QObject *parent = nullptr);
 
-
-        //------------------------------INPUT-----------------------------//
+    //------------------------------INPUT-----------------------------//
 public:
     Q_INVOKABLE void setInputParam (const QString& parameter, const quint8& value,const quint8& index);
     Q_INVOKABLE void setInputParam (const QString& parameter, const quint8& value);
@@ -29,11 +29,9 @@ private:
     std::vector<uint16_t> m_tempInputVector;
     std::vector<uint16_t> m_timeInputVector;
     uint8_t m_loopInput;
-        //----------------------------------------------------------------//
+    //----------------------------------------------------------------//
 
-
-
-        //-----------------------------OUTPUT-----------------------------//
+    //-----------------------------OUTPUT-----------------------------//
 public:
     Q_PROPERTY(int tempOutput READ getTempOutput WRITE setTempOutput NOTIFY tempOutputChanged)
     Q_PROPERTY(int timeOutput READ getTimeOutput WRITE setTimeOutput NOTIFY timeOutputChanged)
@@ -62,23 +60,17 @@ signals:
     void timeOutputChanged();
     void loopOutputChanged();
     void blockOutputChanged();
-        //----------------------------------------------------------------//
+    //----------------------------------------------------------------//
 
-        //----------------------THREAD-COMMUNICATION----------------------//
-
+    //----------------------THREAD-COMMUNICATION----------------------//
 private:
     Worker* worker;
-
 public:
     Q_INVOKABLE void startTemperatureControl();
     Q_INVOKABLE void endTemperatureControl();
 signals:
     void exitThread();
-
-        //----------------------------------------------------------------//
-
+    //----------------------------------------------------------------//
 };
-
-
 
 #endif // TEMPERATUREMENAGMENT_H

@@ -2,27 +2,24 @@
 
 
 
+
 Worker::Worker(const std::vector<quint16>& m_tempInputVector_,
                const std::vector<quint16>& m_timeInputVector_,
                const quint8& m_loopInput_) :
     QThread(),
 
-    m_threadActive(true),
-
     m_tempInputVector(m_tempInputVector_),
     m_timeInputVector(m_timeInputVector_),
     m_loopInput(m_loopInput_),
 
-    m_currentTemp(-1),
-    m_currentTime(-1),
-    m_currentLoop(-1),
-    m_currentBlock(-1)
+    m_threadActive(true),
 
-{
-    setRelayOff();
+    m_currentTemp(0),
+    m_currentTime(0),
+    m_currentLoop(1),
+    m_currentBlock(1)
 
-
-}
+    {setRelayOff();}
 
 Worker::~Worker()
 {
@@ -30,6 +27,14 @@ Worker::~Worker()
     qDebug()<<"worker has ben deleted";
 }
 
+    //------------------------------INPUT-----------------------------//
+void Worker::setThreadNotActive()
+{
+m_threadActive = false;
+}
+    //----------------------------------------------------------------//
+
+    //-----------------------------METHODS----------------------------//
 void Worker::run()
 {
     qDebug()<<"START HAS BEEN PRESSED";
@@ -37,26 +42,45 @@ void Worker::run()
     while(m_threadActive)
     {
         m_currentTemp = getTempSensor();
-        m_currentTime = 5;
-        m_currentLoop = 2;
-        m_currentBlock = 2;
-        emit currentTemp(m_currentTemp);
-        emit currentTime(m_currentTime);
-        emit currentLoop(m_currentLoop);
-        emit currentBlock(m_currentBlock);
-        qDebug()<<m_currentTemp;
-        if(m_currentTemp>27)
+
+        //loop
+        for(;m_currentLoop < m_loopInput+1;m_currentLoop++)
         {
-            setRelayOn();
+            emit currentLoop(m_currentLoop);
+
+            //block
+            for(;m_currentBlock < 5; m_currentBlock++)
+            {
+                emit currentBlock(m_currentBlock);
+
+                //timer
+                //przemyśleć
+                //m_currentTime = m_timeInputVector[m_currentBlock]
+
+                while(m_currentTime>0)
+                {
+                    emit currentTime(m_currentTime);
+                    pid();
+                }
+
+            }
         }
-        else(setRelayOff());
     }
 
     outputReset();
-
     qDebug()<<"STOP HAS BEEN PRESSED - thread is not active";
 }
 
+float Worker::getTempSensor()
+{
+    std::system("./MAX31865.py");
+    QFile file("tempSensor.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return -1;
+    QTextStream in(&file);
+    QString redTemp = in.readLine();
+    return redTemp.toFloat();
+}
 void Worker::setRelayOn()
 {
     #ifdef __arm__
@@ -72,23 +96,6 @@ void Worker::setRelayOff()
     #endif
     qDebug()<<"heating is off";
 }
-
-float Worker::getTempSensor()
-{
-    std::system("./MAX31865.py");
-    QFile file("tempSensor.txt");
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return -1;
-    QTextStream in(&file);
-    QString redTemp = in.readLine();
-    return redTemp.toFloat();
-}
-
-void Worker::setThreadNotActive()
-{
-    m_threadActive = false;
-}
-
 void Worker::outputReset()
 {
     emit currentTemp(0);
@@ -96,5 +103,17 @@ void Worker::outputReset()
     emit currentLoop(0);
     emit currentBlock(0);
 }
-
-
+void Worker::pid()
+{
+    m_currentTemp = getTempSensor();
+    emit currentTemp(m_currentTemp);
+    if(m_currentTemp < m_tempInputVector[m_currentBlock])
+    {
+        setRelayOn();
+    }
+    else
+    {
+        setRelayOff();
+    }
+}
+    //----------------------------------------------------------------//
