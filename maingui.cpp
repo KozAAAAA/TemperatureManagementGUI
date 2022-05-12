@@ -4,6 +4,10 @@
 
 
 
+
+
+
+
 MainGui::MainGui(QObject *parent)
     : QObject{parent},
       m_tempInputVector{0,0,0,0},
@@ -24,7 +28,7 @@ MainGui::MainGui(QObject *parent)
     #endif
 }
         //------------------------------INPUT-----------------------------//
-void MainGui::setInputParam(const QString& parameter, const int& value, const int &index)
+void MainGui::setInputParam(const QString& parameter, const quint8& value, const quint8 &index)
 {
     if(parameter == TEMP)
         m_tempInputVector.at(index) = value;
@@ -32,7 +36,7 @@ void MainGui::setInputParam(const QString& parameter, const int& value, const in
         m_timeInputVector.at(index) = value;
 }
 
-void MainGui::setInputParam(const QString& parameter, const int& value)
+void MainGui::setInputParam(const QString& parameter, const quint8& value)
 {
     if(parameter == LOOP)
         m_loopInput= value;
@@ -41,12 +45,12 @@ void MainGui::setInputParam(const QString& parameter, const int& value)
 void MainGui::printInputParam()
 {
     qDebug()<<"tempVector:";
-    for (uint16_t temp : m_tempInputVector)
+    for (quint16 temp : m_tempInputVector)
     {
         qDebug()<<temp;
     }
     qDebug()<<"timeVector:";
-    for (uint16_t time : m_timeInputVector)
+    for (quint16 time : m_timeInputVector)
     {
         qDebug()<<time;
     }
@@ -55,11 +59,11 @@ void MainGui::printInputParam()
         //----------------------------------------------------------------//
 
         //-----------------------------OUTPUT-----------------------------//
-int MainGui::getTempOutput()
+quint16 MainGui::getTempOutput()
 {
     return m_tempOutput;
 }
-void MainGui::setTempOutput(const uint16_t& newTemp)
+void MainGui::setTempOutput(const quint16& newTemp)
 {
     if (m_tempOutput != newTemp)
     {
@@ -68,11 +72,11 @@ void MainGui::setTempOutput(const uint16_t& newTemp)
     }
 }
 
-int MainGui::getTimeOutput()
+quint16 MainGui::getTimeOutput()
 {
     return m_timeOutput;
 }
-void MainGui::setTimeOutput(const uint16_t& newTime)
+void MainGui::setTimeOutput(const quint16& newTime)
 {
     if (m_timeOutput != newTime)
     {
@@ -81,11 +85,11 @@ void MainGui::setTimeOutput(const uint16_t& newTime)
     }
 }
 
-int MainGui::getLoopOutput()
+quint8 MainGui::getLoopOutput()
 {
     return m_loopOutput;
 }
-void MainGui::setLoopOutput(const uint8_t& newLoop)
+void MainGui::setLoopOutput(const quint8& newLoop)
 {
     if (m_loopOutput != newLoop)
     {
@@ -94,11 +98,11 @@ void MainGui::setLoopOutput(const uint8_t& newLoop)
     }
 }
 
-int MainGui::getBlockOutput()
+quint8 MainGui::getBlockOutput()
 {
     return m_blockOutput;
 }
-void MainGui::setBlockOutput(const uint8_t& newBlock)
+void MainGui::setBlockOutput(const quint8& newBlock)
 {
     if (m_blockOutput != newBlock)
     {

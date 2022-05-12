@@ -14,23 +14,23 @@ class Worker : public QThread
     Q_OBJECT
 public:
 
-    explicit Worker(const std::vector<uint16_t>&,
-                    const std::vector<uint16_t>&,
-                    const uint8_t&);
+    explicit Worker(const std::vector<quint16>&,
+                    const std::vector<quint16>&,
+                    const quint8&);
     ~Worker();
 
 private:
 
     bool m_threadActive;
 
-    const std::vector<uint16_t> m_tempInputVector;
-    const std::vector<uint16_t> m_timeInputVector;
-    const uint8_t m_loopInput;
+    const std::vector<quint16> m_tempInputVector;
+    const std::vector<quint16> m_timeInputVector;
+    const quint8 m_loopInput;
 
-    uint16_t m_currentTemp;
-    uint16_t m_currentTime;
-    uint8_t m_currentLoop;
-    uint8_t m_currentBlock;
+    float m_currentTemp;
+    quint16 m_currentTime;
+    quint8 m_currentLoop;
+    quint8 m_currentBlock;
 
     void run() override;
     float getTempSensor();
@@ -42,10 +42,10 @@ public slots:
     void setThreadNotActive();
 
 signals:
-    void currentTemp(int);
-    void currentTime(int);
-    void currentLoop(int);
-    void currentBlock(int);
+    void currentTemp(quint16);
+    void currentTime(quint16);
+    void currentLoop(quint8);
+    void currentBlock(quint8);
 };
 
 #endif // WORKER_H

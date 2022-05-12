@@ -19,8 +19,8 @@ public:
 
         //------------------------------INPUT-----------------------------//
 public:
-    Q_INVOKABLE void setInputParam (const QString& parameter, const int& value,const int& index);
-    Q_INVOKABLE void setInputParam (const QString& parameter, const int& value);
+    Q_INVOKABLE void setInputParam (const QString& parameter, const quint8& value,const quint8& index);
+    Q_INVOKABLE void setInputParam (const QString& parameter, const quint8& value);
 
     //debug:
     Q_INVOKABLE void printInputParam();
@@ -40,10 +40,10 @@ public:
     Q_PROPERTY(int loopOutput READ getLoopOutput WRITE setLoopOutput NOTIFY loopOutputChanged)
     Q_PROPERTY(int blockOutput READ getBlockOutput WRITE setBlockOutput NOTIFY blockOutputChanged)
 
-    int getTempOutput();
-    int getTimeOutput();
-    int getLoopOutput();
-    int getBlockOutput();
+    quint16 getTempOutput();
+    quint16 getTimeOutput();
+    quint8 getLoopOutput();
+    quint8 getBlockOutput();
 
 public slots:
     void setTempOutput(const uint16_t& newTemp);

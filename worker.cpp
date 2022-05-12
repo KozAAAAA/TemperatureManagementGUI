@@ -1,8 +1,10 @@
 #include "worker.h"
 
-Worker::Worker(const std::vector<uint16_t>& m_tempInputVector_,
-               const std::vector<uint16_t>& m_timeInputVector_,
-               const uint8_t& m_loopInput_) :
+
+
+Worker::Worker(const std::vector<quint16>& m_tempInputVector_,
+               const std::vector<quint16>& m_timeInputVector_,
+               const quint8& m_loopInput_) :
     QThread(),
 
     m_threadActive(true),
@@ -18,11 +20,12 @@ Worker::Worker(const std::vector<uint16_t>& m_tempInputVector_,
 
 {
     setRelayOff();
+
+
 }
 
 Worker::~Worker()
 {
-    //delete QTimer
     setRelayOff();
     qDebug()<<"worker has ben deleted";
 }
