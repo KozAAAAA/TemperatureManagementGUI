@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QDebug>
 #include <QFile>
+#include <QElapsedTimer>
 
 #ifdef __arm__
     #include <wiringPi.h>
@@ -35,19 +36,21 @@ public slots:
     //-----------------------------OUTPUT-----------------------------//
 private:
     float m_currentTemp;
-    quint16 m_currentTime;
+    quint32 m_currentTime;
     quint8 m_currentLoop;
     quint8 m_currentBlock;
 
 signals:
     void currentTemp(quint16);
-    void currentTime(quint16);
+    void currentTime(quint32);
     void currentLoop(quint8);
     void currentBlock(quint8);
     //----------------------------------------------------------------//
 
     //-----------------------------METHODS----------------------------//
 private:
+    QElapsedTimer m_timer;
+
     void run() override; //thread
 
     float getTempSensor();

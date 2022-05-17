@@ -6,15 +6,26 @@ Grid {
     spacing: 50
 
     property int currentTemp
-    property int currentTime
-    property int currentLoop
-    property int currentBlock
 
+    property int currentTime
+
+    property int currentTimeH: (currentTime/(1000*60*60))
+    property int currentTimeMin: (currentTime/(1000*60)) %60
+    property int currentTimeSec: (currentTime/1000) %60
+
+    property int currentLoop
     property int amountLoop
 
+    property int currentBlock
 
-    ShowBlock {id: showBlockTemp;    name:"TEMP";    output: currentTemp;  unit:"°C"}
-    ShowBlock {id: showBlockTime;    name:"CZAS";    output: currentTime;  unit:"h"}
-    ShowBlock {id: showBlockLoop;    name:"PĘTLA";   output: currentLoop;   unit:"/"+amountLoop}
-    ShowBlock {id: showBlockNumber;  name:"NASTAW";  output: currentBlock;  unit:"/4"}
+
+
+
+    ShowBlock {id: showBlockTemp;    name:"TEMP";   output:currentTemp + "°C"}
+    ShowBlock {id: showBlockTime;    name:"CZAS";   output:currentTimeH+":"+currentTimeMin+":"+currentTimeSec}
+    ShowBlock {id: showBlockLoop;    name:"PĘTLA";  output:currentLoop+"/"+amountLoop}
+    ShowBlock {id: showBlockNumber;  name:"NASTAW"; output:currentBlock+"/4"}
 }
+
+
+

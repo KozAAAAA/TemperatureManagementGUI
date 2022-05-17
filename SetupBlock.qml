@@ -34,7 +34,7 @@ Item
         {
             id: time
             name: "Czas (h):"
-            maxNumber: 999
+            maxNumber: 576
         }
 
     }

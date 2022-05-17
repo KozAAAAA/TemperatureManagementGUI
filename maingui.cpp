@@ -28,7 +28,7 @@ MainGui::MainGui(QObject *parent)
     #endif
 }
     //------------------------------INPUT-----------------------------//
-void MainGui::setInputParam(const QString& parameter, const quint8& value, const quint8 &index)
+void MainGui::setInputParam(const QString& parameter, const quint32& value, const quint8 &index)
 {
     if(parameter == TEMP)
         m_tempInputVector.at(index) = value;
@@ -72,11 +72,11 @@ void MainGui::setTempOutput(const quint16& newTemp)
     }
 }
 
-quint16 MainGui::getTimeOutput()
+quint32 MainGui::getTimeOutput()
 {
     return m_timeOutput;
 }
-void MainGui::setTimeOutput(const quint16& newTime)
+void MainGui::setTimeOutput(const quint32& newTime)
 {
     if (m_timeOutput != newTime)
     {
@@ -126,7 +126,12 @@ void MainGui::startTemperatureControl()
 
 
     connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+
+    // QML CHANGE BUTTON:
+    connect(worker, SIGNAL(finished()), this, SIGNAL(completedTemperatureControl()));
+
     worker->start();
+
 }
 
 void MainGui::endTemperatureControl()

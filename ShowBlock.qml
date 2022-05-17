@@ -3,8 +3,7 @@ import QtQuick 2.6
 Item
 {
     property string name: "Unknown"
-    property int output: 99
-    property string unit: "unit"
+    property string output: "output"
 
     height: 300
     width: 300
@@ -21,7 +20,6 @@ Item
     {
         name: parent.name
         output: parent.output
-        unit: parent.unit
 
         anchors.centerIn: parent
     }

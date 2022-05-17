@@ -7,7 +7,7 @@ Window {
     height:1080
     visible: true
     visibility: "FullScreen"
-    title: qsTr("Hello World")
+    title: qsTr("Temperature Menagment")
 
     GridSetupBlocs
     {
@@ -28,15 +28,11 @@ Window {
     GridShowBlocks
     {
         id: show
-        anchors
-        {
-            verticalCenter:parent.verticalCenter
-        }
-        currentTime:  _cppBackend.timeOutput    //info z c++
-        currentTemp:  _cppBackend.tempOutput    //info z c++
-        currentLoop:  _cppBackend.loopOutput    //info z c++
-        currentBlock: _cppBackend.blockOutput   //info z c++
-
+        anchors.verticalCenter:parent.verticalCenter
+        currentTime:   _cppBackend.timeOutput   //info z c++
+        currentTemp:   _cppBackend.tempOutput   //info z c++
+        currentLoop:   _cppBackend.loopOutput   //info z c++
+        currentBlock:  _cppBackend.blockOutput  //info z c++
     }
 
     StartButton
@@ -48,30 +44,23 @@ Window {
             bottom: parent.bottom
         }
 
-
         MouseArea
         {
-
             anchors.fill: parent
-
             onClicked:
             {
-
-                // STOP MODE:
+                // Stop clicked:
                 if(start.color == "red")
                 {
-                    start.color = "green"
-                    start.text = "START"
                     _cppBackend.endTemperatureControl()
                     show.amountLoop = 0
 
-                    //delete Worker
-                    //set everything to the values of 0
-                    //RelayOff
+                    start.color = "green"
+                    start.text = "START"
                 }
 
-                // START MODE:
-                else
+                // Start clicked:
+                else if(loop.inputLoop !==0)
                 {
                     for (var i = 0; i<4 ; i++)
                     {
@@ -79,21 +68,26 @@ Window {
                         _cppBackend.setInputParam("time", setup.timeArray[i], i)
                     }
                     _cppBackend.setInputParam("loop", loop.inputLoop)
-                    _cppBackend.printInputParam()
 
-                    start.text = "STOP"
-                    start.color = "red"
+                    _cppBackend.printInputParam()
 
                     _cppBackend.startTemperatureControl()
                     show.amountLoop = loop.inputLoop
 
+                    start.color = "red"
+                    start.text = "STOP"
                 }
-
             }
         }
+        Connections
+        {
+                target: _cppBackend
+                function onCompletedTemperatureControl()
+                {
+                    start.color = "green"
+                    start.text = "START"
+                    show.amountLoop = 0
+                }
+            }
     }
-
-
-
-
 }

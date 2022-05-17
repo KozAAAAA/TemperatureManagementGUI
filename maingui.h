@@ -19,16 +19,16 @@ public:
 
     //------------------------------INPUT-----------------------------//
 public:
-    Q_INVOKABLE void setInputParam (const QString& parameter, const quint8& value,const quint8& index);
+    Q_INVOKABLE void setInputParam (const QString& parameter, const quint32& value,const quint8& index);
     Q_INVOKABLE void setInputParam (const QString& parameter, const quint8& value);
 
     //debug:
     Q_INVOKABLE void printInputParam();
 
 private:
-    std::vector<uint16_t> m_tempInputVector;
-    std::vector<uint16_t> m_timeInputVector;
-    uint8_t m_loopInput;
+    std::vector<quint16> m_tempInputVector;
+    std::vector<quint16> m_timeInputVector;
+    quint8 m_loopInput;
     //----------------------------------------------------------------//
 
     //-----------------------------OUTPUT-----------------------------//
@@ -39,27 +39,29 @@ public:
     Q_PROPERTY(int blockOutput READ getBlockOutput WRITE setBlockOutput NOTIFY blockOutputChanged)
 
     quint16 getTempOutput();
-    quint16 getTimeOutput();
+    quint32 getTimeOutput();
     quint8 getLoopOutput();
     quint8 getBlockOutput();
 
 public slots:
-    void setTempOutput(const uint16_t& newTemp);
-    void setTimeOutput(const uint16_t& newTime);
-    void setLoopOutput(const uint8_t& newLoop);
-    void setBlockOutput(const uint8_t& newBlock);
+    void setTempOutput(const quint16& newTemp);
+    void setTimeOutput(const quint32& newTime);
+    void setLoopOutput(const quint8& newLoop);
+    void setBlockOutput(const quint8& newBlock);
 
 private:
-    uint16_t m_tempOutput;
-    uint16_t m_timeOutput;
-    uint8_t m_loopOutput;
-    uint8_t m_blockOutput;
+    quint16 m_tempOutput;
+    quint32 m_timeOutput;
+    quint8 m_loopOutput;
+    quint8 m_blockOutput;
 
 signals:
     void tempOutputChanged();
     void timeOutputChanged();
     void loopOutputChanged();
     void blockOutputChanged();
+    void completedTemperatureControl();
+
     //----------------------------------------------------------------//
 
     //----------------------THREAD-COMMUNICATION----------------------//

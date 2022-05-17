@@ -24,7 +24,7 @@ Worker::Worker(const std::vector<quint16>& m_tempInputVector_,
 Worker::~Worker()
 {
     setRelayOff();
-    qDebug()<<"worker has ben deleted";
+    qDebug()<<"WORKER - has been deleted";
 }
 
     //------------------------------INPUT-----------------------------//
@@ -39,35 +39,42 @@ void Worker::run()
 {
     qDebug()<<"START HAS BEEN PRESSED";
 
-    while(m_threadActive)
+
+    for(;m_currentLoop < m_loopInput+1;m_currentLoop++)
     {
-        m_currentTemp = getTempSensor();
+        emit currentLoop(m_currentLoop);
 
-        //loop
-        for(;m_currentLoop < m_loopInput+1;m_currentLoop++)
+
+        for(;m_currentBlock < 5; m_currentBlock++)
         {
-            emit currentLoop(m_currentLoop);
+            emit currentBlock(m_currentBlock);
 
-            //block
-            for(;m_currentBlock < 5; m_currentBlock++)
+
+            //h to ms
+            //quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1];
+
+            //fake time:
+            quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/3600;
+
+            m_timer.start();
+
+            while((!m_timer.hasExpired(m_workingTimeMs)) &&
+                    m_threadActive)
             {
-                emit currentBlock(m_currentBlock);
+                m_currentTime = (m_workingTimeMs - m_timer.elapsed());
+                emit currentTime(m_currentTime);
 
-                //timer
-                //przemyśleć
-                //m_currentTime = m_timeInputVector[m_currentBlock]
-
-                while(m_currentTime>0)
-                {
-                    emit currentTime(m_currentTime);
-                    pid();
-                }
-
+                pid();
             }
+
         }
+
+        m_currentBlock = 0;
     }
+    m_currentLoop = 0;
 
     outputReset();
+
     qDebug()<<"STOP HAS BEEN PRESSED - thread is not active";
 }
 
@@ -107,7 +114,7 @@ void Worker::pid()
 {
     m_currentTemp = getTempSensor();
     emit currentTemp(m_currentTemp);
-    if(m_currentTemp < m_tempInputVector[m_currentBlock])
+    if(m_currentTemp < m_tempInputVector[m_currentBlock-1])
     {
         setRelayOn();
     }

@@ -4,8 +4,7 @@ import QtQuick.Controls 2.0
 Item
 {
     property string name
-    property int output
-    property string unit
+    property string output
 
     height: textname.height + output.height + textname.anchors.topMargin
     width: output.width
@@ -19,7 +18,7 @@ Item
             top: parent.top
         }
 
-        text: parent.output + parent.unit
+        text: parent.output
         font.pointSize: 60
 
 
