@@ -18,6 +18,7 @@ Grid {
 
     property int currentBlock
 
+    property bool heatingIsOn: false
 
 
 
@@ -25,6 +26,14 @@ Grid {
     ShowBlock {id: showBlockTime;    name:"CZAS";   output:currentTimeH+":"+currentTimeMin+":"+currentTimeSec}
     ShowBlock {id: showBlockLoop;    name:"PĘTLA";  output:currentLoop+"/"+amountLoop}
     ShowBlock {id: showBlockNumber;  name:"NASTAW"; output:currentBlock+"/4"}
+
+    Rectangle
+    {
+        height: 50
+        width: 50
+        color: heatingIsOn ? "red" : "black"
+    }
+
 }
 
 

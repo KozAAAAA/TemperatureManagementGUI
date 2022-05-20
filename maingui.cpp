@@ -2,12 +2,6 @@
 #include "maingui.h"
 
 
-
-
-
-
-
-
 MainGui::MainGui(QObject *parent)
     : QObject{parent},
       m_tempInputVector{0,0,0,0},
@@ -127,13 +121,15 @@ void MainGui::startTemperatureControl()
 
     connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
 
-    // QML CHANGE BUTTON:
+    // QML CHANGE BUTTON & RELAY INDICATION:
     connect(worker, SIGNAL(finished()), this, SIGNAL(completedTemperatureControl()));
+    connect(worker, SIGNAL(relayIsOn()), this, SIGNAL(heatingIsOn()));
+    connect(worker, SIGNAL(relayIsOff()), this, SIGNAL(heatingIsOff()));
+
 
     worker->start();
 
 }
-
 void MainGui::endTemperatureControl()
 {
     emit exitThread();

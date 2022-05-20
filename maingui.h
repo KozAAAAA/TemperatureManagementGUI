@@ -61,6 +61,8 @@ signals:
     void loopOutputChanged();
     void blockOutputChanged();
     void completedTemperatureControl();
+    void heatingIsOn();
+    void heatingIsOff();
 
     //----------------------------------------------------------------//
 

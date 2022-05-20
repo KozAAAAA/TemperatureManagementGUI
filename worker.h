@@ -41,15 +41,18 @@ private:
     quint8 m_currentBlock;
 
 signals:
-    void currentTemp(quint16);
-    void currentTime(quint32);
-    void currentLoop(quint8);
-    void currentBlock(quint8);
+    void currentTemp(const quint16);
+    void currentTime(const quint32);
+    void currentLoop(const quint8);
+    void currentBlock(const quint8);
+    void relayIsOn();
+    void relayIsOff();
     //----------------------------------------------------------------//
 
     //-----------------------------METHODS----------------------------//
 private:
     QElapsedTimer m_timer;
+    bool m_isRelayOn;
 
     void run() override; //thread
 

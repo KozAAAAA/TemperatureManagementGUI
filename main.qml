@@ -60,7 +60,11 @@ Window {
                 }
 
                 // Start clicked:
-                else if(loop.inputLoop !==0)
+                else if(loop.inputLoop !==0 &&
+                        setup.timeArray[0] !==0 ||
+                        setup.timeArray[1] !==0 ||
+                        setup.timeArray[2] !==0 ||
+                        setup.timeArray[3] !==0 )
                 {
                     for (var i = 0; i<4 ; i++)
                     {
@@ -79,6 +83,7 @@ Window {
                 }
             }
         }
+
         Connections
         {
                 target: _cppBackend
@@ -88,6 +93,17 @@ Window {
                     start.text = "START"
                     show.amountLoop = 0
                 }
+
+                function onHeatingIsOn()
+                {
+                    show.heatingIsOn = true
+                }
+
+                function onHeatingIsOff()
+                {
+                    show.heatingIsOn = false
+                }
+
             }
     }
 }

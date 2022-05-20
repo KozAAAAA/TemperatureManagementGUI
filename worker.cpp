@@ -1,8 +1,5 @@
 #include "worker.h"
 
-
-
-
 Worker::Worker(const std::vector<quint16>& m_tempInputVector_,
                const std::vector<quint16>& m_timeInputVector_,
                const quint8& m_loopInput_) :
@@ -17,7 +14,9 @@ Worker::Worker(const std::vector<quint16>& m_tempInputVector_,
     m_currentTemp(0),
     m_currentTime(0),
     m_currentLoop(1),
-    m_currentBlock(1)
+    m_currentBlock(1),
+
+    m_isRelayOn(true)
 
     {setRelayOff();}
 
@@ -37,78 +36,39 @@ m_threadActive = false;
     //-----------------------------METHODS----------------------------//
 void Worker::run()
 {
-    qDebug()<<"START HAS BEEN PRESSED";
-
+    qDebug()<<"START HAS BEEN PRESSED - thread is activated";
 
     for(;m_currentLoop < m_loopInput+1;m_currentLoop++)
     {
         emit currentLoop(m_currentLoop);
-
-
         for(;m_currentBlock < 5; m_currentBlock++)
         {
-            emit currentBlock(m_currentBlock);
-
-
-            //h to ms
+            //h to ms:
             //quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1];
-
             //fake time:
             quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/3600;
-
             m_timer.start();
 
-            while((!m_timer.hasExpired(m_workingTimeMs)) &&
-                    m_threadActive)
+            if(m_workingTimeMs!=0)
             {
-                m_currentTime = (m_workingTimeMs - m_timer.elapsed());
-                emit currentTime(m_currentTime);
+                emit currentBlock(m_currentBlock);
 
-                pid();
+                while((!m_timer.hasExpired(m_workingTimeMs)) &&
+                        m_threadActive)
+                {
+                    m_currentTime = (m_workingTimeMs - m_timer.elapsed());
+                    emit currentTime(m_currentTime);
+
+                    pid();
+                }
             }
-
         }
-
         m_currentBlock = 0;
     }
     m_currentLoop = 0;
-
     outputReset();
 
     qDebug()<<"STOP HAS BEEN PRESSED - thread is not active";
-}
-
-float Worker::getTempSensor()
-{
-    std::system("./MAX31865.py");
-    QFile file("tempSensor.txt");
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return -1;
-    QTextStream in(&file);
-    QString redTemp = in.readLine();
-    return redTemp.toFloat();
-}
-void Worker::setRelayOn()
-{
-    #ifdef __arm__
-        digitalWrite(0,HIGH);
-    #endif
-
-    qDebug()<<"heating is on";
-}
-void Worker::setRelayOff()
-{
-    #ifdef __arm__
-        digitalWrite(0,LOW);
-    #endif
-    qDebug()<<"heating is off";
-}
-void Worker::outputReset()
-{
-    emit currentTemp(0);
-    emit currentTime(0);
-    emit currentLoop(0);
-    emit currentBlock(0);
 }
 void Worker::pid()
 {
@@ -123,4 +83,52 @@ void Worker::pid()
         setRelayOff();
     }
 }
+float Worker::getTempSensor()
+{
+    std::system("./MAX31865.py");
+    QFile file("tempSensor.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return -1;
+    QTextStream in(&file);
+    QString redTemp = in.readLine();
+    return redTemp.toFloat();
+}
+void Worker::setRelayOn()
+{
+    if(m_isRelayOn == false)
+    {
+        #ifdef __arm__
+            digitalWrite(0,HIGH);
+        #endif
+
+        m_isRelayOn = true;
+
+        emit relayIsOn();
+
+        qDebug()<<"heating is on";
+    }
+}
+void Worker::setRelayOff()
+{
+    if(m_isRelayOn == true)
+    {
+        #ifdef __arm__
+            digitalWrite(0,LOW);
+        #endif
+
+        m_isRelayOn = false;
+
+        emit relayIsOff();
+
+        qDebug()<<"heating is off";
+    }
+}
+void Worker::outputReset()
+{
+    emit currentTemp(0);
+    emit currentTime(0);
+    emit currentLoop(0);
+    emit currentBlock(0);
+}
+
     //----------------------------------------------------------------//

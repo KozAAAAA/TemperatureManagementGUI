@@ -5,6 +5,9 @@ Grid {
     columns: 2
     spacing: 50
 
+
+
+
     readonly property variant timeArray:
     [
         setupBlockOne.inputTime,
@@ -24,4 +27,5 @@ Grid {
     SetupBlock {id:setupBlockTwo}
     SetupBlock {id:setupBlockThree}
     SetupBlock {id:setupBlockFour}
+
 }
