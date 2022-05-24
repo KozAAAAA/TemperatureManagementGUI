@@ -27,7 +27,7 @@ HEADERS += \
     worker.h
 
 # RealayOn, RelayOff methods need it (Rpi only):
-
 linux:contains(QMAKE_HOST.arch, armv7l):{
     LIBS += -lwiringPi
 }
+

@@ -13,7 +13,6 @@ MainGui::MainGui(QObject *parent)
       m_loopOutput{0},
       m_blockOutput{0}
 
-
 {
     #ifdef __arm__
         wiringPiSetup();
@@ -21,6 +20,7 @@ MainGui::MainGui(QObject *parent)
         digitalWrite(0,LOW);
     #endif
 }
+
     //------------------------------INPUT-----------------------------//
 void MainGui::setInputParam(const QString& parameter, const quint32& value, const quint8 &index)
 {

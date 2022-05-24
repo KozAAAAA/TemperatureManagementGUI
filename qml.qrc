@@ -9,5 +9,6 @@
         <file>OutputBox.qml</file>
         <file>GridShowBlocks.qml</file>
         <file>StartButton.qml</file>
+        <file>ToggleSwitch.qml</file>
     </qresource>
 </RCC>

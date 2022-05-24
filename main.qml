@@ -23,6 +23,7 @@ Window {
     {
         id: loop
         anchors.right: parent.right
+        anchors.bottom: parent.bottom
     }
 
     GridShowBlocks
@@ -86,8 +87,10 @@ Window {
 
         Connections
         {
-                target: _cppBackend
-                function onCompletedTemperatureControl()
+
+            target: _cppBackend
+            function onCompletedTemperatureControl()
+
                 {
                     start.color = "green"
                     start.text = "START"
@@ -105,5 +108,7 @@ Window {
                 }
 
             }
+
+
     }
 }

@@ -1,5 +1,7 @@
 #include "worker.h"
 
+#define H 5 // adjust to change the behaviour of hysteresis
+
 Worker::Worker(const std::vector<quint16>& m_tempInputVector_,
                const std::vector<quint16>& m_timeInputVector_,
                const quint8& m_loopInput_) :
@@ -59,7 +61,7 @@ void Worker::run()
                     m_currentTime = (m_workingTimeMs - m_timer.elapsed());
                     emit currentTime(m_currentTime);
 
-                    pid();
+                    hysteresis();
                 }
             }
         }
@@ -70,15 +72,15 @@ void Worker::run()
 
     qDebug()<<"STOP HAS BEEN PRESSED - thread is not active";
 }
-void Worker::pid()
+void Worker::hysteresis()
 {
     m_currentTemp = getTempSensor();
     emit currentTemp(m_currentTemp);
-    if(m_currentTemp < m_tempInputVector[m_currentBlock-1])
+    if(m_currentTemp < m_tempInputVector[m_currentBlock-1] + (H/2))
     {
         setRelayOn();
     }
-    else
+    if(m_currentTemp > m_tempInputVector[m_currentBlock-1] - (H/2))
     {
         setRelayOff();
     }

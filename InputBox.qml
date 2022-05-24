@@ -36,7 +36,7 @@ Item
 
         smooth: true
         font.pointSize: 27
-        editable: true
+        editable: false
         clip: true
 
         to: maxNumber

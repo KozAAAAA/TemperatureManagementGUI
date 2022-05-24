@@ -55,12 +55,13 @@ private:
     bool m_isRelayOn;
 
     void run() override; //thread
+    void hysteresis();
 
     float getTempSensor();
     void setRelayOn();
     void setRelayOff();
     void outputReset();
-    void pid();
+
     //----------------------------------------------------------------//
 };
 

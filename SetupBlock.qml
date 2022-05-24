@@ -4,8 +4,8 @@ import QtQuick 2.0
 
 Item
 {
-    readonly property int inputTime: time.input
-    readonly property int inputTemp: temp.input
+    readonly property int inputTime: toggleswitch.toggleOn ? time.input : 0
+    readonly property int inputTemp: toggleswitch.toggleOn ? temp.input : 0
 
     width: 390
     height: 450
@@ -38,5 +38,22 @@ Item
         }
 
     }
+
+    Rectangle
+    {
+        color: "gray"
+        opacity: toggleswitch.toggleOn ? 0 : 0.5
+        anchors.fill: parent
+    }
+
+    ToggleSwitch
+    {
+        id: toggleswitch
+        anchors.right: parent.right
+        anchors.top: parent.top
+    }
+
+
+
 
 }
