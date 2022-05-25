@@ -87,27 +87,23 @@ Window {
 
         Connections
         {
-
             target: _cppBackend
-            function onCompletedTemperatureControl()
-
-                {
-                    start.color = "green"
-                    start.text = "START"
-                    show.amountLoop = 0
-                }
-
-                function onHeatingIsOn()
-                {
-                    show.heatingIsOn = true
-                }
-
-                function onHeatingIsOff()
-                {
-                    show.heatingIsOn = false
-                }
-
+            onCompletedTemperatureControl:
+            {
+                start.color = "green"
+                start.text = "START"
+                show.amountLoop = 0
             }
+            onHeatingIsOn:
+            {
+                show.heatingIsOn = true
+            }
+            onHeatingIsOff:
+            {
+                show.heatingIsOn = false
+            }
+
+        }
 
 
     }
