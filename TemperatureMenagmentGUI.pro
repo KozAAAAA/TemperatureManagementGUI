@@ -31,3 +31,5 @@ linux:contains(QMAKE_HOST.arch, armv7l):{
     LIBS += -lwiringPi
 }
 
+DISTFILES +=
+

@@ -10,5 +10,7 @@
         <file>GridShowBlocks.qml</file>
         <file>StartButton.qml</file>
         <file>ToggleSwitch.qml</file>
+        <file>InputBox2.qml</file>
+        <file>Roboto-Regular.ttf</file>
     </qresource>
 </RCC>
