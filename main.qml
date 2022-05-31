@@ -9,8 +9,9 @@ Window {
     visibility: "FullScreen"
     title: qsTr("Temperature Menagment")
 
-    FontLoader { id: robotoRegular; source: "Roboto-Regular.ttf"}
-    Text {text: "Roboto"; font.family: robotoRegular.name; font.pointSize: 20; font.bold: false }
+    FontLoader {id: robotoRegular; source: "Roboto-Regular.ttf"}
+
+
 
     GridSetupBlocs
     {
@@ -109,5 +110,15 @@ Window {
         }
 
 
+
+
     }
+
+    SetupBlock2
+    {
+        x:20
+        y:20
+
+    }
+
 }

@@ -12,5 +12,9 @@
         <file>ToggleSwitch.qml</file>
         <file>InputBox2.qml</file>
         <file>Roboto-Regular.ttf</file>
+        <file>SetupBlock2.qml</file>
+        <file>ToggleSwitch2.qml</file>
+        <file>Ok.qml</file>
+        <file>Plus.qml</file>
     </qresource>
 </RCC>

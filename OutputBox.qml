@@ -9,6 +9,9 @@ Item
     height: textname.height + output.height + textname.anchors.topMargin
     width: output.width
 
+
+
+
     Text
     {
         id: output
@@ -17,6 +20,7 @@ Item
             horizontalCenter: parent.horizontalCenter
             top: parent.top
         }
+
 
         text: parent.output
         font.pointSize: 60
