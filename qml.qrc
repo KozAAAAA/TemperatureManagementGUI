@@ -16,5 +16,7 @@
         <file>ToggleSwitch2.qml</file>
         <file>Ok.qml</file>
         <file>Plus.qml</file>
+        <file>LoopSpinBox2.qml</file>
+        <file>loop-image.png</file>
     </qresource>
 </RCC>

@@ -116,9 +116,15 @@ Window {
 
     SetupBlock2
     {
-        x:20
-        y:20
-
+        x: 20
+        y: 20
     }
+
+    LoopSpinBox2
+    {
+        x: 1000
+    }
+
+
 
 }

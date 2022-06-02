@@ -44,7 +44,4 @@ Item
         anchors.leftMargin: 40
     }
 
-
-
-
 }
