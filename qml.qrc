@@ -18,5 +18,6 @@
         <file>Plus.qml</file>
         <file>LoopSpinBox2.qml</file>
         <file>loop-image.png</file>
+        <file>StartButton2.qml</file>
     </qresource>
 </RCC>

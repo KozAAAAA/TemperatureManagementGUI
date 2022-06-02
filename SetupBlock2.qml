@@ -3,8 +3,10 @@ import QtQuick 2.0
 
 Item
 {
+    id:setupblock2
     readonly property int inputTime: toggleswitch.toggleOn ? time.input : 0
     readonly property int inputTemp: toggleswitch.toggleOn ? temp.input : 0
+    property int blockNumber
 
     width: 760
     height: 465
@@ -42,6 +44,7 @@ Item
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 40
+        blockNumber: setupblock2.blockNumber
     }
 
 }

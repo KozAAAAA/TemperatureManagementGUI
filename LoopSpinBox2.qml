@@ -12,7 +12,6 @@ Item
 
     SpinBox
     {
-
         id: control
         height: 730
         width: 200

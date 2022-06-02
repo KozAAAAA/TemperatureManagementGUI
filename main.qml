@@ -114,16 +114,37 @@ Window {
 
     }
 
-    SetupBlock2
+
+
+    Column
     {
-        x: 20
-        y: 20
+        spacing: 50
+
+
+        StartButton2{}
+
+        LoopSpinBox2{}
+
+
+
     }
 
-    LoopSpinBox2
+    Grid
     {
-        x: 1000
+        x: 250
+        spacing: 50
+        rows:2
+        SetupBlock2{blockNumber:1}
+        SetupBlock2{blockNumber:2}
+        SetupBlock2{blockNumber:3}
+        SetupBlock2{blockNumber:4}
     }
+
+
+
+
+
+
 
 
 
