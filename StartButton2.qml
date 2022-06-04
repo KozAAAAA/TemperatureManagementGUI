@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 Item
 {
+    property bool greenMode: true
     height: 200
     width: 200
 
@@ -16,14 +17,15 @@ Item
         Rectangle
         {
             anchors.centerIn: parent
-            color: "#369452"
+            color: greenMode ? "#369452" : "#df0057"
             radius: 25
             height: 140
             width: 140
 
             Image
             {
-            anchors.centerIn: parent
+                anchors.centerIn: parent
+                source: greenMode ? "start-icon.png" : "stop-icon.png"
             }
 
         }

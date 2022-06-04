@@ -1,15 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>InputBox.qml</file>
-        <file>SetupBlock.qml</file>
-        <file>GridSetupBlocs.qml</file>
-        <file>LoopBlock.qml</file>
         <file>ShowBlock.qml</file>
         <file>OutputBox.qml</file>
         <file>GridShowBlocks.qml</file>
-        <file>StartButton.qml</file>
-        <file>ToggleSwitch.qml</file>
         <file>InputBox2.qml</file>
         <file>Roboto-Regular.ttf</file>
         <file>SetupBlock2.qml</file>
@@ -17,7 +11,13 @@
         <file>Ok.qml</file>
         <file>Plus.qml</file>
         <file>LoopSpinBox2.qml</file>
-        <file>loop-image.png</file>
         <file>StartButton2.qml</file>
+        <file>start-icon.png</file>
+        <file>loop-icon.png</file>
+        <file>GridSetupBlocks2.qml</file>
+        <file>stop-icon.png</file>
+        <file>ShowBlockTemp2.qml</file>
+        <file>ShowBlockTime2.qml</file>
+        <file>ShowBlock2.qml</file>
     </qresource>
 </RCC>

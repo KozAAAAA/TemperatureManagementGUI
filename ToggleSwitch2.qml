@@ -7,6 +7,7 @@ Item
 
     height: 385
     width: 155
+
     Rectangle
     {
         anchors.fill: parent

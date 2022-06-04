@@ -12,24 +12,6 @@ Window {
     FontLoader {id: robotoRegular; source: "Roboto-Regular.ttf"}
 
 
-
-    GridSetupBlocs
-    {
-        id: setup
-        anchors
-        {
-            verticalCenter: parent.verticalCenter
-            right: parent.right
-        }
-    }
-
-    LoopBlock
-    {
-        id: loop
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-    }
-
     GridShowBlocks
     {
         id: show
@@ -40,112 +22,81 @@ Window {
         currentBlock:  _cppBackend.blockOutput  //info z c++
     }
 
-    StartButton
-    {
-        id: start
-        anchors
-        {
-            left: parent.left
-            bottom: parent.bottom
-        }
-
-        MouseArea
-        {
-            anchors.fill: parent
-            onClicked:
-            {
-                // Stop clicked:
-                if(start.color == "red")
-                {
-                    _cppBackend.endTemperatureControl()
-                    show.amountLoop = 0
-
-                    start.color = "green"
-                    start.text = "START"
-                }
-
-                // Start clicked:
-                else if(loop.inputLoop !==0 &&
-                        setup.timeArray[0] !==0 ||
-                        setup.timeArray[1] !==0 ||
-                        setup.timeArray[2] !==0 ||
-                        setup.timeArray[3] !==0 )
-                {
-                    for (var i = 0; i<4 ; i++)
-                    {
-                        _cppBackend.setInputParam("temp", setup.tempArray[i], i)
-                        _cppBackend.setInputParam("time", setup.timeArray[i], i)
-                    }
-                    _cppBackend.setInputParam("loop", loop.inputLoop)
-
-                    _cppBackend.printInputParam()
-
-                    _cppBackend.startTemperatureControl()
-                    show.amountLoop = loop.inputLoop
-
-                    start.color = "red"
-                    start.text = "STOP"
-                }
-            }
-        }
-
-        Connections
-        {
-            target: _cppBackend
-            onCompletedTemperatureControl:
-            {
-                start.color = "green"
-                start.text = "START"
-                show.amountLoop = 0
-            }
-            onHeatingIsOn:
-            {
-                show.heatingIsOn = true
-            }
-            onHeatingIsOff:
-            {
-                show.heatingIsOn = false
-            }
-
-        }
-
-
-
-
-    }
-
-
 
     Column
     {
         spacing: 50
 
+        StartButton2
+        {
+            id:startButton2
+            MouseArea
+            {
+                anchors.fill: parent
+                onClicked:
+                {
+                    // Stop clicked:
+                    if(startButton2.greenMode === false)
+                    {
+                        _cppBackend.endTemperatureControl()
+                        show.amountLoop = 0
+                        startButton2.greenMode = true
+                    }
 
-        StartButton2{}
+                    // Start clicked:
+                    else if(loopSpinBox2.input !==0 &&
+                            gridSetupBlocks2.timeArray[0] !==0 ||
+                            gridSetupBlocks2.timeArray[1] !==0 ||
+                            gridSetupBlocks2.timeArray[2] !==0 ||
+                            gridSetupBlocks2.timeArray[3] !==0 )
+                    {
+                        for (var i = 0; i<4 ; i++)
+                        {
+                            _cppBackend.setInputParam("temp", gridSetupBlocks2.tempArray[i], i)
+                            _cppBackend.setInputParam("time", gridSetupBlocks2.timeArray[i], i)
+                        }
+                        _cppBackend.setInputParam("loop", loopSpinBox2.input)
 
-        LoopSpinBox2{}
+                        _cppBackend.printInputParam()
 
+                        _cppBackend.startTemperatureControl()
+                        show.amountLoop = loopSpinBox2.input
 
+                        startButton2.greenMode = false
+                    }
+                }
+            }
+        }
 
+        LoopSpinBox2
+        {
+            id:loopSpinBox2
+        }
     }
 
-    Grid
+    GridSetupBlocks2
     {
+        id: gridSetupBlocks2
         x: 250
-        spacing: 50
-        rows:2
-        SetupBlock2{blockNumber:1}
-        SetupBlock2{blockNumber:2}
-        SetupBlock2{blockNumber:3}
-        SetupBlock2{blockNumber:4}
     }
 
 
-
-
-
-
-
-
-
+    Connections
+    {
+        target: _cppBackend
+        onCompletedTemperatureControl:
+        {
+            startButton2.greenMode = true
+            show.amountLoop = 0
+        }
+        onHeatingIsOn:
+        {
+            show.heatingIsOn = true
+        }
+        onHeatingIsOff:
+        {
+            show.heatingIsOn = false
+        }
+    }
 }
+

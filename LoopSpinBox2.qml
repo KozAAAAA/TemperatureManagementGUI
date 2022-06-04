@@ -7,14 +7,14 @@ Item
     property int maxNumber: 99
     readonly property int input: control.value
 
-    height: control.height
-    width: control.width
+    height: 730
+    width: 200
 
     SpinBox
     {
         id: control
-        height: 730
-        width: 200
+        height: parent.height
+        width: parent.width
         smooth: true
         editable: false
         clip: true
@@ -44,7 +44,7 @@ Item
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: parent.top
                 anchors.topMargin: 50
-                source: "loop-image.png"
+                source: "loop-icon.png"
             }
 
             TextInput

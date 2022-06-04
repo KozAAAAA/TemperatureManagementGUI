@@ -10,15 +10,15 @@ Item
 
     readonly property int input: control.value
 
-    height: control.height
-    width: control.width
+    height: 178
+    width: 494
 
 
     SpinBox
     {
         id: control
-        height: 178
-        width: 494
+        height: parent.height
+        width: parent.width
         smooth: true
         editable: false
         clip: true
