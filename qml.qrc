@@ -19,5 +19,7 @@
         <file>ShowBlockTemp2.qml</file>
         <file>ShowBlockTime2.qml</file>
         <file>ShowBlock2.qml</file>
+        <file>ShowBlockHeating2.qml</file>
+        <file>GridShowBlocks2.qml</file>
     </qresource>
 </RCC>

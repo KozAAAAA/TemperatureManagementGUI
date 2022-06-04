@@ -33,8 +33,8 @@ Item
         visible: toggleswitch.toggleOn ? false : true
         anchors.fill: parent
         radius: 50
-        opacity: 0.5
-        color: "black"
+        opacity: 0.7
+        color: "#141a1e"
     }
 
 

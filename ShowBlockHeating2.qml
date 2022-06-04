@@ -2,9 +2,10 @@ import QtQuick 2.0
 
 Item
 {
-    height: 320
-    width: 760
-    property string output: "-5"
+    height: 240
+    width: 240
+    property bool heating: false
+
     Rectangle
     {
         id: background
@@ -22,15 +23,12 @@ Item
         color: "#364652"
     }
 
-    Text
+    Rectangle
     {
-        id: temp
         anchors.centerIn: parent
-        text: output + "°"
-        font.family: robotoRegular.name
-        font.pointSize: 200
-        color:"white"
+        height: 120
+        width: height
+        radius: height/2
+        color: heating ? "#df0057" : "#222c32"
     }
-
-
 }
