@@ -1,10 +1,7 @@
 # Temperature Menagment GUI
-![Alt text](README_Files/gif.gif)
-
-
-
-
-
+<p align="center">
+	![Alt text](README_Files/gif.gif)
+</p> 
 
 
 
