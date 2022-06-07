@@ -32,7 +32,10 @@ Item
     {
     id: temp
     anchors.centerIn: parent
-    text: currentTimeH+":"+currentTimeMin+":"+currentTimeSec
+    text:
+    {
+        currentTimeH+":"+currentTimeMin+":"+currentTimeSec
+    }
     font.family: robotoRegular.name
     font.pointSize: 130
     color:"white"

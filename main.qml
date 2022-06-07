@@ -3,6 +3,9 @@ import QtQuick.Window 2.6
 
 
 Window {
+
+    id: mainWindow
+
     width: 1920
     height:1080
     visible: true
@@ -16,40 +19,64 @@ Window {
         color: "#141a1e"
     }
 
-
-
     FontLoader {id: robotoRegular; source: "Roboto-Regular.ttf"}
 
-
-    GridShowBlocks2
+    Column
     {
-        id: gridShowBlocks2
+        id: columnSetupShow
+
+        anchors.bottom: parent.bottom
         anchors.right: parent.right
-        anchors.top: parent.top
         anchors.margins: 50
-        visible: false
 
-        currentTime:   _cppBackend.timeOutput   //info z c++
-        currentTemp:   _cppBackend.tempOutput   //info z c++
-        currentLoop:   _cppBackend.loopOutput   //info z c++
-        currentBlock:  _cppBackend.blockOutput  //info z c++
-        setTemp: gridSetupBlocks2.tempArray[_cppBackend.blockOutput-1]
+        GridShowBlocks2
+        {
+            id: gridShowBlocks2
+
+            currentTime:   _cppBackend.timeOutput   //info z c++
+            currentTemp:   _cppBackend.tempOutput   //info z c++
+            currentLoop:   _cppBackend.loopOutput   //info z c++
+            currentBlock:  _cppBackend.blockOutput  //info z c++
+            setTemp: gridSetupBlocks2.tempArray[(_cppBackend.blockOutput)-1]  //info z c++
+        }
+
+        spacing: 50
+
+        GridSetupBlocks2
+        {
+            id: gridSetupBlocks2
+        }
+
+        states:
+        [
+
+            State{
+                name: "show"
+                when: startButton2.greenMode === false
+                AnchorChanges {
+                    target: columnSetupShow
+                    anchors.top: parent.top
+                    anchors.bottom: undefined
+                }
+            }
+        ]
+
+        transitions:
+        [
+            Transition {
+                from:"*" ; to: "*"
+
+                AnchorAnimation{
+                    easing.type: Easing.InOutQuint
+                    duration: 2000
+                }
+            }
+        ]
     }
-
-
-    GridSetupBlocks2
-    {
-        id: gridSetupBlocks2
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.margins: 50
-    }
-
 
     LoopSpinBox2
     {
         id:loopSpinBox2
-
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.margins: 50
@@ -75,8 +102,6 @@ Window {
                     _cppBackend.endTemperatureControl()
                     show.amountLoop = 0
                     startButton2.greenMode = true
-                    gridSetupBlocks2.visible = true
-                    gridShowBlocks2.visible = false
                 }
 
                 // Start clicked:
@@ -98,8 +123,6 @@ Window {
                     _cppBackend.startTemperatureControl()
                     gridShowBlocks2.loops = loopSpinBox2.input
 
-                    gridSetupBlocks2.visible = false
-                    gridShowBlocks2.visible = true
                     startButton2.greenMode = false
                 }
             }
@@ -114,8 +137,6 @@ Window {
         {
             startButton2.greenMode = true
             gridShowBlocks2.loops = 0
-            gridSetupBlocks2.visible = true
-            gridShowBlocks2.visible = false
         }
         onHeatingIsOn:
         {
@@ -126,6 +147,9 @@ Window {
             gridShowBlocks2.heatingIsOn = false
         }
     }
+
+
+
 
 
 }

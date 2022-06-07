@@ -5,14 +5,14 @@ Grid
     columns: 2
     spacing: 50
 
-    readonly property variant timeArray:
+    readonly property var timeArray:
     [
         setupBlockOne.inputTime,
         setupBlockTwo.inputTime,
         setupBlockThree.inputTime,
         setupBlockFour.inputTime,
     ]
-    readonly property variant tempArray:
+    readonly property var tempArray:
     [
         setupBlockOne.inputTemp,
         setupBlockTwo.inputTemp,

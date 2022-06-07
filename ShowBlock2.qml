@@ -5,7 +5,7 @@ Item
     height: 320
     width: 760
     property string name: "name"
-    property string output: "-5"
+    property string output: "0"
     Rectangle
     {
         id: background

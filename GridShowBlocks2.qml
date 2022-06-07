@@ -8,7 +8,7 @@ Column
     property int currentLoop
     property int loops
     property int currentBlock
-    property int setTemp
+    property var setTemp
 
     property bool heatingIsOn: false
 
