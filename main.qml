@@ -63,6 +63,11 @@ Window {
                     anchors.top: parent.top
                     anchors.bottom: undefined
                 }
+                AnchorChanges {
+                    target: loopSpinBox2
+                    anchors.right: parent.left
+                    anchors.left: undefined
+                }
             }
         ]
 
@@ -153,11 +158,6 @@ Window {
             gridShowBlocks2.heatingIsOn = false
         }
     }
-
-
-
-
-
 }
 
 

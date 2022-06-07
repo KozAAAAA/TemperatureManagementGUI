@@ -16,6 +16,7 @@ Item
 
         Rectangle
         {
+            id: button
             anchors.centerIn: parent
             color: greenMode ? "#369452" : "#df0057"
             radius: 25
