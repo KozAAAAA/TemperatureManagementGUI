@@ -33,6 +33,7 @@ Window {
         currentTemp:   _cppBackend.tempOutput   //info z c++
         currentLoop:   _cppBackend.loopOutput   //info z c++
         currentBlock:  _cppBackend.blockOutput  //info z c++
+        setTemp: gridSetupBlocks2.tempArray[_cppBackend.blockOutput-1]
     }
 
 

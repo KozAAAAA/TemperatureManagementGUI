@@ -21,15 +21,15 @@ Column
     }
     Row
     {
-        ShowBlockHeating2{ heating: heatingIsOn }
-        spacing: 50
-        ShowBlockTime2{output: currentTime}
-    }
-    Row
-    {
         ShowBlock2{name:"loop"; output: currentLoop+"/"+loops ;x: 800}
         spacing: 50
         ShowBlock2{name:"mode"; output: currentBlock+"/4" ;x: 800}
+    }
+    Row
+    {
+        ShowBlockHeating2{ heating: heatingIsOn }
+        spacing: 50
+        ShowBlockTime2{output: currentTime}
     }
 }
 
