@@ -47,4 +47,35 @@ Item
         blockNumber: setupblock2.blockNumber
     }
 
+    states:
+        [
+
+        State
+        {
+            name: "redMode"
+            when: toggleswitch.toggleOn === false
+
+            PropertyChanges
+            {
+                target: setupblock2
+                scale: 0.95
+            }
+        }
+    ]
+
+    transitions:
+        [
+        Transition
+        {
+            from:"*" ; to: "*"
+
+            PropertyAnimation
+            {
+                easing.type: Easing.OutExpo
+                duration: 500
+                properties: "scale"
+            }
+        }
+    ]
+
 }

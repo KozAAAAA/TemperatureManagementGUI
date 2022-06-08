@@ -35,7 +35,8 @@ Item
     states:
         [
 
-        State{
+        State
+        {
             name: "redMode"
             when: greenMode === false
 
@@ -50,13 +51,14 @@ Item
 
     transitions:
         [
-        Transition {
+        Transition
+        {
             from:"*" ; to: "*"
 
             PropertyAnimation
             {
                 easing.type: Easing.OutExpo
-                duration: 3500
+                duration: 500
                 properties: "color,scale"
             }
         }

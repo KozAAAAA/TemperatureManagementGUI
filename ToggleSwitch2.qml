@@ -10,8 +10,9 @@ Item
 
     Rectangle
     {
+        id: background
         anchors.fill: parent
-        color: toggleOn ? "#369452" : "#df0057"
+        color: "#369452"
         radius: 25
 
         Text
@@ -55,5 +56,36 @@ Item
         anchors.fill: parent
         onClicked: toggleOn = !toggleOn
     }
+
+    states:
+        [
+
+        State
+        {
+            name: "redMode"
+            when: toggleOn === false
+
+            PropertyChanges
+            {
+                target: background
+                color: "#df0057"
+            }
+        }
+    ]
+
+    transitions:
+        [
+        Transition
+        {
+            from:"*" ; to: "*"
+
+            PropertyAnimation
+            {
+                easing.type: Easing.OutExpo
+                duration: 250
+                properties: "color"
+            }
+        }
+    ]
 
 }
