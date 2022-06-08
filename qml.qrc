@@ -1,9 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>ShowBlock.qml</file>
-        <file>OutputBox.qml</file>
-        <file>GridShowBlocks.qml</file>
         <file>InputBox2.qml</file>
         <file>Roboto-Regular.ttf</file>
         <file>SetupBlock2.qml</file>
