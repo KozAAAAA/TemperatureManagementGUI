@@ -21,39 +21,103 @@ Window {
 
     FontLoader {id: robotoRegular; source: "Roboto-Regular.ttf"}
 
-    Column
+    Item
     {
-        id: columnSetupShow
+        id:mainitems
+        anchors.fill: parent
 
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-        anchors.margins: 50
-
-        GridShowBlocks2
+        Column
         {
-            id: gridShowBlocks2
+            id: columnSetupShow
 
-            currentTime:   _cppBackend.timeOutput   //info z c++
-            currentTemp:   _cppBackend.tempOutput   //info z c++
-            currentLoop:   _cppBackend.loopOutput   //info z c++
-            currentBlock:  _cppBackend.blockOutput  //info z c++
-            setTemp:
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.margins: 50
+
+            GridShowBlocks2
             {
-                startButton2.greenMode ?
-                0 :
-                gridSetupBlocks2.tempArray[(_cppBackend.blockOutput)-1]  //info z c++
+                id: gridShowBlocks2
+
+                currentTime:   _cppBackend.timeOutput   //info z c++
+                currentTemp:   _cppBackend.tempOutput   //info z c++
+                currentLoop:   _cppBackend.loopOutput   //info z c++
+                currentBlock:  _cppBackend.blockOutput  //info z c++
+                setTemp:
+                {
+                    startButton2.greenMode ?
+                                0 :
+                                gridSetupBlocks2.tempArray[(_cppBackend.blockOutput)-1]  //info z c++
+                }
+            }
+
+            spacing: 50
+
+            GridSetupBlocks2
+            {
+                id: gridSetupBlocks2
+            }
+
+
+        }
+
+        LoopSpinBox2
+        {
+            id:loopSpinBox2
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.margins: 50
+        }
+
+
+        StartButton2
+        {
+            id:startButton2
+
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.margins: 50
+
+            MouseArea
+            {
+                anchors.fill: parent
+                onClicked:
+                {
+                    // Stop clicked:
+                    if(startButton2.greenMode === false)
+                    {
+                        startButton2.greenMode = true
+                        _cppBackend.endTemperatureControl()
+                        show.amountLoop = 0
+
+                    }
+
+                    // Start clicked:
+                    else if(loopSpinBox2.input !==0 &&
+                            gridSetupBlocks2.timeArray[0] !==0 ||
+                            gridSetupBlocks2.timeArray[1] !==0 ||
+                            gridSetupBlocks2.timeArray[2] !==0 ||
+                            gridSetupBlocks2.timeArray[3] !==0 )
+                    {
+
+                        for (var i = 0; i<4 ; i++)
+                        {
+                            _cppBackend.setInputParam("temp", gridSetupBlocks2.tempArray[i], i)
+                            _cppBackend.setInputParam("time", gridSetupBlocks2.timeArray[i], i)
+                        }
+                        _cppBackend.setInputParam("loop", loopSpinBox2.input)
+
+                        _cppBackend.printInputParam()
+
+                        _cppBackend.startTemperatureControl()
+                        gridShowBlocks2.loops = loopSpinBox2.input
+                        startButton2.greenMode = false
+                    }
+                }
             }
         }
 
-        spacing: 50
-
-        GridSetupBlocks2
-        {
-            id: gridSetupBlocks2
-        }
-
         states:
-        [
+            [
 
             State{
                 name: "show"
@@ -72,7 +136,7 @@ Window {
         ]
 
         transitions:
-        [
+            [
             Transition {
                 from:"*" ; to: "*"
 
@@ -82,62 +146,6 @@ Window {
                 }
             }
         ]
-    }
-
-    LoopSpinBox2
-    {
-        id:loopSpinBox2
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.margins: 50
-    }
-
-
-    StartButton2
-    {
-        id:startButton2
-
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.margins: 50
-
-        MouseArea
-        {
-            anchors.fill: parent
-            onClicked:
-            {
-                // Stop clicked:
-                if(startButton2.greenMode === false)
-                {
-                    startButton2.greenMode = true
-                    _cppBackend.endTemperatureControl()
-                    show.amountLoop = 0
-
-                }
-
-                // Start clicked:
-                else if(loopSpinBox2.input !==0 &&
-                        gridSetupBlocks2.timeArray[0] !==0 ||
-                        gridSetupBlocks2.timeArray[1] !==0 ||
-                        gridSetupBlocks2.timeArray[2] !==0 ||
-                        gridSetupBlocks2.timeArray[3] !==0 )
-                {
-
-                    for (var i = 0; i<4 ; i++)
-                    {
-                        _cppBackend.setInputParam("temp", gridSetupBlocks2.tempArray[i], i)
-                        _cppBackend.setInputParam("time", gridSetupBlocks2.timeArray[i], i)
-                    }
-                    _cppBackend.setInputParam("loop", loopSpinBox2.input)
-
-                    _cppBackend.printInputParam()
-
-                    _cppBackend.startTemperatureControl()
-                    gridShowBlocks2.loops = loopSpinBox2.input
-                    startButton2.greenMode = false
-                }
-            }
-        }
     }
 
 

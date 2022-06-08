@@ -18,7 +18,7 @@ Item
         {
             id: button
             anchors.centerIn: parent
-            color: greenMode ? "#369452" : "#df0057"
+            color: "#369452"
             radius: 25
             height: 140
             width: 140
@@ -31,4 +31,34 @@ Item
 
         }
     }
+
+    states:
+        [
+
+        State{
+            name: "redMode"
+            when: greenMode === false
+
+            PropertyChanges
+            {
+                target: button
+                color: "#df0057"
+                scale: 0.95
+            }
+        }
+    ]
+
+    transitions:
+        [
+        Transition {
+            from:"*" ; to: "*"
+
+            PropertyAnimation
+            {
+                easing.type: Easing.OutExpo
+                duration: 3500
+                properties: "color,scale"
+            }
+        }
+    ]
 }

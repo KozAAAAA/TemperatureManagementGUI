@@ -13,8 +13,6 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
-
-
     MainGui* temperatureMenagment = new MainGui;
 
     QGuiApplication app(argc, argv);
@@ -23,7 +21,7 @@ int main(int argc, char *argv[])
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
-            return -1;
+        return -1;
 
     return app.exec();
 
