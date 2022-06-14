@@ -29,10 +29,55 @@ Item
 
     Rectangle
     {
+        id: roundrectangle
         anchors.centerIn: parent
         height: 120
         width: height
         radius: height/2
-        color: heating ? "#df0057" : "#222c32"
+        color: "#222c32"
     }
+
+    Rectangle
+    {
+        id: roundrectangle2
+        anchors.centerIn: parent
+        height: 120
+        width: height
+        radius: height/2
+        color: "#df0057"
+        scale: 0
+    }
+
+    states:
+        [
+
+        State
+        {
+            name: "heating"
+            when: heating == true
+
+            PropertyChanges
+            {
+                target: roundrectangle2
+                color: "#df0057"
+                scale: 1
+            }
+        }
+    ]
+
+    transitions:
+        [
+        Transition
+        {
+            from:"*" ; to: "*"
+
+            PropertyAnimation
+            {
+                easing.type: Easing.OutInQuint
+                duration: 1000
+                properties: "scale"
+            }
+        }
+    ]
+
 }
