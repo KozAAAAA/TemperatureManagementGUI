@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>InputBox2.qml</file>
+        <file>TempInputBox2.qml</file>
         <file>Roboto-Regular.ttf</file>
         <file>SetupBlock2.qml</file>
         <file>ToggleSwitch2.qml</file>
@@ -18,5 +18,6 @@
         <file>ShowBlock2.qml</file>
         <file>ShowBlockHeating2.qml</file>
         <file>GridShowBlocks2.qml</file>
+        <file>TimeInputBox2.qml</file>
     </qresource>
 </RCC>

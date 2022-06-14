@@ -23,7 +23,7 @@ Window {
 
     Item
     {
-        id:mainitems
+        id: root
         anchors.fill: parent
 
         Column
@@ -101,6 +101,7 @@ Window {
                             _cppBackend.setInputParam("temp", gridSetupBlocks2.tempArray[i], i)
                             _cppBackend.setInputParam("time", gridSetupBlocks2.timeArray[i], i)
                         }
+
                         _cppBackend.setInputParam("loop", loopSpinBox2.input)
 
                         _cppBackend.printInputParam()

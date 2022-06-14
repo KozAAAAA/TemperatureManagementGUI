@@ -46,9 +46,10 @@ void Worker::run()
         for(;m_currentBlock < 5; m_currentBlock++)
         {
             //h to ms:
-            //quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1];
+            quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/100;
             //fake time:
-            quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/3600;
+//            quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/3600/100;
+
             m_timer.start();
 
             if(m_workingTimeMs!=0)
