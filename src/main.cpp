@@ -1,10 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "loopclass.h"
+
 #include "maingui.h"
 
-#include <QFontDatabase>
 
 
 int main(int argc, char *argv[])

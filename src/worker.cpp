@@ -102,11 +102,17 @@ void Worker::hysteresis()
 
 float Worker::getTempSensor()
 {
-
-    if (std::system("./MAX31865.py") != 0)
+#ifdef __arm__
+    if (std::system("../../lib/MAX31865.py") != 0)
         throw "ERROR - python file not found";
+    QFile file("../../lib/tempSensor.txt");
+#endif
 
-    QFile file("tempSensor.txt");
+#ifndef __arm__
+    if (std::system("../../test/MAX31865_sim.py") != 0)
+        throw "ERROR - python file not found";
+    QFile file("../../test/tempSensor_sim.txt");
+#endif
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
         throw "ERROR - .txt file not found";

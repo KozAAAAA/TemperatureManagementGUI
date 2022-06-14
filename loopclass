@@ -1,7 +1,0 @@
-#include "loopclass"
-
-LoopClass::LoopClass(QObject *parent)
-    : QObject{parent}
-{
-
-}
