@@ -29,7 +29,7 @@ Item
             Image
             {
                 anchors.centerIn: parent
-                source: greenMode ? "start-icon.png" : "stop-icon.png"
+                source: greenMode ? "icons/start-icon.png" : "icons/stop-icon.png"
             }
         }
     }

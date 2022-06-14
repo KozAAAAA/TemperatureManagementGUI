@@ -19,7 +19,7 @@ Window {
         color: "#141a1e"
     }
 
-    FontLoader {id: robotoRegular; source: "Roboto-Regular.ttf"}
+    FontLoader {id: robotoRegular; source: "fonts/Roboto-Regular.ttf"}
 
     Item
     {

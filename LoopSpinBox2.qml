@@ -45,7 +45,7 @@ Item
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: parent.top
                 anchors.topMargin: 50
-                source: "loop-icon.png"
+                source: "icons/loop-icon.png"
             }
 
             TextInput

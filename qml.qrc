@@ -2,22 +2,22 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>TempInputBox2.qml</file>
-        <file>Roboto-Regular.ttf</file>
         <file>SetupBlock2.qml</file>
         <file>ToggleSwitch2.qml</file>
         <file>Ok.qml</file>
         <file>Plus.qml</file>
         <file>LoopSpinBox2.qml</file>
         <file>StartButton2.qml</file>
-        <file>start-icon.png</file>
-        <file>loop-icon.png</file>
         <file>GridSetupBlocks2.qml</file>
-        <file>stop-icon.png</file>
         <file>ShowBlockTemp2.qml</file>
         <file>ShowBlockTime2.qml</file>
         <file>ShowBlock2.qml</file>
         <file>ShowBlockHeating2.qml</file>
         <file>GridShowBlocks2.qml</file>
         <file>TimeInputBox2.qml</file>
+        <file>icons/start-icon.png</file>
+        <file>icons/stop-icon.png</file>
+        <file>icons/loop-icon.png</file>
+        <file>fonts/Roboto-Regular.ttf</file>
     </qresource>
 </RCC>

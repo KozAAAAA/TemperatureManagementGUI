@@ -75,7 +75,19 @@ void Worker::run()
 }
 void Worker::hysteresis()
 {
-    m_currentTemp = getTempSensor();
+    try
+    {
+        m_currentTemp = getTempSensor();
+    }
+
+    catch (const char* msg)
+    {
+        setRelayOff();
+        m_threadActive = false;
+        qDebug() << msg;
+        std::terminate();
+    }
+
     emit currentTemp(m_currentTemp);
     if(m_currentTemp < m_tempInputVector[m_currentBlock-1] + (H/2))
     {
@@ -85,13 +97,20 @@ void Worker::hysteresis()
     {
         setRelayOff();
     }
+
 }
+
 float Worker::getTempSensor()
 {
-    std::system("./MAX31865.py");
+
+    if (std::system("./MAX31865.py") != 0)
+        throw "ERROR - python file not found";
+
     QFile file("tempSensor.txt");
+
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-        return -1;
+        throw "ERROR - .txt file not found";
+
     QTextStream in(&file);
     QString redTemp = in.readLine();
     return redTemp.toFloat();
