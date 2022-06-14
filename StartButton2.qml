@@ -2,7 +2,10 @@ import QtQuick 2.0
 
 Item
 {
+    id: root
+
     property bool greenMode: true
+
     height: 200
     width: 200
 
@@ -28,7 +31,6 @@ Item
                 anchors.centerIn: parent
                 source: greenMode ? "start-icon.png" : "stop-icon.png"
             }
-
         }
     }
 

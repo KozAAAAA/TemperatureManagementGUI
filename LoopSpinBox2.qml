@@ -3,6 +3,7 @@ import QtQuick.Controls 2.0
 
 Item
 {
+    id: root
 
     property int maxNumber: 99
     readonly property int input: control.value

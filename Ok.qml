@@ -3,9 +3,9 @@ import QtQuick 2.0
 
 Item
 {
+    id: root
     width: 88
     height: 50
-
 
     Rectangle
     {

@@ -2,6 +2,8 @@ import QtQuick 2.0
 
 Item
 {
+    id: root
+
     property bool toggleOn: false
     property int blockNumber: 0
 

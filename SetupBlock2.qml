@@ -3,7 +3,8 @@ import QtQuick 2.0
 
 Item
 {
-    id:setupblock2
+    id: root
+
     readonly property int inputTime: toggleswitch.toggleOn ? time.input : 0
     readonly property int inputTemp: toggleswitch.toggleOn ? temp.input : 0
     property int blockNumber
@@ -44,7 +45,7 @@ Item
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 40
-        blockNumber: setupblock2.blockNumber
+        blockNumber: root.blockNumber
     }
 
     states:
@@ -57,7 +58,7 @@ Item
 
             PropertyChanges
             {
-                target: setupblock2
+                target: root
                 scale: 0.95
             }
         }

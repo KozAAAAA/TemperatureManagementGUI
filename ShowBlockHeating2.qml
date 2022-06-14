@@ -2,9 +2,13 @@ import QtQuick 2.0
 
 Item
 {
+    id: root
+
+    property bool heating: false
+
     height: 240
     width: 240
-    property bool heating: false
+
 
     Rectangle
     {

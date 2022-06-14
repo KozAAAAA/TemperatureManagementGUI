@@ -2,6 +2,8 @@ import QtQuick 2.0
 
 Grid
 {
+    id: root
+
     columns: 2
     spacing: 50
 

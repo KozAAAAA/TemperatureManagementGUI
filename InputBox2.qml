@@ -3,6 +3,7 @@ import QtQuick.Controls 2.0
 
 Item
 {
+    id: root
 
     property int maxNumber
     property string unit

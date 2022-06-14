@@ -31,7 +31,7 @@ Worker::~Worker()
     //------------------------------INPUT-----------------------------//
 void Worker::setThreadNotActive()
 {
-m_threadActive = false;
+    m_threadActive = false;
 }
     //----------------------------------------------------------------//
 

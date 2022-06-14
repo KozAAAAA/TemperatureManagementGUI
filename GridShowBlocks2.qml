@@ -3,6 +3,8 @@ import QtQuick 2.0
 
 Column
 {
+    id: root
+
     property int currentTemp
     property int currentTime
     property int currentLoop

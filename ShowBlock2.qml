@@ -2,10 +2,14 @@ import QtQuick 2.0
 
 Item
 {
-    height: 320
-    width: 760
+    id: root
+
     property string name: "name"
     property string output: "0"
+
+    height: 320
+    width: 760
+
     Rectangle
     {
         id: background

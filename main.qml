@@ -88,9 +88,7 @@ Window {
                         startButton2.greenMode = true
                         _cppBackend.endTemperatureControl()
                         show.amountLoop = 0
-
                     }
-
                     // Start clicked:
                     else if(loopSpinBox2.input !==0 &&
                             gridSetupBlocks2.timeArray[0] !==0 ||
@@ -98,7 +96,6 @@ Window {
                             gridSetupBlocks2.timeArray[2] !==0 ||
                             gridSetupBlocks2.timeArray[3] !==0 )
                     {
-
                         for (var i = 0; i<4 ; i++)
                         {
                             _cppBackend.setInputParam("temp", gridSetupBlocks2.tempArray[i], i)
