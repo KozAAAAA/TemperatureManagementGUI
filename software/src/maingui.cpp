@@ -104,6 +104,21 @@ void MainGui::setBlockOutput(const quint8& newBlock)
         emit blockOutputChanged();
     }
 }
+
+QString MainGui::getErrorOutput()
+{
+    return m_errorOutput;
+}
+
+void MainGui::setErrorOutput(const QString& newError)
+{
+    if (m_errorOutput != newError)
+    {
+        m_errorOutput = newError;
+        qDebug() << "dupa";
+        emit errorOutputChanged();
+    }
+}
     //----------------------------------------------------------------//
 
     //----------------------THREAD-COMMUNICATION----------------------//
