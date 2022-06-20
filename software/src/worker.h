@@ -45,6 +45,8 @@ signals:
     void currentTime(const quint32);
     void currentLoop(const quint8);
     void currentBlock(const quint8);
+    void currentError(const QString);
+
     void relayIsOn();
     void relayIsOff();
     //----------------------------------------------------------------//
