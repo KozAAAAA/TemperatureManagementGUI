@@ -173,11 +173,16 @@ Window {
         }
     }
 
-    Dialog {
+    Dialog
+    {
         id: dialog
+        anchors.centerIn: parent
         modal: true
         title: _cppBackend.errorOutput
+        standardButtons: Dialog.Ok
     }
+
+
 
 
 }
