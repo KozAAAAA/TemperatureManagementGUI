@@ -115,9 +115,8 @@ void MainGui::setErrorOutput(const QString& newError)
     if (m_errorOutput != newError)
     {
         m_errorOutput = newError;
-        qDebug()<<"dup";
-        emit errorOutputChanged();
     }
+    emit errorOutputChanged();
 }
     //----------------------------------------------------------------//
 

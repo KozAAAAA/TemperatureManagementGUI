@@ -1,5 +1,6 @@
 import QtQuick 2.6
 import QtQuick.Window 2.6
+import QtQuick.Controls 2.3
 
 
 Window {
@@ -114,6 +115,9 @@ Window {
             }
         }
 
+
+
+
         states:
             [
 
@@ -163,7 +167,21 @@ Window {
         {
             gridShowBlocks2.heatingIsOn = false
         }
+        onErrorOutputChanged:
+        {
+            dialog.open();
+        }
     }
+
+    Dialog {
+        id: dialog
+        modal: true
+        title: _cppBackend.errorOutput
+    }
+
+
 }
+
+
 
 

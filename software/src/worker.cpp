@@ -84,7 +84,6 @@ void Worker::hysteresis()
         setThreadNotActive();
         qDebug() <<"ERROR:"<< err;
         emit currentError(err);
-        throw;
     }
 
 
