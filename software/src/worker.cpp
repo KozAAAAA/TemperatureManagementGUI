@@ -103,11 +103,11 @@ float Worker::getTempSensor()
 {
 
 #ifdef __arm__
-    auto script = std::system("../lib/MAX31865.py");
-    QFile file("../lib/tempSensor.txt");
+    auto script = std::system("../../lib/MAX31865.py");
+    QFile file("../../lib/tempSensor.txt");
 #else
-    auto script = std::system("../test/MAX31865_sim.py");
-    QFile file("../test/tempSensor_sim.txt");
+    auto script = std::system("../../test/MAX31865_sim.py");
+    QFile file("../../test/tempSensor_sim.txt");
 #endif
 
     if (script != 0)
