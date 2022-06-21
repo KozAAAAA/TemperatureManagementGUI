@@ -8,7 +8,7 @@
 
 #include <QObject>
 #include <QtDebug>
-#include <queue>
+#include <iostream>
 
 #include "worker.h"
 

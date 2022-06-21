@@ -2,6 +2,7 @@
 #include "maingui.h"
 
 
+
 MainGui::MainGui(QObject *parent)
     : QObject{parent},
       m_tempInputVector{0,0,0,0},
@@ -38,17 +39,28 @@ void MainGui::setInputParam(const QString& parameter, const quint8& value)
 
 void MainGui::printInputParam()
 {
-    qDebug()<<"tempVector:";
-    for (quint16 temp : m_tempInputVector)
+    qDebug();
+    qDebug()<<"***********************************";
+    qDebug() << "INPUT PARAMETERS FOR THE WORKER:";
+
+    const QString vNames[] = {"temperature", "time", "loop"};
+    quint8 i = 0;
+
+    for (const auto &v : {m_tempInputVector, m_timeInputVector})
     {
-        qDebug()<<temp;
+        QDebug dbg(QtDebugMsg);
+        dbg.nospace() << vNames[i] << ": [ ";
+        for (const auto &vVal : v)
+        {
+            dbg << vVal << " ";
+        }
+        dbg << "], ";
+        i++;
     }
-    qDebug()<<"timeVector:";
-    for (quint16 time : m_timeInputVector)
-    {
-        qDebug()<<time;
-    }
-    qDebug()<<"loop:"<< m_loopInput;
+    qDebug().nospace() << vNames[i]<< ": " << m_loopInput;
+    qDebug()<<"***********************************";
+    qDebug();
+
 }
     //----------------------------------------------------------------//
 

@@ -20,12 +20,15 @@ Worker::Worker(const std::vector<quint16>& m_tempInputVector_,
 
     m_isRelayOn(true)
 
-    {setRelayOff();}
+    {
+        setRelayOff();
+        qDebug()<<"WORKER: created";
+    }
 
 Worker::~Worker()
 {
     setRelayOff();
-    qDebug()<<"WORKER - has been deleted";
+    qDebug()<<"WORKER: destroyed";
 }
 
     //------------------------------INPUT-----------------------------//
@@ -38,7 +41,7 @@ void Worker::setThreadNotActive()
     //-----------------------------METHODS----------------------------//
 void Worker::run()
 {
-    qDebug()<<"START HAS BEEN PRESSED - thread is activated";
+    qDebug()<<"** START PRESSED: thread ON";
 
     for(;m_currentLoop < m_loopInput+1;m_currentLoop++)
     {
@@ -71,7 +74,7 @@ void Worker::run()
     m_currentLoop = 0;
     outputReset();
 
-    qDebug()<<"STOP HAS BEEN PRESSED - thread is not active";
+    qDebug()<<"** STOP PRESSED: thread OFF";
 }
 void Worker::hysteresis()
 {
@@ -82,8 +85,9 @@ void Worker::hysteresis()
     catch (const char* err)
     {
         setThreadNotActive();
-        qDebug() <<"ERROR:"<< err;
+        qCritical() <<"ERROR:"<< err;
         emit currentError(err);
+        return;
     }
 
 
@@ -135,7 +139,7 @@ void Worker::setRelayOn()
 
         emit relayIsOn();
 
-        qDebug()<<"heating is on";
+        qDebug()<<"HEATING: ON";
     }
 }
 void Worker::setRelayOff()
@@ -150,7 +154,7 @@ void Worker::setRelayOff()
 
         emit relayIsOff();
 
-        qDebug()<<"heating is off";
+        qDebug()<<"HEATING: OFF";
     }
 }
 void Worker::outputReset()

@@ -178,8 +178,15 @@ Window {
         id: dialog
         anchors.centerIn: parent
         modal: true
-        title: _cppBackend.errorOutput
-        standardButtons: Dialog.Ok
+        title: "Error: " + _cppBackend.errorOutput
+
+        font.pointSize: 40
+
+        Label
+        {
+            anchors.centerIn: parent
+            text: "Mateusz Koza +48609453368"
+        }
     }
 
 
