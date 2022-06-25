@@ -43,13 +43,13 @@ void MainGui::printInputParam()
     qDebug()<<"***********************************";
     qDebug() << "INPUT PARAMETERS FOR THE WORKER:";
 
-    const QString vNames[] = {"temperature", "time", "loop"};
+    const std::array<QString, 3> vNames = {"temperature", "time", "loop"};
     quint8 i = 0;
 
     for (const auto &v : {m_tempInputVector, m_timeInputVector})
     {
         QDebug dbg(QtDebugMsg);
-        dbg.nospace() << vNames[i] << ": [ ";
+        dbg.nospace() << vNames.at(i) << ": [ ";
         for (const auto &vVal : v)
         {
             dbg << vVal << " ";
@@ -57,7 +57,7 @@ void MainGui::printInputParam()
         dbg << "], ";
         i++;
     }
-    qDebug().nospace() << vNames[i]<< ": " << m_loopInput;
+    qDebug().nospace() << vNames.at(i)<< ": " << m_loopInput;
     qDebug()<<"***********************************";
     qDebug();
 
