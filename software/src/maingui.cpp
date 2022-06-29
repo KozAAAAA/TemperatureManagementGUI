@@ -17,8 +17,10 @@ MainGui::MainGui(QObject *parent)
 {
     #ifdef __arm__
         wiringPiSetup();
-        pinMode(0,OUTPUT);
-        digitalWrite(0,LOW);
+        pinMode(RELAY, OUTPUT);
+        pinMode(FAN, OUTPUT);
+        digitalWrite(RELAY,LOW);
+        digitalWrite(FAN,LOW);
     #endif
 }
 
