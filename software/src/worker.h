@@ -16,15 +16,15 @@ class Worker : public QThread
 {
     Q_OBJECT
 public:
-    explicit Worker(const std::vector<quint16>&,
-                    const std::vector<quint16>&,
+    explicit Worker(const std::array<quint16,4>&,
+                    const std::array<quint16,4>&,
                     const quint8&);
     ~Worker();
 
     //------------------------------INPUT-----------------------------//
 private:
-    const std::vector<quint16> m_tempInputVector;
-    const std::vector<quint16> m_timeInputVector;
+    const std::array<quint16, 4> m_tempInputVector;
+    const std::array<quint16, 4> m_timeInputVector;
     const quint8 m_loopInput;
 
     bool m_threadActive;

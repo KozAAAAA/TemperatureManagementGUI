@@ -2,8 +2,8 @@
 
 #define H 5 // adjust to change the behaviour of hysteresis
 
-Worker::Worker(const std::vector<quint16>& m_tempInputVector_,
-               const std::vector<quint16>& m_timeInputVector_,
+Worker::Worker(const std::array<quint16, 4>& m_tempInputVector_,
+               const std::array<quint16, 4>& m_timeInputVector_,
                const quint8& m_loopInput_) :
     QThread(),
 

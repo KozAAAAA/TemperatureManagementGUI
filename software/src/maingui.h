@@ -9,6 +9,7 @@
 #include <QObject>
 #include <QtDebug>
 #include <iostream>
+#include <array>
 
 #include "worker.h"
 
@@ -27,8 +28,8 @@ public:
     Q_INVOKABLE void printInputParam();
 
 private:
-    std::vector<quint16> m_tempInputVector;
-    std::vector<quint16> m_timeInputVector;
+    std::array<quint16,4> m_tempInputVector;
+    std::array<quint16,4> m_timeInputVector;
     quint8 m_loopInput;
 
     //----------------------------------------------------------------//
