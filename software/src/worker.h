@@ -15,7 +15,7 @@
 
 #define H 5 // adjust to change the behaviour of hysteresis
 #define RELAY 0
-#define FAN 2
+#define FAN 7
 
 
 
