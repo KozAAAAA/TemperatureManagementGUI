@@ -12,6 +12,13 @@
     #include <wiringPi.h>
 #endif
 
+
+#define H 5 // adjust to change the behaviour of hysteresis
+#define RELAY 0
+#define FAN 2
+
+
+
 class Worker : public QThread
 {
     Q_OBJECT
@@ -62,7 +69,11 @@ private:
     float getTempSensor();
     void setRelayOn();
     void setRelayOff();
+
     void outputReset();
+
+    void setFanOn();
+    void setFanOff();
 
     //----------------------------------------------------------------//
 };

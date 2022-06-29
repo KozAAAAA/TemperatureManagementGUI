@@ -1,6 +1,5 @@
 #include "worker.h"
 
-#define H 5 // adjust to change the behaviour of hysteresis
 
 Worker::Worker(const std::array<quint16, 4>& m_tempInputVector_,
                const std::array<quint16, 4>& m_timeInputVector_,
@@ -21,13 +20,15 @@ Worker::Worker(const std::array<quint16, 4>& m_tempInputVector_,
     m_isRelayOn(true)
 
     {
-        setRelayOff();
         qDebug()<<"WORKER: created";
+        setRelayOff();
+        setFanOn();
     }
 
 Worker::~Worker()
 {
     setRelayOff();
+    setFanOff();
     qDebug()<<"WORKER: destroyed";
 }
 
@@ -132,7 +133,7 @@ void Worker::setRelayOn()
     if(m_isRelayOn == false)
     {
         #ifdef __arm__
-            digitalWrite(0,HIGH);
+            digitalWrite(RELAY,HIGH);
         #endif
 
         m_isRelayOn = true;
@@ -147,7 +148,7 @@ void Worker::setRelayOff()
     if(m_isRelayOn == true)
     {
         #ifdef __arm__
-            digitalWrite(0,LOW);
+            digitalWrite(RELAY,LOW);
         #endif
 
         m_isRelayOn = false;
@@ -163,6 +164,20 @@ void Worker::outputReset()
     emit currentTime(0);
     emit currentLoop(0);
     emit currentBlock(0);
+}
+void Worker::setFanOn()
+{
+    #ifdef __arm__
+        digitalWrite(FAN,HIGH);
+    #endif
+    qDebug()<<"FAN: ON";
+}
+void Worker::setFanOff()
+{
+    #ifdef __arm__
+        digitalWrite(FAN,LOW);
+    #endif
+    qDebug()<<"FAN: OFF";
 }
 
     //----------------------------------------------------------------//
