@@ -1,21 +1,11 @@
-#ifndef WORKER_H
+#pragma once
 
-#define WORKER_H
-
-#include <QThread>
-#include <QObject>
-#include <QDebug>
-#include <QFile>
-#include <QElapsedTimer>
-
-#ifdef __arm__
-    #include <wiringPi.h>
-#endif
+#include "pch.h"
 
 
 #define H 5 // adjust to change the behaviour of hysteresis
 #define RELAY 0
-#define FAN 7
+#define FAN 25
 
 
 
@@ -77,5 +67,3 @@ private:
 
     //----------------------------------------------------------------//
 };
-
-#endif // WORKER_H

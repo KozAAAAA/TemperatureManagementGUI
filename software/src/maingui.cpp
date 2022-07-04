@@ -1,4 +1,3 @@
-#include "worker.h"
 #include "maingui.h"
 
 

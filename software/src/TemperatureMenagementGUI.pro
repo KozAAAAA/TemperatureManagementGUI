@@ -26,6 +26,8 @@ HEADERS += \
     maingui.h \
     worker.h
 
+PRECOMPILED_HEADER = pch.h
+
 # RealayOn, RelayOff methods need it (Rpi only):
 linux:contains(QMAKE_HOST.arch, armv7l):{
     LIBS += -lwiringPi

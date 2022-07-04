@@ -1,16 +1,10 @@
-#ifndef TEMPERATUREMENAGMENT_H
-
-#define TEMPERATUREMENAGMENT_H
+#pragma once
 
 #define TEMP "temp"
 #define TIME "time"
 #define LOOP "loop"
 
-#include <QObject>
-#include <QtDebug>
-#include <iostream>
-#include <array>
-
+#include "pch.h"
 #include "worker.h"
 
 class MainGui : public QObject
@@ -86,4 +80,3 @@ signals:
     //----------------------------------------------------------------//
 };
 
-#endif // TEMPERATUREMENAGMENT_H
