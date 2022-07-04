@@ -26,7 +26,7 @@ Item
         anchors.leftMargin: 30
         TempInputBox2{id:temp; maxNumber: 200; unit:"°C"; toggleState: toggleswitch.toggleOn}
         spacing: 30
-        TimeInputBox2{id:time; maxNumber:999; unit:"h"; toggleState: toggleswitch.toggleOn}
+        TimeInputBox2{id:time; maxNumber:99; unit:"h"; toggleState: toggleswitch.toggleOn}
     }
 
     Rectangle

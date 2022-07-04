@@ -55,7 +55,8 @@ Item
             width: 374
         }
 
-        contentItem: TextInput
+        contentItem: Item{}
+        TextInput
         {
             z:2
             text: control.textFromValue(control.value, control.locale) + unit
@@ -67,8 +68,9 @@ Item
             inputMethodHints: Qt.ImhFormattedNumbersOnly
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
-            anchors.left: control.left
-            anchors.leftMargin: 30
+            anchors.left: background.left
+            anchors.verticalCenter: background.verticalCenter
+            anchors.leftMargin: 15
         }
 
         up.indicator: Rectangle
