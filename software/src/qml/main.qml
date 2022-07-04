@@ -56,6 +56,7 @@ Window {
             GridSetupBlocks2
             {
                 id: gridSetupBlocks2
+                enabled: startButton2.greenMode
             }
 
 
@@ -67,6 +68,7 @@ Window {
             anchors.bottom: parent.bottom
             anchors.left: parent.left
             anchors.margins: 50
+            enabled: startButton2.greenMode
         }
 
 
