@@ -181,7 +181,7 @@ Window {
 
         modal: true
 
-        title: "Error: " + _cppBackend.errorOutput + "!!!"
+        title: "Error: " + _cppBackend.errorOutput
 
         font.family: robotoRegular.name
         font.pointSize: 40

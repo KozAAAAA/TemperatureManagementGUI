@@ -49,26 +49,28 @@ void Worker::run()
         emit currentLoop(m_currentLoop);
         for(;m_currentBlock < 5; m_currentBlock++)
         {
-            //h to ms:
-//            quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/100;
-            //fake time:
+
+        #if(DEBUGGING == true)
             quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/3600/100;
+        #else
+            quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/100;
+        #endif
 
-            m_timer.start();
+        m_timer.start();
 
-            if(m_workingTimeMs!=0)
+        if(m_workingTimeMs!=0)
+        {
+            emit currentBlock(m_currentBlock);
+
+            while((!m_timer.hasExpired(m_workingTimeMs)) &&
+                    m_threadActive)
             {
-                emit currentBlock(m_currentBlock);
+            m_currentTime = (m_workingTimeMs - m_timer.elapsed());
+            emit currentTime(m_currentTime);
 
-                while((!m_timer.hasExpired(m_workingTimeMs)) &&
-                        m_threadActive)
-                {
-                    m_currentTime = (m_workingTimeMs - m_timer.elapsed());
-                    emit currentTime(m_currentTime);
-
-                    hysteresis();
-                }
+            hysteresis();
             }
+        }
         }
         m_currentBlock = 0;
     }
@@ -122,9 +124,13 @@ float Worker::getTempSensor()
         throw "I can't find the .txt file!";
 
     QTextStream in(&file);
-    QString redTemp = in.readLine();
 
-    return redTemp.toFloat();
+    float readTemp = in.readLine().toFloat();
+
+    if (readTemp > 230 || readTemp < 0)
+        throw "Temperature reading is a thrash value!";
+
+    return readTemp;
 }
 
 

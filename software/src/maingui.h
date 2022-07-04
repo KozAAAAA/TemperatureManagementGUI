@@ -1,10 +1,7 @@
 #pragma once
 
-#define TEMP "temp"
-#define TIME "time"
-#define LOOP "loop"
-
 #include "pch.h"
+#include "settings.h"
 #include "worker.h"
 
 class MainGui : public QObject

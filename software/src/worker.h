@@ -1,13 +1,7 @@
 #pragma once
 
 #include "pch.h"
-
-
-#define H 5 // adjust to change the behaviour of hysteresis
-#define RELAY 0
-#define FAN 25
-
-
+#include "settings.h"
 
 class Worker : public QThread
 {

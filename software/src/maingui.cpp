@@ -26,15 +26,15 @@ MainGui::MainGui(QObject *parent)
     //------------------------------INPUT-----------------------------//
 void MainGui::setInputParam(const QString& parameter, const quint32& value, const quint8 &index)
 {
-    if(parameter == TEMP)
+    if(parameter == "temp")
         m_tempInputVector.at(index) = value;
-    else if(parameter == TIME)
+    else if(parameter == "time")
         m_timeInputVector.at(index) = value;
 }
 
 void MainGui::setInputParam(const QString& parameter, const quint8& value)
 {
-    if(parameter == LOOP)
+    if(parameter == "loop")
         m_loopInput= value;
 }
 

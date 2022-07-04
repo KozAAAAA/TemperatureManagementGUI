@@ -24,6 +24,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     maingui.h \
+    settings.h \
     worker.h
 
 PRECOMPILED_HEADER = pch.h
