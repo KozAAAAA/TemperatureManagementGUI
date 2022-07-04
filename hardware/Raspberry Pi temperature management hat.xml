@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="E">
   <design>
-    <source>D:\Dokumenty\Praca w CLAiO\Raspberry Pi temperature management hat\Raspberry Pi temperature management hat.kicad_sch</source>
-    <date>22/06/2022 11:15:21</date>
+    <source>D:\Dokumenty\Praca w CLAiO\Raspberry Pi temperature management hat V2\Raspberry Pi temperature management hat.kicad_sch</source>
+    <date>04/07/2022 10:47:33</date>
     <tool>Eeschema (6.0.2)</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -70,36 +70,6 @@
       <tstamps>defc347a-8574-4ba6-a83e-de51d960bca7</tstamps>
     </comp>
     <comp ref="D1">
-      <value>1N4148W</value>
-      <footprint>Diode_SMD:D_0603_1608Metric_Pad1.05x0.95mm_HandSolder</footprint>
-      <datasheet>https://www.mouser.pl/datasheet/2/308/1N914BWT_D-2309108.pdf</datasheet>
-      <libsource lib="Diode" part="1N4148W" description="75V 0.15A Fast Switching Diode, SOD-123"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>c1227e5a-3e8e-43d7-b4e5-69152c2913a1</tstamps>
-    </comp>
-    <comp ref="D2">
-      <value>1N4148W</value>
-      <footprint>Diode_SMD:D_0603_1608Metric_Pad1.05x0.95mm_HandSolder</footprint>
-      <datasheet>https://www.mouser.pl/datasheet/2/308/1N914BWT_D-2309108.pdf</datasheet>
-      <libsource lib="Diode" part="1N4148W" description="75V 0.15A Fast Switching Diode, SOD-123"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>b405073f-ace9-47f2-80db-60ffeef15305</tstamps>
-    </comp>
-    <comp ref="D3">
-      <value>1N4148W</value>
-      <footprint>Diode_SMD:D_0603_1608Metric_Pad1.05x0.95mm_HandSolder</footprint>
-      <datasheet>https://www.mouser.pl/datasheet/2/308/1N914BWT_D-2309108.pdf</datasheet>
-      <libsource lib="Diode" part="1N4148W" description="75V 0.15A Fast Switching Diode, SOD-123"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>f4b7f8e1-2710-4217-bdc6-004499bb72f7</tstamps>
-    </comp>
-    <comp ref="D4">
       <value>LED</value>
       <footprint>LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder</footprint>
       <datasheet>https://www.mouser.pl/datasheet/2/239/LTST-C191KRKT-1140668.pdf</datasheet>
@@ -109,7 +79,17 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>45037389-eeb4-4f7d-8fc7-18eff94cadf7</tstamps>
     </comp>
-    <comp ref="D5">
+    <comp ref="D2">
+      <value>LED</value>
+      <footprint>LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder</footprint>
+      <datasheet>https://www.mouser.pl/datasheet/2/239/LTST-C191KRKT-1140668.pdf</datasheet>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1fb47b55-2309-4bbf-abff-72b25a4d0f9b</tstamps>
+    </comp>
+    <comp ref="D3">
       <value>S1MFL</value>
       <footprint>Diode_SMD:D_SOD-123F</footprint>
       <datasheet>https://www.mouser.pl/datasheet/2/308/1/S1MFL_D-2320167.pdf</datasheet>
@@ -118,6 +98,16 @@
       <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>ad04618a-ef31-4033-baa5-7953b79270d1</tstamps>
+    </comp>
+    <comp ref="D4">
+      <value>S1MFL</value>
+      <footprint>Diode_SMD:D_SOD-123F</footprint>
+      <datasheet>https://www.mouser.pl/datasheet/2/308/1/S1MFL_D-2320167.pdf</datasheet>
+      <libsource lib="Diode" part="US1M" description="1000V, 1A, General Purpose Rectifier Diode, SMA(DO-214AC)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c0713bf4-754f-4aee-a5b5-6ef7dd95fa7e</tstamps>
     </comp>
     <comp ref="F1">
       <value>Fuse</value>
@@ -166,6 +156,15 @@
       <tstamps>00000000-0000-0000-0000-00005834bded</tstamps>
     </comp>
     <comp ref="J1">
+      <value>OX40HAT</value>
+      <footprint>Connector_PinSocket_2.54mm:PinSocket_2x20_P2.54mm_Vertical</footprint>
+      <libsource lib="Raspberry Pi temperature management hat" part="OX40HAT" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0593dc7a-b268-4003-a428-ec8b71b7ef13</tstamps>
+    </comp>
+    <comp ref="J2">
       <value>Screw Terminal x3</value>
       <footprint>TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-3_1x03_P2.54mm_Horizontal</footprint>
       <libsource lib="Connector" part="Screw_Terminal_01x03" description="Generic screw terminal, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
@@ -174,7 +173,7 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>e7dbbbf1-8a33-4a55-b7b5-f86d84ed24f1</tstamps>
     </comp>
-    <comp ref="J2">
+    <comp ref="J3">
       <value>Screw Terminal x2</value>
       <footprint>TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-2_1x02_P2.54mm_Horizontal</footprint>
       <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
@@ -183,14 +182,14 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>e309bf98-7bac-42d5-8a1d-a65a8f9fcd63</tstamps>
     </comp>
-    <comp ref="J3">
-      <value>OX40HAT</value>
-      <footprint>Connector_PinSocket_2.54mm:PinSocket_2x20_P2.54mm_Vertical</footprint>
-      <libsource lib="Raspberry Pi temperature management hat" part="OX40HAT" description=""/>
+    <comp ref="J4">
+      <value>Screw Terminal x2</value>
+      <footprint>TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-2_1x02_P2.54mm_Horizontal</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
       <property name="Sheetname" value=""/>
       <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
-      <tstamps>0593dc7a-b268-4003-a428-ec8b71b7ef13</tstamps>
+      <tstamps>f764b93c-4f58-425a-8a99-562154c17b64</tstamps>
     </comp>
     <comp ref="Q1">
       <value>S8050</value>
@@ -202,34 +201,17 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>36fd002e-f6c4-48c2-afcc-b427aa0ca735</tstamps>
     </comp>
+    <comp ref="Q2">
+      <value>S8050</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23_Handsoldering</footprint>
+      <datasheet>https://www.mouser.pl/datasheet/2/258/MMSS8050_SOT_23_-1626440.pdf</datasheet>
+      <libsource lib="Transistor_BJT" part="S8050" description="0.7A Ic, 20V Vce, Low Voltage High Current NPN Transistor, TO-92"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bae1ede4-e69d-45a5-bbac-1b5f59443035</tstamps>
+    </comp>
     <comp ref="R1">
-      <value>10k</value>
-      <footprint>Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
-      <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>0c194c25-41eb-49ba-97f1-3d1290da2db1</tstamps>
-    </comp>
-    <comp ref="R2">
-      <value>10k</value>
-      <footprint>Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
-      <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>2bdcc7aa-481e-4d24-996e-3a85ba0d8a55</tstamps>
-    </comp>
-    <comp ref="R3">
-      <value>10k</value>
-      <footprint>Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
-      <libsource lib="Device" part="R" description="Resistor"/>
-      <property name="Sheetname" value=""/>
-      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
-      <sheetpath names="/" tstamps="/"/>
-      <tstamps>f1316d17-4b5c-40b8-b8e8-3d9f04eb5fc4</tstamps>
-    </comp>
-    <comp ref="R4">
       <value>430, 0.1%</value>
       <footprint>Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
       <libsource lib="Device" part="R" description="Resistor"/>
@@ -238,7 +220,7 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>d5efe3f9-cffd-4abb-89fe-52bfdc3ae26b</tstamps>
     </comp>
-    <comp ref="R5">
+    <comp ref="R2">
       <value>180</value>
       <footprint>Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
       <libsource lib="Device" part="R" description="Resistor"/>
@@ -247,7 +229,16 @@
       <sheetpath names="/" tstamps="/"/>
       <tstamps>9cfa89f5-a8f5-4d13-80c0-d5ee8137b722</tstamps>
     </comp>
-    <comp ref="R6">
+    <comp ref="R3">
+      <value>180</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0fdcef46-c3f6-4d4c-a355-ce9dcf5b1628</tstamps>
+    </comp>
+    <comp ref="R4">
       <value>510</value>
       <footprint>Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
       <libsource lib="Device" part="R" description="Resistor"/>
@@ -255,6 +246,15 @@
       <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>3c95291e-0443-4e58-95ca-223e7c72c59e</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>510</value>
+      <footprint>Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder</footprint>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>143f8ad6-39a7-42cd-8611-e300b4175f5e</tstamps>
     </comp>
     <comp ref="U1">
       <value>MIC5225-3.3</value>
@@ -285,6 +285,16 @@
       <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
       <sheetpath names="/" tstamps="/"/>
       <tstamps>77c678ad-e7c2-401a-8eba-e9bff95f8756</tstamps>
+    </comp>
+    <comp ref="U4">
+      <value>LTV-817S</value>
+      <footprint>Package_DIP:SMDIP-4_W9.53mm</footprint>
+      <datasheet>https://www.mouser.pl/datasheet/2/308/1/FOD814_D-2313902.pdf</datasheet>
+      <libsource lib="Isolator" part="LTV-817S" description="DC Optocoupler, Vce 35V, CTR 50%, SMDIP-4"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="Raspberry Pi temperature management hat.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>eced4c3f-db30-4ff8-9b24-5a919583366b</tstamps>
     </comp>
   </components>
   <libparts>
@@ -385,23 +395,6 @@
       <pins>
         <pin num="1" name="" type="passive"/>
         <pin num="2" name="" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Diode" part="1N4148W">
-      <description>75V 0.15A Fast Switching Diode, SOD-123</description>
-      <docs>https://www.vishay.com/docs/85748/1n4148w.pdf</docs>
-      <footprints>
-        <fp>D*SOD?123*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">D</field>
-        <field name="Value">1N4148W</field>
-        <field name="Footprint">Diode_SMD:D_SOD-123</field>
-        <field name="Datasheet">https://www.vishay.com/docs/85748/1n4148w.pdf</field>
-      </fields>
-      <pins>
-        <pin num="1" name="K" type="passive"/>
-        <pin num="2" name="A" type="passive"/>
       </pins>
     </libpart>
     <libpart lib="Diode" part="US1M">
@@ -514,13 +507,13 @@
         <pin num="6" name="GND" type="no_connect"/>
         <pin num="7" name="GPIO04" type="no_connect"/>
         <pin num="8" name="GPIO14" type="no_connect"/>
-        <pin num="9" name="GND" type="power_out"/>
+        <pin num="9" name="GND" type="no_connect"/>
         <pin num="10" name="GPIO15" type="no_connect"/>
-        <pin num="11" name="GPIO17" type="no_connect"/>
+        <pin num="11" name="GPIO17" type="output"/>
         <pin num="12" name="GPIO18" type="no_connect"/>
         <pin num="13" name="GPIO27" type="no_connect"/>
         <pin num="14" name="GND" type="no_connect"/>
-        <pin num="15" name="GPIO22" type="no_connect"/>
+        <pin num="15" name="GPIO22" type="output"/>
         <pin num="16" name="GPIO23" type="no_connect"/>
         <pin num="17" name="P3V3" type="no_connect"/>
         <pin num="18" name="GPIO24" type="no_connect"/>
@@ -532,7 +525,7 @@
         <pin num="24" name="GPIO08" type="no_connect"/>
         <pin num="25" name="GND" type="no_connect"/>
         <pin num="26" name="GPIO07" type="no_connect"/>
-        <pin num="27" name="GPIO00" type="output"/>
+        <pin num="27" name="GPIO00" type="no_connect"/>
         <pin num="28" name="GPIO01" type="no_connect"/>
         <pin num="29" name="GPIO05" type="output"/>
         <pin num="30" name="GND" type="no_connect"/>
@@ -544,7 +537,7 @@
         <pin num="36" name="GPIO16" type="no_connect"/>
         <pin num="37" name="GPIO26" type="no_connect"/>
         <pin num="38" name="GPIO20" type="no_connect"/>
-        <pin num="39" name="GND" type="no_connect"/>
+        <pin num="39" name="GND" type="power_out"/>
         <pin num="40" name="GPIO21" type="no_connect"/>
       </pins>
     </libpart>
@@ -584,7 +577,7 @@
       <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Mechanical.kicad_sym</uri>
     </library>
     <library logical="Raspberry Pi temperature management hat">
-      <uri>D:\Dokumenty\Praca w CLAiO\Raspberry Pi temperature management hat/Raspberry Pi temperature management hat.kicad_sym</uri>
+      <uri>D:\Dokumenty\Praca w CLAiO\Raspberry Pi temperature management hat V2/Raspberry Pi temperature management hat.kicad_sym</uri>
     </library>
     <library logical="Transistor_BJT">
       <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Transistor_BJT.kicad_sym</uri>
@@ -593,230 +586,239 @@
   <nets>
     <net code="1" name="+5V">
       <node ref="C1" pin="2" pintype="passive"/>
-      <node ref="D5" pin="1" pinfunction="K" pintype="passive"/>
-      <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
-      <node ref="J3" pin="2" pinfunction="P5V" pintype="power_out"/>
+      <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D4" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="J1" pin="2" pinfunction="P5V" pintype="power_out"/>
+      <node ref="J3" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J4" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="U1" pin="1" pinfunction="IN" pintype="power_in"/>
       <node ref="U1" pin="3" pinfunction="EN" pintype="input"/>
       <node ref="U3" pin="4" pintype="passive"/>
+      <node ref="U4" pin="4" pintype="passive"/>
     </net>
     <net code="2" name="/CS">
-      <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
-      <node ref="J3" pin="29" pinfunction="GPIO05" pintype="output"/>
+      <node ref="J1" pin="29" pinfunction="GPIO05" pintype="output"/>
+      <node ref="U2" pin="13" pinfunction="CS" pintype="input"/>
     </net>
-    <net code="3" name="/REL">
-      <node ref="J3" pin="27" pinfunction="GPIO00" pintype="output"/>
-      <node ref="R5" pin="2" pintype="passive"/>
+    <net code="3" name="/FAN">
+      <node ref="J1" pin="15" pinfunction="GPIO22" pintype="output"/>
+      <node ref="R3" pin="2" pintype="passive"/>
     </net>
-    <net code="4" name="/SCLK">
-      <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
-      <node ref="J3" pin="23" pinfunction="CLK" pintype="output"/>
+    <net code="4" name="/HET">
+      <node ref="J1" pin="11" pinfunction="GPIO17" pintype="output"/>
+      <node ref="R2" pin="2" pintype="passive"/>
     </net>
-    <net code="5" name="/SDI">
-      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
-      <node ref="J3" pin="19" pinfunction="MOSI" pintype="output"/>
+    <net code="5" name="/SCLK">
+      <node ref="J1" pin="23" pinfunction="CLK" pintype="output"/>
+      <node ref="U2" pin="12" pinfunction="SCLK" pintype="input"/>
     </net>
-    <net code="6" name="/SDO">
-      <node ref="J3" pin="21" pinfunction="MISO" pintype="input"/>
+    <net code="6" name="/SDI">
+      <node ref="J1" pin="19" pinfunction="MOSI" pintype="output"/>
+      <node ref="U2" pin="11" pinfunction="SDI" pintype="input"/>
+    </net>
+    <net code="7" name="/SDO">
+      <node ref="J1" pin="21" pinfunction="MISO" pintype="input"/>
       <node ref="U2" pin="14" pinfunction="SDO" pintype="output"/>
     </net>
-    <net code="7" name="GND">
+    <net code="8" name="GND">
       <node ref="C1" pin="1" pintype="passive"/>
       <node ref="C2" pin="2" pintype="passive"/>
       <node ref="C3" pin="2" pintype="passive"/>
       <node ref="C4" pin="1" pintype="passive"/>
-      <node ref="D4" pin="1" pinfunction="K" pintype="passive"/>
-      <node ref="J3" pin="9" pinfunction="GND" pintype="power_out"/>
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="J1" pin="39" pinfunction="GND" pintype="power_out"/>
       <node ref="Q1" pin="1" pinfunction="E" pintype="passive"/>
+      <node ref="Q2" pin="1" pinfunction="E" pintype="passive"/>
       <node ref="U1" pin="2" pinfunction="GND" pintype="power_in"/>
       <node ref="U2" pin="10" pinfunction="AGND" pintype="power_in"/>
       <node ref="U2" pin="15" pinfunction="GND" pintype="power_in"/>
       <node ref="U2" pin="16" pinfunction="ANGD" pintype="power_in"/>
       <node ref="U2" pin="21" pinfunction="PAD" pintype="power_in"/>
     </net>
-    <net code="8" name="Net-(C4-Pad2)">
+    <net code="9" name="Net-(C4-Pad2)">
       <node ref="C4" pin="2" pintype="passive"/>
       <node ref="F1" pin="1" pintype="passive"/>
       <node ref="U2" pin="20" pinfunction="VDD" pintype="power_in"/>
     </net>
-    <net code="9" name="Net-(C5-Pad1)">
+    <net code="10" name="Net-(C5-Pad1)">
       <node ref="C5" pin="1" pintype="passive"/>
-      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="U2" pin="7" pinfunction="RTDIN+" pintype="input"/>
     </net>
-    <net code="10" name="Net-(C5-Pad2)">
+    <net code="11" name="Net-(C5-Pad2)">
       <node ref="C5" pin="2" pintype="passive"/>
-      <node ref="J1" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="J2" pin="3" pinfunction="Pin_3" pintype="passive"/>
       <node ref="U2" pin="8" pinfunction="RTDIN-" pintype="input"/>
       <node ref="U2" pin="9" pinfunction="FORCE-" pintype="input"/>
     </net>
-    <net code="11" name="Net-(D1-Pad2)">
+    <net code="12" name="Net-(D1-Pad2)">
       <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
-      <node ref="R1" pin="2" pintype="passive"/>
-      <node ref="U2" pin="11" pinfunction="SDI" pintype="input"/>
-    </net>
-    <net code="12" name="Net-(D2-Pad2)">
-      <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
-      <node ref="R2" pin="2" pintype="passive"/>
-      <node ref="U2" pin="12" pinfunction="SCLK" pintype="input"/>
-    </net>
-    <net code="13" name="Net-(D3-Pad2)">
-      <node ref="D3" pin="2" pinfunction="A" pintype="passive"/>
-      <node ref="R3" pin="2" pintype="passive"/>
-      <node ref="U2" pin="13" pinfunction="CS" pintype="input"/>
-    </net>
-    <net code="14" name="Net-(D4-Pad2)">
-      <node ref="D4" pin="2" pinfunction="A" pintype="passive"/>
       <node ref="U3" pin="2" pintype="passive"/>
     </net>
-    <net code="15" name="Net-(D5-Pad2)">
-      <node ref="D5" pin="2" pinfunction="A" pintype="passive"/>
-      <node ref="J2" pin="2" pinfunction="Pin_2" pintype="passive"/>
+    <net code="13" name="Net-(D2-Pad2)">
+      <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="U4" pin="2" pintype="passive"/>
+    </net>
+    <net code="14" name="Net-(D3-Pad2)">
+      <node ref="D3" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="J3" pin="2" pinfunction="Pin_2" pintype="passive"/>
       <node ref="Q1" pin="3" pinfunction="C" pintype="passive"/>
     </net>
-    <net code="16" name="Net-(J1-Pad1)">
-      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+    <net code="15" name="Net-(D4-Pad2)">
+      <node ref="D4" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="J4" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="Q2" pin="3" pinfunction="C" pintype="passive"/>
+    </net>
+    <net code="16" name="Net-(J2-Pad1)">
+      <node ref="J2" pin="1" pinfunction="Pin_1" pintype="passive"/>
       <node ref="U2" pin="5" pinfunction="FORCE+" pintype="input"/>
       <node ref="U2" pin="6" pinfunction="FORCE2" pintype="input"/>
     </net>
     <net code="17" name="Net-(Q1-Pad2)">
       <node ref="Q1" pin="2" pinfunction="B" pintype="input"/>
-      <node ref="R6" pin="2" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
     </net>
-    <net code="18" name="Net-(R4-Pad1)">
-      <node ref="R4" pin="1" pintype="passive"/>
+    <net code="18" name="Net-(Q2-Pad2)">
+      <node ref="Q2" pin="2" pinfunction="B" pintype="input"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+    </net>
+    <net code="19" name="Net-(R1-Pad1)">
+      <node ref="R1" pin="1" pintype="passive"/>
       <node ref="U2" pin="1" pinfunction="BIAS" pintype="output"/>
       <node ref="U2" pin="2" pinfunction="REFIN+" pintype="input"/>
     </net>
-    <net code="19" name="Net-(R4-Pad2)">
-      <node ref="R4" pin="2" pintype="passive"/>
+    <net code="20" name="Net-(R1-Pad2)">
+      <node ref="R1" pin="2" pintype="passive"/>
       <node ref="U2" pin="3" pinfunction="REFIN-" pintype="input"/>
       <node ref="U2" pin="4" pinfunction="ISENSOR" pintype="input"/>
     </net>
-    <net code="20" name="Net-(R5-Pad1)">
-      <node ref="R5" pin="1" pintype="passive"/>
+    <net code="21" name="Net-(R2-Pad1)">
+      <node ref="R2" pin="1" pintype="passive"/>
       <node ref="U3" pin="1" pintype="passive"/>
     </net>
-    <net code="21" name="Net-(R6-Pad1)">
-      <node ref="R6" pin="1" pintype="passive"/>
+    <net code="22" name="Net-(R3-Pad1)">
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="U4" pin="1" pintype="passive"/>
+    </net>
+    <net code="23" name="Net-(R4-Pad1)">
+      <node ref="R4" pin="1" pintype="passive"/>
       <node ref="U3" pin="3" pintype="passive"/>
     </net>
-    <net code="22" name="VDD">
+    <net code="24" name="Net-(R5-Pad1)">
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="U4" pin="3" pintype="passive"/>
+    </net>
+    <net code="25" name="VDD">
       <node ref="C2" pin="1" pintype="passive"/>
       <node ref="C3" pin="1" pintype="passive"/>
       <node ref="F1" pin="2" pintype="passive"/>
-      <node ref="R1" pin="1" pintype="passive"/>
-      <node ref="R2" pin="1" pintype="passive"/>
-      <node ref="R3" pin="1" pintype="passive"/>
       <node ref="U1" pin="5" pinfunction="OUT" pintype="power_out"/>
       <node ref="U2" pin="19" pinfunction="DVDD" pintype="power_in"/>
     </net>
-    <net code="23" name="unconnected-(J3-Pad1)">
-      <node ref="J3" pin="1" pinfunction="P3V3" pintype="no_connect"/>
+    <net code="26" name="unconnected-(J1-Pad1)">
+      <node ref="J1" pin="1" pinfunction="P3V3" pintype="no_connect"/>
     </net>
-    <net code="24" name="unconnected-(J3-Pad3)">
-      <node ref="J3" pin="3" pinfunction="GPIO02" pintype="no_connect"/>
+    <net code="27" name="unconnected-(J1-Pad3)">
+      <node ref="J1" pin="3" pinfunction="GPIO02" pintype="no_connect"/>
     </net>
-    <net code="25" name="unconnected-(J3-Pad4)">
-      <node ref="J3" pin="4" pinfunction="P5V" pintype="no_connect"/>
+    <net code="28" name="unconnected-(J1-Pad4)">
+      <node ref="J1" pin="4" pinfunction="P5V" pintype="no_connect"/>
     </net>
-    <net code="26" name="unconnected-(J3-Pad5)">
-      <node ref="J3" pin="5" pinfunction="GPIO03" pintype="no_connect"/>
+    <net code="29" name="unconnected-(J1-Pad5)">
+      <node ref="J1" pin="5" pinfunction="GPIO03" pintype="no_connect"/>
     </net>
-    <net code="27" name="unconnected-(J3-Pad6)">
-      <node ref="J3" pin="6" pinfunction="GND" pintype="no_connect"/>
+    <net code="30" name="unconnected-(J1-Pad6)">
+      <node ref="J1" pin="6" pinfunction="GND" pintype="no_connect"/>
     </net>
-    <net code="28" name="unconnected-(J3-Pad7)">
-      <node ref="J3" pin="7" pinfunction="GPIO04" pintype="no_connect"/>
+    <net code="31" name="unconnected-(J1-Pad7)">
+      <node ref="J1" pin="7" pinfunction="GPIO04" pintype="no_connect"/>
     </net>
-    <net code="29" name="unconnected-(J3-Pad8)">
-      <node ref="J3" pin="8" pinfunction="GPIO14" pintype="no_connect"/>
+    <net code="32" name="unconnected-(J1-Pad8)">
+      <node ref="J1" pin="8" pinfunction="GPIO14" pintype="no_connect"/>
     </net>
-    <net code="30" name="unconnected-(J3-Pad10)">
-      <node ref="J3" pin="10" pinfunction="GPIO15" pintype="no_connect"/>
+    <net code="33" name="unconnected-(J1-Pad9)">
+      <node ref="J1" pin="9" pinfunction="GND" pintype="no_connect"/>
     </net>
-    <net code="31" name="unconnected-(J3-Pad11)">
-      <node ref="J3" pin="11" pinfunction="GPIO17" pintype="no_connect"/>
+    <net code="34" name="unconnected-(J1-Pad10)">
+      <node ref="J1" pin="10" pinfunction="GPIO15" pintype="no_connect"/>
     </net>
-    <net code="32" name="unconnected-(J3-Pad12)">
-      <node ref="J3" pin="12" pinfunction="GPIO18" pintype="no_connect"/>
+    <net code="35" name="unconnected-(J1-Pad12)">
+      <node ref="J1" pin="12" pinfunction="GPIO18" pintype="no_connect"/>
     </net>
-    <net code="33" name="unconnected-(J3-Pad13)">
-      <node ref="J3" pin="13" pinfunction="GPIO27" pintype="no_connect"/>
+    <net code="36" name="unconnected-(J1-Pad13)">
+      <node ref="J1" pin="13" pinfunction="GPIO27" pintype="no_connect"/>
     </net>
-    <net code="34" name="unconnected-(J3-Pad14)">
-      <node ref="J3" pin="14" pinfunction="GND" pintype="no_connect"/>
+    <net code="37" name="unconnected-(J1-Pad14)">
+      <node ref="J1" pin="14" pinfunction="GND" pintype="no_connect"/>
     </net>
-    <net code="35" name="unconnected-(J3-Pad15)">
-      <node ref="J3" pin="15" pinfunction="GPIO22" pintype="no_connect"/>
+    <net code="38" name="unconnected-(J1-Pad16)">
+      <node ref="J1" pin="16" pinfunction="GPIO23" pintype="no_connect"/>
     </net>
-    <net code="36" name="unconnected-(J3-Pad16)">
-      <node ref="J3" pin="16" pinfunction="GPIO23" pintype="no_connect"/>
+    <net code="39" name="unconnected-(J1-Pad17)">
+      <node ref="J1" pin="17" pinfunction="P3V3" pintype="no_connect"/>
     </net>
-    <net code="37" name="unconnected-(J3-Pad17)">
-      <node ref="J3" pin="17" pinfunction="P3V3" pintype="no_connect"/>
+    <net code="40" name="unconnected-(J1-Pad18)">
+      <node ref="J1" pin="18" pinfunction="GPIO24" pintype="no_connect"/>
     </net>
-    <net code="38" name="unconnected-(J3-Pad18)">
-      <node ref="J3" pin="18" pinfunction="GPIO24" pintype="no_connect"/>
+    <net code="41" name="unconnected-(J1-Pad20)">
+      <node ref="J1" pin="20" pinfunction="GND" pintype="no_connect"/>
     </net>
-    <net code="39" name="unconnected-(J3-Pad20)">
-      <node ref="J3" pin="20" pinfunction="GND" pintype="no_connect"/>
+    <net code="42" name="unconnected-(J1-Pad22)">
+      <node ref="J1" pin="22" pinfunction="GPIO25" pintype="no_connect"/>
     </net>
-    <net code="40" name="unconnected-(J3-Pad22)">
-      <node ref="J3" pin="22" pinfunction="GPIO25" pintype="no_connect"/>
+    <net code="43" name="unconnected-(J1-Pad24)">
+      <node ref="J1" pin="24" pinfunction="GPIO08" pintype="no_connect"/>
     </net>
-    <net code="41" name="unconnected-(J3-Pad24)">
-      <node ref="J3" pin="24" pinfunction="GPIO08" pintype="no_connect"/>
+    <net code="44" name="unconnected-(J1-Pad25)">
+      <node ref="J1" pin="25" pinfunction="GND" pintype="no_connect"/>
     </net>
-    <net code="42" name="unconnected-(J3-Pad25)">
-      <node ref="J3" pin="25" pinfunction="GND" pintype="no_connect"/>
+    <net code="45" name="unconnected-(J1-Pad26)">
+      <node ref="J1" pin="26" pinfunction="GPIO07" pintype="no_connect"/>
     </net>
-    <net code="43" name="unconnected-(J3-Pad26)">
-      <node ref="J3" pin="26" pinfunction="GPIO07" pintype="no_connect"/>
+    <net code="46" name="unconnected-(J1-Pad27)">
+      <node ref="J1" pin="27" pinfunction="GPIO00" pintype="no_connect"/>
     </net>
-    <net code="44" name="unconnected-(J3-Pad28)">
-      <node ref="J3" pin="28" pinfunction="GPIO01" pintype="no_connect"/>
+    <net code="47" name="unconnected-(J1-Pad28)">
+      <node ref="J1" pin="28" pinfunction="GPIO01" pintype="no_connect"/>
     </net>
-    <net code="45" name="unconnected-(J3-Pad30)">
-      <node ref="J3" pin="30" pinfunction="GND" pintype="no_connect"/>
+    <net code="48" name="unconnected-(J1-Pad30)">
+      <node ref="J1" pin="30" pinfunction="GND" pintype="no_connect"/>
     </net>
-    <net code="46" name="unconnected-(J3-Pad31)">
-      <node ref="J3" pin="31" pinfunction="GPIO06" pintype="no_connect"/>
+    <net code="49" name="unconnected-(J1-Pad31)">
+      <node ref="J1" pin="31" pinfunction="GPIO06" pintype="no_connect"/>
     </net>
-    <net code="47" name="unconnected-(J3-Pad32)">
-      <node ref="J3" pin="32" pinfunction="GPIO12" pintype="no_connect"/>
+    <net code="50" name="unconnected-(J1-Pad32)">
+      <node ref="J1" pin="32" pinfunction="GPIO12" pintype="no_connect"/>
     </net>
-    <net code="48" name="unconnected-(J3-Pad33)">
-      <node ref="J3" pin="33" pinfunction="GPIO13" pintype="no_connect"/>
+    <net code="51" name="unconnected-(J1-Pad33)">
+      <node ref="J1" pin="33" pinfunction="GPIO13" pintype="no_connect"/>
     </net>
-    <net code="49" name="unconnected-(J3-Pad34)">
-      <node ref="J3" pin="34" pinfunction="GND" pintype="no_connect"/>
+    <net code="52" name="unconnected-(J1-Pad34)">
+      <node ref="J1" pin="34" pinfunction="GND" pintype="no_connect"/>
     </net>
-    <net code="50" name="unconnected-(J3-Pad35)">
-      <node ref="J3" pin="35" pinfunction="GPIO19" pintype="no_connect"/>
+    <net code="53" name="unconnected-(J1-Pad35)">
+      <node ref="J1" pin="35" pinfunction="GPIO19" pintype="no_connect"/>
     </net>
-    <net code="51" name="unconnected-(J3-Pad36)">
-      <node ref="J3" pin="36" pinfunction="GPIO16" pintype="no_connect"/>
+    <net code="54" name="unconnected-(J1-Pad36)">
+      <node ref="J1" pin="36" pinfunction="GPIO16" pintype="no_connect"/>
     </net>
-    <net code="52" name="unconnected-(J3-Pad37)">
-      <node ref="J3" pin="37" pinfunction="GPIO26" pintype="no_connect"/>
+    <net code="55" name="unconnected-(J1-Pad37)">
+      <node ref="J1" pin="37" pinfunction="GPIO26" pintype="no_connect"/>
     </net>
-    <net code="53" name="unconnected-(J3-Pad38)">
-      <node ref="J3" pin="38" pinfunction="GPIO20" pintype="no_connect"/>
+    <net code="56" name="unconnected-(J1-Pad38)">
+      <node ref="J1" pin="38" pinfunction="GPIO20" pintype="no_connect"/>
     </net>
-    <net code="54" name="unconnected-(J3-Pad39)">
-      <node ref="J3" pin="39" pinfunction="GND" pintype="no_connect"/>
+    <net code="57" name="unconnected-(J1-Pad40)">
+      <node ref="J1" pin="40" pinfunction="GPIO21" pintype="no_connect"/>
     </net>
-    <net code="55" name="unconnected-(J3-Pad40)">
-      <node ref="J3" pin="40" pinfunction="GPIO21" pintype="no_connect"/>
-    </net>
-    <net code="56" name="unconnected-(U1-Pad4)">
+    <net code="58" name="unconnected-(U1-Pad4)">
       <node ref="U1" pin="4" pinfunction="P4" pintype="no_connect"/>
     </net>
-    <net code="57" name="unconnected-(U2-Pad17)">
+    <net code="59" name="unconnected-(U2-Pad17)">
       <node ref="U2" pin="17" pinfunction="NC" pintype="no_connect"/>
     </net>
-    <net code="58" name="unconnected-(U2-Pad18)">
+    <net code="60" name="unconnected-(U2-Pad18)">
       <node ref="U2" pin="18" pinfunction="DRDY" pintype="no_connect"/>
     </net>
   </nets>
