@@ -1245,7 +1245,7 @@
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp 7316edc5-2ec4-4449-a16c-4612281e4501)
     )
-    (fp_text value "MIC5225-3.3" (at 0 2.9 90) (layer "F.Fab")
+    (fp_text value "MIC5245-3.3" (at 0 2.9 90) (layer "F.Fab")
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp a1f33bc2-b7fd-46c2-acf0-ba6ec5aa3b0e)
     )

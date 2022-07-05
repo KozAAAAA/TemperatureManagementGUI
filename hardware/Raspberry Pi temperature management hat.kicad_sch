@@ -2457,7 +2457,7 @@
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid b1f6acb2-8a8a-4c61-a848-32dbc95b6268)
     (property "Reference" "U3" (id 0) (at 59.69 33.02 0))
-    (property "Value" "MIC5225-3.3" (id 1) (at 59.69 35.56 0))
+    (property "Value" "MIC5245-3.3" (id 1) (at 59.69 35.56 0))
     (property "Footprint" "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" (id 2) (at 59.69 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -2939,7 +2939,7 @@
       (reference "U2") (unit 1) (value "LTV-817S") (footprint "Package_DIP:SMDIP-4_W9.53mm")
     )
     (path "/b1f6acb2-8a8a-4c61-a848-32dbc95b6268"
-      (reference "U3") (unit 1) (value "MIC5225-3.3") (footprint "Package_TO_SOT_SMD:SOT-23-5_HandSoldering")
+      (reference "U3") (unit 1) (value "MIC5245-3.3") (footprint "Package_TO_SOT_SMD:SOT-23-5_HandSoldering")
     )
     (path "/a26cd88b-81d1-4769-9b71-447258a65dc5"
       (reference "U4") (unit 1) (value "MAX31865") (footprint "Package_DFN_QFN:TQFN-20-1EP_5x5mm_P0.65mm_EP3.1x3.1mm")
