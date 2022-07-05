@@ -12,16 +12,32 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
-    MainGui* temperatureMenagment = new MainGui;
+#ifdef __arm__
+    wiringPiSetup();
+    pinMode(RELAY, OUTPUT);
+    pinMode(FAN, OUTPUT);
+    auto setRelayFanOff = [](){digitalWrite(RELAY,LOW);
+                               digitalWrite(FAN,LOW);
+                               qDebug()<< "SAFETY HANDLER: evoked";};
+    setRelayFanOff();
+    std::atexit(setRelayFanOff);
+#endif
+
+
+
+    MainGui* _MainGui = new MainGui;
 
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("_cppBackend",temperatureMenagment);
+    engine.rootContext()->setContextProperty("_cppBackend",_MainGui);
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 
     return app.exec();
+
+
+
 
 }

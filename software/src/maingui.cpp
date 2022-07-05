@@ -13,15 +13,7 @@ MainGui::MainGui(QObject *parent)
       m_loopOutput{0},
       m_blockOutput{0}
 
-{
-    #ifdef __arm__
-        wiringPiSetup();
-        pinMode(RELAY, OUTPUT);
-        pinMode(FAN, OUTPUT);
-        digitalWrite(RELAY,LOW);
-        digitalWrite(FAN,LOW);
-    #endif
-}
+{}
 
     //------------------------------INPUT-----------------------------//
 void MainGui::setInputParam(const QString& parameter, const quint32& value, const quint8 &index)

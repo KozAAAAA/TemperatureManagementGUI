@@ -12,3 +12,5 @@
 #ifdef __arm__
     #include <wiringPi.h>
 #endif
+
+#include <cstdlib>

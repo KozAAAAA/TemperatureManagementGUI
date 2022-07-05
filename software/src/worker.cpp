@@ -42,7 +42,7 @@ void Worker::setThreadNotActive()
     //-----------------------------METHODS----------------------------//
 void Worker::run()
 {
-    qDebug()<<"** START PRESSED: thread ON";
+    qDebug()<<"THREAD: ON";
 
     for(;m_currentLoop < m_loopInput+1;m_currentLoop++)
     {
@@ -77,7 +77,7 @@ void Worker::run()
     m_currentLoop = 0;
     outputReset();
 
-    qDebug()<<"** STOP PRESSED: thread OFF";
+    qDebug()<<"THREAD: OFF";
 }
 void Worker::hysteresis()
 {
@@ -90,7 +90,12 @@ void Worker::hysteresis()
         setThreadNotActive();
         qCritical() <<"ERROR:"<< err;
         emit currentError(err);
-        return;
+    }
+    catch(...)
+    {
+        setThreadNotActive();
+        qCritical() <<"ERROR:"<< "unknown";
+        emit currentError("unknown");
     }
 
 
@@ -146,7 +151,7 @@ void Worker::setRelayOn()
 
         emit relayIsOn();
 
-        qDebug()<<"HEATING: ON";
+        qDebug()<<"HEATER: ON";
     }
 }
 void Worker::setRelayOff()
