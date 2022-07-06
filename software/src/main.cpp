@@ -21,7 +21,11 @@ int main(int argc, char *argv[])
                                qDebug()<< "SAFETY HANDLER: evoked";};
     setRelayFanOff();
     std::atexit(setRelayFanOff);
+#else
+    std::atexit([](){qDebug() << "SAFETY HANDLER: evoked";});
 #endif
+
+
 
 
 

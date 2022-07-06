@@ -46,6 +46,10 @@ signals:
 private:
     QElapsedTimer m_timer;
     bool m_isRelayOn;
+    QString m_pwd;
+    QString m_scriptPath;
+    QString m_txtPath;
+
 
     void run() override; //thread
     void hysteresis();

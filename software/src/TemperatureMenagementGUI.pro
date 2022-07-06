@@ -4,6 +4,8 @@ QT += quick
 # In order to do so, uncomment the following line.
 # DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+CONFIG += c++17
+
 SOURCES += \
         main.cpp \
         maingui.cpp \
@@ -31,7 +33,7 @@ PRECOMPILED_HEADER = pch.h
 
 # RealayOn, RelayOff methods need it (Rpi only):
 linux:contains(QMAKE_HOST.arch, armv7l):{
-    LIBS += -lwiringPi
+    LIBS += -lwiringPi -lstdc++fs
 }
 
 DISTFILES += \

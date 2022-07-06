@@ -2,6 +2,7 @@
 import board
 import digitalio
 import adafruit_max31865
+import os
 
 def tempSensor():
 	spi = board.SPI()
@@ -9,6 +10,6 @@ def tempSensor():
 	sensor = adafruit_max31865.MAX31865(spi, cs, wires=3)
 	return sensor.temperature
 
-f = open("../../lib/tempSensor.txt", "w")
+f = open(os.path.abspath(os.path.dirname(__file__)) +"/tempSensor.txt", "w")
 f.write(str(tempSensor()))
 f.close()

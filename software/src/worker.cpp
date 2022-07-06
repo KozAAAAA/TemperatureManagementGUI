@@ -17,12 +17,24 @@ Worker::Worker(const std::array<quint16, 4>& m_tempInputVector_,
     m_currentLoop(1),
     m_currentBlock(1),
 
-    m_isRelayOn(true)
+    m_isRelayOn(true),
+
+    m_pwd(QCoreApplication::applicationDirPath()),
+
+    #ifdef __arm__
+    m_scriptPath("/../../lib/MAX31865.py"),
+    m_txtPath("/../../lib/tempSensor.txt")
+    #else
+    m_scriptPath("/../../test/MAX31865_sim.py"),
+    m_txtPath("/../../test/tempSensor_sim.txt")
+    #endif
 
     {
-        qDebug()<<"WORKER: created";
         setRelayOff();
         setFanOn();
+        m_scriptPath.prepend(m_pwd);
+        m_txtPath.prepend(m_pwd);
+        qDebug()<<"WORKER: created";
     }
 
 Worker::~Worker()
@@ -113,22 +125,16 @@ void Worker::hysteresis()
 
 float Worker::getTempSensor()
 {
-
-#ifdef __arm__
-    auto script = std::system("../../lib/MAX31865.py");
-    QFile file("../../lib/tempSensor.txt");
-#else
-    auto script = std::system("../../test/MAX31865_sim.py");
-    QFile file("../../test/tempSensor_sim.txt");
-#endif
+    int script = std::system(qPrintable(m_scriptPath));
+    QFile txt(m_txtPath);
 
     if (script != 0)
         throw "I can't find the python script!";
 
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    if (!txt.open(QIODevice::ReadOnly | QIODevice::Text))
         throw "I can't find the .txt file!";
 
-    QTextStream in(&file);
+    QTextStream in(&txt);
 
     float readTemp = in.readLine().toFloat();
 

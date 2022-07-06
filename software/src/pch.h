@@ -5,6 +5,7 @@
 #include <QThread>
 #include <QFile>
 #include <QElapsedTimer>
+#include <QCoreApplication>
 
 #include <iostream>
 #include <array>
@@ -14,3 +15,4 @@
 #endif
 
 #include <cstdlib>
+#include <filesystem>
