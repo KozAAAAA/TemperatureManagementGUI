@@ -2,7 +2,9 @@
 # Temperature Manangement GUI
 
 The Raspberry Pi GUI that let's you controll the temperature of a chamber.
-
+<p align="center">
+  <img src="/readme/gif.gif" alt="Sublime's custom image"/>
+</p>
 
 ## Key feautures
 
