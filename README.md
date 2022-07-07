@@ -4,7 +4,11 @@
   <img src="/readme/gif.gif" alt="Sublime's custom image"/>
 </p>
 
-The Raspberry Pi GUI that let's you controll the temperature of a chamber.
+<p align="center">
+  The Raspberry Pi GUI that let's you controll the temperature of a chamber.
+</p>
+
+
 <p align="center">
   <img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white">
   <img src="https://img.shields.io/badge/Qt-%23217346.svg?style=for-the-badge&logo=Qt&logoColor=white"/>
@@ -14,7 +18,6 @@ The Raspberry Pi GUI that let's you controll the temperature of a chamber.
 
 
 ## Key feautures
-
 * The **temperature** values are settable (GUI).
 * The **time** periods are settable (GUI).
 * The number of **repeats** is settable (GUI).
