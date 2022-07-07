@@ -1,12 +1,20 @@
-# Temperature Management GUI
+
+# Temperature Manangement GUI
+
+The Raspberry Pi GUI that let's you controll the temperature of a chamber.
 
 
-![Alt text](readme/gif.gif)
+## Key feautures
+
+## User Flow
+
+The diagram below presents the user flow of the GUI.
+
+<p align="center">
+  <img src="https://github.com/waldyr/Sublime-Installer/blob/master/sublime_text.png?raw=true" alt="Sublime's custom image"/>
+</p>
 
 
+## Install
 
-full KMS - działa rozmiar okna, musi być podłączony monitor, nie wypierdala błędu libGLES
-no OpenGL - działa rozmiar okna, nie musi być monitora, wypierdala błąd libGLES
-fake KMS - pizda
-przesył danych do rpi:
-rsync -zaP ~/Desktop/TemperatureMenagmentGUI/TemperatureMenagmentGUI pi@192.168.148.219:~/Desktop/
+comming soon...
