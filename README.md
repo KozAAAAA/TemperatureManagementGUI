@@ -1,4 +1,4 @@
-# Temperature Menagment GUI
+# Temperature Management GUI
 
 
 ![Alt text](readme/gif.gif)
