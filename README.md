@@ -25,7 +25,7 @@
 * **Relay** & **Fan** RPi **pins** are customizable (settings.h).
 * Compiles on **arm** as well as **x86** thanks to the use of **preprocessor** & **qmake**.
 * Puts controlled **GPIO** pins to **LOW** if program is turned off.
-* Displayes **error messages** whenever **python script** or **txt file** is unavailable.
+* Displays **error messages** whenever **python script** or **txt file** is unavailable.
 * Checks whether the read **temperature** is valid.
 * Hardware uses **PT100** & **custom PCB** to read the temperature via the **SPI protocol**.
 * Temperature is **controlled** with the use of a **relay**.
