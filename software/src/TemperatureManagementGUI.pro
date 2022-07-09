@@ -37,6 +37,10 @@ linux:contains(QMAKE_HOST.arch, armv7l):{
 }
 
 DISTFILES += \
+    ../lib/MAX31865.py \
+    ../lib/tempSensor.txt \
+    ../test/MAX31865_sim.py \
+    ../test/tempSensor_sim.txt \
     fonts/Roboto-Regular.ttf \
     icons/loop-icon.png \
     icons/start-icon.png \
