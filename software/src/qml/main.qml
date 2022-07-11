@@ -152,7 +152,6 @@ Window {
         ]
     }
 
-
     Connections
     {
         target: _cppBackend
@@ -169,36 +168,7 @@ Window {
         {
             gridShowBlocks2.heatingIsOn = false
         }
-        onErrorOutputChanged:
-        {
-            dialog.open();
-        }
     }
-
-    Dialog
-    {
-        id: dialog
-
-        modal: true
-
-        title: "Error: " + _cppBackend.errorOutput
-
-        font.family: robotoRegular.name
-        font.pointSize: 40
-
-        x: (parent.width - width)/2
-        y: (parent.height - height)/2
-
-        Label
-        {
-            anchors.centerIn: parent
-            text: "Mateusz Koza +48609453368"
-        }
-    }
-
-
-
-
 }
 
 

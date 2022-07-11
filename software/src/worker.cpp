@@ -39,8 +39,8 @@ Worker::Worker(const std::array<quint16, 4>& m_tempInputVector_,
 
 Worker::~Worker()
 {
-    setRelayOff();
-    setFanOff();
+    setFanAndRelayOff();
+    outputReset();
     qDebug()<<"WORKER: destroyed";
 }
 
@@ -65,7 +65,7 @@ void Worker::run()
         #if(DEBUGGING == true)
             quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/3600/100;
         #else
-            quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/100;
+            quint32 m_workingTimeMs = 36 * 100000 * m_timeInputVector[m_currentBlock-1]/100;
         #endif
 
         m_timer.start();
@@ -87,7 +87,6 @@ void Worker::run()
         m_currentBlock = 0;
     }
     m_currentLoop = 0;
-    outputReset();
 
     qDebug()<<"THREAD: OFF";
 }
@@ -99,19 +98,20 @@ void Worker::hysteresis()
     }
     catch (const char* err)
     {
-        setThreadNotActive();
+        setFanAndRelayOff();
         qCritical() <<"ERROR:"<< err;
-        emit currentError(err);
+        throw;
     }
     catch(...)
     {
-        setThreadNotActive();
+        setFanAndRelayOff();
         qCritical() <<"ERROR:"<< "unknown";
-        emit currentError("unknown");
+        throw;
     }
 
 
     emit currentTemp(m_currentTemp);
+
     if(m_currentTemp < m_tempInputVector[m_currentBlock-1] + (H/2))
     {
         setRelayOn();
@@ -139,8 +139,13 @@ float Worker::getTempSensor()
     float readTemp = in.readLine().toFloat();
 
     if (readTemp > 230 || readTemp < 0)
-        throw "Temperature reading is a thrash value!";
-
+    {
+        readTemp = in.readLine().toFloat();
+        if (readTemp > 230 || readTemp < 0)
+        {
+            throw "Temperature reading is a thrash value!";
+        }
+    }
     return readTemp;
 }
 
@@ -195,6 +200,11 @@ void Worker::setFanOff()
         digitalWrite(FAN,LOW);
     #endif
     qDebug()<<"FAN: OFF";
+}
+void Worker::setFanAndRelayOff()
+{
+    setRelayOff();
+    setFanOff();
 }
 
     //----------------------------------------------------------------//

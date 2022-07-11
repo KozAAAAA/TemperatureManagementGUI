@@ -16,18 +16,14 @@ int main(int argc, char *argv[])
     wiringPiSetup();
     pinMode(RELAY, OUTPUT);
     pinMode(FAN, OUTPUT);
-    auto setRelayFanOff = [](){digitalWrite(RELAY,LOW);
-                               digitalWrite(FAN,LOW);
-                               qDebug()<< "SAFETY HANDLER: evoked";};
-    setRelayFanOff();
-    std::atexit(setRelayFanOff);
+    auto exitFunc = [](){digitalWrite(RELAY,LOW);
+                         digitalWrite(FAN,LOW);
+                         qDebug()<< "SAFETY HANDLER: evoked";};
 #else
-    std::atexit([](){qDebug() << "SAFETY HANDLER: evoked";});
+    auto exitFunc = [](){qDebug() << "SAFETY HANDLER: evoked";};
 #endif
 
-
-
-
+    std::atexit(exitFunc);
 
     MainGui* _MainGui = new MainGui;
 
@@ -39,8 +35,19 @@ int main(int argc, char *argv[])
     if (engine.rootObjects().isEmpty())
         return -1;
 
-    return app.exec();
+    int ret;
+    try
+    {
+        ret = app.exec();
+    }
+    catch(...)
+    {
+        exitFunc();
+        qCritical() << "ERROR: Main crashed";
+        return EXIT_FAILURE;
+    }
 
+    return ret;
 
 
 
