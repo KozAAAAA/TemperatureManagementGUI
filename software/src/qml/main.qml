@@ -85,6 +85,8 @@ Window {
                 anchors.fill: parent
                 onClicked:
                 {
+                    if(!transition.running)
+                    {
                     // Stop clicked:
                     if(startButton2.greenMode === false)
                     {
@@ -93,11 +95,11 @@ Window {
                         startButton2.greenMode = true
                     }
                     // Start clicked:
-                    else if(loopSpinBox2.input !==0 &&
+                    else if(loopSpinBox2.input !==0 && (
                             gridSetupBlocks2.timeArray[0] !==0 ||
                             gridSetupBlocks2.timeArray[1] !==0 ||
                             gridSetupBlocks2.timeArray[2] !==0 ||
-                            gridSetupBlocks2.timeArray[3] !==0 )
+                            gridSetupBlocks2.timeArray[3] !==0 ) )
                     {
                         for (var i = 0; i<4 ; i++)
                         {
@@ -113,12 +115,10 @@ Window {
                         gridShowBlocks2.loops = loopSpinBox2.input
                         startButton2.greenMode = false
                     }
+                    }
                 }
             }
         }
-
-
-
 
         states:
             [
@@ -142,7 +142,9 @@ Window {
         transitions:
             [
             Transition {
+                id: transition
                 from:"*" ; to: "*"
+
 
                 AnchorAnimation{
                     easing.type: Easing.InOutQuint

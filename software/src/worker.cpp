@@ -140,10 +140,11 @@ float Worker::getTempSensor()
 
     if (readTemp > 230 || readTemp < 0)
     {
+        qDebug()<<"readTemp second attempt";
         readTemp = in.readLine().toFloat();
         if (readTemp > 230 || readTemp < 0)
         {
-            throw "Temperature reading is a thrash value!";
+            throw "Temperature reading is a garbage value!";
         }
     }
     return readTemp;
