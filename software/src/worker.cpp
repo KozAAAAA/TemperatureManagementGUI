@@ -63,9 +63,9 @@ void Worker::run()
         {
 
         #if(DEBUGGING == true)
-            quint32 m_workingTimeMs = 36e5 * m_timeInputVector[m_currentBlock-1]/3600/100;
+            quint32 m_workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/3600/100;
         #else
-            quint32 m_workingTimeMs = 36 * 100000 * m_timeInputVector[m_currentBlock-1]/100;
+            quint32 m_workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/100;
         #endif
 
         m_timer.start();

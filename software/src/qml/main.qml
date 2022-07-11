@@ -88,9 +88,9 @@ Window {
                     // Stop clicked:
                     if(startButton2.greenMode === false)
                     {
-                        startButton2.greenMode = true
                         _cppBackend.endTemperatureControl()
                         show.amountLoop = 0
+                        startButton2.greenMode = true
                     }
                     // Start clicked:
                     else if(loopSpinBox2.input !==0 &&
