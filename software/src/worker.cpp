@@ -55,7 +55,6 @@ void Worker::setThreadNotActive()
 void Worker::run()
 {
     qDebug()<<"THREAD: ON";
-
     for(;m_currentLoop < m_loopInput+1;m_currentLoop++)
     {
         emit currentLoop(m_currentLoop);
@@ -109,14 +108,13 @@ void Worker::hysteresis()
         throw;
     }
 
-
     emit currentTemp(m_currentTemp);
 
     if(m_currentTemp < m_tempInputVector[m_currentBlock-1] + (H/2))
     {
         setRelayOn();
     }
-    if(m_currentTemp > m_tempInputVector[m_currentBlock-1] - (H/2))
+    else if(m_currentTemp > m_tempInputVector[m_currentBlock-1] - (H/2))
     {
         setRelayOff();
     }
