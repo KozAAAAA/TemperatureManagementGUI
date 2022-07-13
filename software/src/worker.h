@@ -10,7 +10,7 @@ public:
     explicit Worker(const std::array<quint16,4>&,
                     const std::array<quint16,4>&,
                     const quint8&);
-    ~Worker();
+    ~Worker() override;
 
     //------------------------------INPUT-----------------------------//
 private:
@@ -26,7 +26,6 @@ public slots:
 
     //-----------------------------OUTPUT-----------------------------//
 private:
-    float m_currentTemp;
     quint32 m_currentTime;
     quint8 m_currentLoop;
     quint8 m_currentBlock;
@@ -45,7 +44,6 @@ signals:
 
     //-----------------------------METHODS----------------------------//
 private:
-    QElapsedTimer m_timer;
     bool m_isRelayOn;
     QString m_pwd;
     QString m_scriptPath;
@@ -53,9 +51,10 @@ private:
 
 
     void run() override; //thread
+
     void hysteresis();
 
-    float getTempSensor();
+    qint16 getTempSensor();
     void setRelayOn();
     void setRelayOff();
 

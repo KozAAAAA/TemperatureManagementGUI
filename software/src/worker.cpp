@@ -12,7 +12,6 @@ Worker::Worker(const std::array<quint16, 4>& m_tempInputVector_,
 
     m_threadActive(true),
 
-    m_currentTemp(0),
     m_currentTime(0),
     m_currentLoop(1),
     m_currentBlock(1),
@@ -60,19 +59,20 @@ void Worker::run()
         for(;m_currentBlock < 5; m_currentBlock++)
         {
             #if(DEBUGGING == true)
-            quint32 m_workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/3600/100;
+            quint32 workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/3600/100;
             #else
-            quint32 m_workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/100;
+            quint32 workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/100;
             #endif
 
-            if(m_workingTimeMs!=0)
+            if(workingTimeMs!=0)
             {
-                m_timer.start();
+                QElapsedTimer timer;
+                timer.start();
                 emit currentBlock(m_currentBlock);
-                while((!m_timer.hasExpired(m_workingTimeMs)) &&
+                while((!timer.hasExpired(workingTimeMs)) &&
                         m_threadActive)
                 {
-                    m_currentTime = (m_workingTimeMs - m_timer.elapsed());
+                    m_currentTime = (workingTimeMs - static_cast<quint32>(timer.elapsed()));
                     emit currentTime(m_currentTime);
                     hysteresis();
                 }
@@ -80,31 +80,30 @@ void Worker::run()
             if(!m_threadActive) break;
         }
         if(!m_threadActive) break;
-
         m_currentBlock = 1;
     }
     qDebug()<<"THREAD: OFF";
 }
 void Worker::hysteresis()
 {
-    m_currentTemp = getTempSensor();
+    qint16 readTemp = getTempSensor();
 
-    if(m_currentTemp == -1) return;
+    if(readTemp == -1) return;
 
-    emit currentTemp(m_currentTemp);
+    emit currentTemp(static_cast<quint16>(readTemp));
 
-    if(m_currentTemp < m_tempInputVector[m_currentBlock-1] + (H/2))
+    if(readTemp < m_tempInputVector[m_currentBlock-1] + (H/2))
     {
         setRelayOn();
     }
-    else if(m_currentTemp > m_tempInputVector[m_currentBlock-1] - (H/2))
+    else if(readTemp > m_tempInputVector[m_currentBlock-1] - (H/2))
     {
         setRelayOff();
     }
 
 }
 
-float Worker::getTempSensor()
+qint16 Worker::getTempSensor()
 {
     int script = std::system(qPrintable(m_scriptPath));
     QFile txt(m_txtPath);
@@ -124,12 +123,12 @@ float Worker::getTempSensor()
     }
 
     QTextStream in(&txt);
-    float readTemp = in.readLine().toFloat();
+    qint16 readTemp = in.readLine().toShort();
 
     if (readTemp > 230 || readTemp < 0)
     {
         qDebug()<<"Temperature reading second attempt";
-        readTemp = in.readLine().toFloat();
+        readTemp = in.readLine().toShort();
         if (readTemp > 230 || readTemp < 0)
         {
             emit currentError("Temperature reading error!");

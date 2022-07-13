@@ -8,5 +8,5 @@ def tempSensor():
 
 
 f = open(os.path.abspath(os.path.dirname(__file__))+"/tempSensor_sim.txt", "w")
-f.write(str(tempSensor()))
+f.write(str(int(tempSensor())))
 f.close()
