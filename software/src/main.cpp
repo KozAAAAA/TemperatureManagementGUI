@@ -18,9 +18,9 @@ int main(int argc, char *argv[])
     pinMode(FAN, OUTPUT);
     auto exitFunc = [](){digitalWrite(RELAY,LOW);
                          digitalWrite(FAN,LOW);
-                         qDebug()<< "SAFETY HANDLER: evoked";};
+                         qDebug()<< "SAFETY HANDLER: evoked (everything destroyed)";};
 #else
-    auto exitFunc = [](){qDebug() << "SAFETY HANDLER: evoked";};
+    auto exitFunc = [](){qDebug() << "SAFETY HANDLER: evoked (everything destroyed)";};
 #endif
 
     std::atexit(exitFunc);

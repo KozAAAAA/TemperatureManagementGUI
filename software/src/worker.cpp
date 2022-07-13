@@ -61,52 +61,34 @@ void Worker::run()
         for(;m_currentBlock < 5; m_currentBlock++)
         {
 
-        #if(DEBUGGING == true)
+            #if(DEBUGGING == true)
             quint32 m_workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/3600/100;
-        #else
+            #else
             quint32 m_workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/100;
-        #endif
+            #endif
 
-        m_timer.start();
-
-        if(m_workingTimeMs!=0)
-        {
-            emit currentBlock(m_currentBlock);
-
-            while((!m_timer.hasExpired(m_workingTimeMs)) &&
-                    m_threadActive)
+            m_timer.start();
+            if(m_workingTimeMs!=0)
             {
-            m_currentTime = (m_workingTimeMs - m_timer.elapsed());
-            emit currentTime(m_currentTime);
-
-            hysteresis();
+                emit currentBlock(m_currentBlock);
+                while((!m_timer.hasExpired(m_workingTimeMs)) &&
+                        m_threadActive)
+                {
+                    m_currentTime = (m_workingTimeMs - m_timer.elapsed());
+                    emit currentTime(m_currentTime);
+                    hysteresis();
+                }
             }
         }
-        }
-        m_currentBlock = 0;
+        m_currentBlock = 1;
     }
-    m_currentLoop = 0;
-
     qDebug()<<"THREAD: OFF";
 }
 void Worker::hysteresis()
 {
-    try
-    {
-        m_currentTemp = getTempSensor();
-    }
-    catch (const char* err)
-    {
-        setFanAndRelayOff();
-        qCritical() <<"ERROR:"<< err;
-        throw;
-    }
-    catch(...)
-    {
-        setFanAndRelayOff();
-        qCritical() <<"ERROR:"<< "unknown";
-        throw;
-    }
+    m_currentTemp = getTempSensor();
+
+    if(m_currentTemp == -1) return;
 
     emit currentTemp(m_currentTemp);
 
@@ -127,27 +109,35 @@ float Worker::getTempSensor()
     QFile txt(m_txtPath);
 
     if (script != 0)
-        throw "I can't find the python script!";
+    {
+        emit currentError("Python script error!");
+        setThreadNotActive();
+        return -1;
+    }
 
     if (!txt.open(QIODevice::ReadOnly | QIODevice::Text))
-        throw "I can't find the .txt file!";
+    {
+        emit currentError(".txt file error!");
+        setThreadNotActive();
+        return -1;
+    }
 
     QTextStream in(&txt);
-
     float readTemp = in.readLine().toFloat();
 
     if (readTemp > 230 || readTemp < 0)
     {
-        qDebug()<<"readTemp second attempt";
+        qDebug()<<"Temperature reading second attempt";
         readTemp = in.readLine().toFloat();
         if (readTemp > 230 || readTemp < 0)
         {
-            throw "Temperature reading is a garbage value!";
+            emit currentError("Temperature reading error!");
+            setThreadNotActive();
+            return -1;
         }
     }
     return readTemp;
 }
-
 
 void Worker::setRelayOn()
 {

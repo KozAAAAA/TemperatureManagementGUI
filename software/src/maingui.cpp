@@ -110,6 +110,20 @@ void MainGui::setBlockOutput(const quint8& newBlock)
     }
 }
 
+QString MainGui::getErrorOutput()
+{
+    return m_errorOutput;
+}
+
+void MainGui::setErrorOutput(const QString& newError)
+{
+    if (m_errorOutput != newError)
+    {
+        m_errorOutput = newError;
+    }
+    emit errorOutputChanged();
+}
+
     //----------------------------------------------------------------//
 
     //----------------------THREAD-COMMUNICATION----------------------//
@@ -123,6 +137,7 @@ void MainGui::startTemperatureControl()
     connect(worker, &Worker::currentTime, this, &MainGui::setTimeOutput);
     connect(worker, &Worker::currentLoop, this, &MainGui::setLoopOutput);
     connect(worker, &Worker::currentBlock, this, &MainGui::setBlockOutput);
+    connect(worker, &Worker::currentError, this, &MainGui::setErrorOutput);
 
     connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
 

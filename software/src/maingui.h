@@ -31,11 +31,13 @@ public:
     Q_PROPERTY(quint32 timeOutput READ getTimeOutput WRITE setTimeOutput NOTIFY timeOutputChanged);
     Q_PROPERTY(quint8 loopOutput READ getLoopOutput WRITE setLoopOutput NOTIFY loopOutputChanged);
     Q_PROPERTY(quint8 blockOutput READ getBlockOutput WRITE setBlockOutput NOTIFY blockOutputChanged);
+    Q_PROPERTY(QString errorOutput READ getErrorOutput WRITE setErrorOutput NOTIFY errorOutputChanged);
 
     quint16 getTempOutput();
     quint32 getTimeOutput();
     quint8 getLoopOutput();
     quint8 getBlockOutput();
+    QString getErrorOutput();
 
 
 public slots:
@@ -43,18 +45,21 @@ public slots:
     void setTimeOutput(const quint32& newTime);
     void setLoopOutput(const quint8& newLoop);
     void setBlockOutput(const quint8& newBlock);
+    void setErrorOutput(const QString& newError);
 
 private:
     quint16 m_tempOutput;
     quint32 m_timeOutput;
     quint8 m_loopOutput;
     quint8 m_blockOutput;
+    QString m_errorOutput;
 
 signals:
     void tempOutputChanged();
     void timeOutputChanged();
     void loopOutputChanged();
     void blockOutputChanged();
+    void errorOutputChanged();
 
     void completedTemperatureControl();
     void heatingIsOn();
