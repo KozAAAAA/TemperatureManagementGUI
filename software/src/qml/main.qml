@@ -30,7 +30,6 @@ Window {
         Column
         {
             id: columnSetupShow
-
             anchors.bottom: parent.bottom
             anchors.right: parent.right
             anchors.margins: 50
@@ -54,8 +53,6 @@ Window {
                 id: gridSetupBlocks2
                 enabled: startButton2.greenMode
             }
-
-
         }
 
         LoopSpinBox2
@@ -66,7 +63,6 @@ Window {
             anchors.margins: 50
             enabled: startButton2.greenMode
         }
-
 
         StartButton2
         {
@@ -110,38 +106,33 @@ Window {
             }
         }
 
-        states:
-            [
-
-            State{
-                name: "show"
-                when: startButton2.greenMode === false
-                AnchorChanges {
-                    target: columnSetupShow
-                    anchors.top: parent.top
-                    anchors.bottom: undefined
-                }
-                AnchorChanges {
-                    target: loopSpinBox2
-                    anchors.right: parent.left
-                    anchors.left: undefined
-                }
+        states:State
+        {
+            name: "show"
+            when: startButton2.greenMode === false
+            AnchorChanges
+            {
+                target: columnSetupShow
+                anchors.top: parent.top
+                anchors.bottom: undefined
             }
-        ]
-
-        transitions:
-            [
-            Transition {
-                id: transition
-                from:"*" ; to: "*"
-
-
-                AnchorAnimation{
-                    easing.type: Easing.InOutQuint
-                    duration: 2000
-                }
+            AnchorChanges
+            {
+                target: loopSpinBox2
+                anchors.right: parent.left
+                anchors.left: undefined
             }
-        ]
+        }
+        transitions:Transition
+        {
+            id: transition
+            from:"*" ; to: "*"
+            AnchorAnimation
+            {
+                easing.type: Easing.InOutQuint
+                duration: 2000
+            }
+        }
     }
 
     Connections

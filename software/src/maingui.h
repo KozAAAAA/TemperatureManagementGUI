@@ -12,7 +12,7 @@ public:
 
     //------------------------------INPUT-----------------------------//
 public:
-    Q_INVOKABLE void setInputParam (const QString& parameter, const quint32& value,const quint8& index);
+    Q_INVOKABLE void setInputParam (const QString& parameter, const quint16& value,const quint8& index);
     Q_INVOKABLE void setInputParam (const QString& parameter, const quint8& value);
 
     //debug:
@@ -27,11 +27,11 @@ private:
 
     //-----------------------------OUTPUT-----------------------------//
 public:
-    Q_PROPERTY(quint16 tempOutput READ getTempOutput WRITE setTempOutput NOTIFY tempOutputChanged);
-    Q_PROPERTY(quint32 timeOutput READ getTimeOutput WRITE setTimeOutput NOTIFY timeOutputChanged);
-    Q_PROPERTY(quint8 loopOutput READ getLoopOutput WRITE setLoopOutput NOTIFY loopOutputChanged);
-    Q_PROPERTY(quint8 blockOutput READ getBlockOutput WRITE setBlockOutput NOTIFY blockOutputChanged);
-    Q_PROPERTY(QString errorOutput READ getErrorOutput WRITE setErrorOutput NOTIFY errorOutputChanged);
+    Q_PROPERTY(quint16 tempOutput READ getTempOutput WRITE setTempOutput NOTIFY tempOutputChanged)
+    Q_PROPERTY(quint32 timeOutput READ getTimeOutput WRITE setTimeOutput NOTIFY timeOutputChanged)
+    Q_PROPERTY(quint8 loopOutput READ getLoopOutput WRITE setLoopOutput NOTIFY loopOutputChanged)
+    Q_PROPERTY(quint8 blockOutput READ getBlockOutput WRITE setBlockOutput NOTIFY blockOutputChanged)
+    Q_PROPERTY(QString errorOutput READ getErrorOutput WRITE setErrorOutput NOTIFY errorOutputChanged)
 
     quint16 getTempOutput();
     quint32 getTimeOutput();

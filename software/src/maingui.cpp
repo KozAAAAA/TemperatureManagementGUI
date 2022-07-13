@@ -16,7 +16,7 @@ MainGui::MainGui(QObject *parent)
 {}
 
     //------------------------------INPUT-----------------------------//
-void MainGui::setInputParam(const QString& parameter, const quint32& value, const quint8 &index)
+void MainGui::setInputParam(const QString& parameter, const quint16& value, const quint8 &index)
 {
     if(parameter == "temp")
         m_tempInputVector.at(index) = value;
