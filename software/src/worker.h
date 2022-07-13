@@ -59,8 +59,6 @@ private:
     void setRelayOn();
     void setRelayOff();
 
-    void outputReset();
-
     void setFanOn();
     void setFanOff();
 

@@ -43,12 +43,8 @@ Window {
                 currentTemp:   _cppBackend.tempOutput   //info z c++
                 currentLoop:   _cppBackend.loopOutput   //info z c++
                 currentBlock:  _cppBackend.blockOutput  //info z c++
-                setTemp:
-                {
-                    startButton2.greenMode ?
-                                0 :
-                                gridSetupBlocks2.tempArray[(_cppBackend.blockOutput)-1]  //info z c++
-                }
+                setTemp: gridSetupBlocks2.tempArray[(_cppBackend.blockOutput)-1]  //info od setup
+                loops: loopSpinBox2.input //info od setup
             }
 
             spacing: 50
@@ -87,34 +83,28 @@ Window {
                 {
                     if(!transition.running)
                     {
-                    // Stop clicked:
-                    if(startButton2.greenMode === false)
-                    {
-                        _cppBackend.endTemperatureControl()
-                        show.amountLoop = 0
-                        startButton2.greenMode = true
-                    }
-                    // Start clicked:
-                    else if(loopSpinBox2.input !==0 && (
-                            gridSetupBlocks2.timeArray[0] !==0 ||
-                            gridSetupBlocks2.timeArray[1] !==0 ||
-                            gridSetupBlocks2.timeArray[2] !==0 ||
-                            gridSetupBlocks2.timeArray[3] !==0 ) )
-                    {
-                        for (var i = 0; i<4 ; i++)
+                        // Stop clicked:
+                        if(startButton2.greenMode === false)
                         {
-                            _cppBackend.setInputParam("temp", gridSetupBlocks2.tempArray[i], i)
-                            _cppBackend.setInputParam("time", gridSetupBlocks2.timeArray[i], i)
+                            _cppBackend.endTemperatureControl()
                         }
-
-                        _cppBackend.setInputParam("loop", loopSpinBox2.input)
-
-                        _cppBackend.printInputParam()
-
-                        _cppBackend.startTemperatureControl()
-                        gridShowBlocks2.loops = loopSpinBox2.input
-                        startButton2.greenMode = false
-                    }
+                        // Start clicked:
+                        else if(loopSpinBox2.input !==0 && (
+                                gridSetupBlocks2.timeArray[0] !==0 ||
+                                gridSetupBlocks2.timeArray[1] !==0 ||
+                                gridSetupBlocks2.timeArray[2] !==0 ||
+                                gridSetupBlocks2.timeArray[3] !==0 ) )
+                        {
+                            startButton2.greenMode = false
+                            for (var i = 0; i<4 ; i++)
+                            {
+                                _cppBackend.setInputParam("temp", gridSetupBlocks2.tempArray[i], i)
+                                _cppBackend.setInputParam("time", gridSetupBlocks2.timeArray[i], i)
+                            }
+                            _cppBackend.setInputParam("loop", loopSpinBox2.input)
+                            _cppBackend.printInputParam()
+                            _cppBackend.startTemperatureControl()
+                        }
                     }
                 }
             }
@@ -160,7 +150,6 @@ Window {
         onCompletedTemperatureControl:
         {
             startButton2.greenMode = true
-            gridShowBlocks2.loops = 0
         }
         onHeatingIsOn:
         {

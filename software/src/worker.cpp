@@ -40,7 +40,6 @@ Worker::Worker(const std::array<quint16, 4>& m_tempInputVector_,
 Worker::~Worker()
 {
     setFanAndRelayOff();
-    outputReset();
     qDebug()<<"WORKER: destroyed";
 }
 
@@ -60,16 +59,15 @@ void Worker::run()
         emit currentLoop(m_currentLoop);
         for(;m_currentBlock < 5; m_currentBlock++)
         {
-
             #if(DEBUGGING == true)
             quint32 m_workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/3600/100;
             #else
             quint32 m_workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/100;
             #endif
 
-            m_timer.start();
             if(m_workingTimeMs!=0)
             {
+                m_timer.start();
                 emit currentBlock(m_currentBlock);
                 while((!m_timer.hasExpired(m_workingTimeMs)) &&
                         m_threadActive)
@@ -79,7 +77,10 @@ void Worker::run()
                     hysteresis();
                 }
             }
+            if(!m_threadActive) break;
         }
+        if(!m_threadActive) break;
+
         m_currentBlock = 1;
     }
     qDebug()<<"THREAD: OFF";
@@ -168,13 +169,6 @@ void Worker::setRelayOff()
 
         qDebug()<<"HEATING: OFF";
     }
-}
-void Worker::outputReset()
-{
-    emit currentTemp(0);
-    emit currentTime(0);
-    emit currentLoop(0);
-    emit currentBlock(0);
 }
 void Worker::setFanOn()
 {
