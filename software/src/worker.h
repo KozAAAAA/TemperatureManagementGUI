@@ -26,16 +26,13 @@ public slots:
 
     //-----------------------------OUTPUT-----------------------------//
 private:
-    quint32 m_currentTime;
-    quint8 m_currentLoop;
-    quint8 m_currentBlock;
 
 signals:
-    void currentTemp(const quint16);
-    void currentTime(const quint32);
-    void currentLoop(const quint8);
-    void currentBlock(const quint8);
-    void currentError(const QString);
+    void currentTemp(const quint16&);
+    void currentTime(const quint32&);
+    void currentLoop(const quint8&);
+    void currentBlock(const quint8&);
+    void currentError(const QString&);
 
     void relayIsOn();
     void relayIsOff();
@@ -44,6 +41,7 @@ signals:
 
     //-----------------------------METHODS----------------------------//
 private:
+
     bool m_isRelayOn;
     QString m_pwd;
     QString m_scriptPath;
@@ -52,9 +50,10 @@ private:
 
     void run() override; //thread
 
-    void hysteresis();
+    void hysteresis(const quint8&);
 
     qint16 getTempSensor();
+
     void setRelayOn();
     void setRelayOff();
 

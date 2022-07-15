@@ -12,10 +12,6 @@ Worker::Worker(const std::array<quint16, 4>& m_tempInputVector_,
 
     m_threadActive(true),
 
-    m_currentTime(0),
-    m_currentLoop(1),
-    m_currentBlock(1),
-
     m_isRelayOn(true),
 
     m_pwd(QCoreApplication::applicationDirPath()),
@@ -53,38 +49,39 @@ void Worker::setThreadNotActive()
 void Worker::run()
 {
     qDebug()<<"THREAD: ON";
-    for(;m_currentLoop < m_loopInput+1;m_currentLoop++)
+
+    for(quint8 currLoop = 1; currLoop < m_loopInput+1; currLoop++)
     {
-        emit currentLoop(m_currentLoop);
-        for(;m_currentBlock < 5; m_currentBlock++)
+        if(!m_threadActive) goto exitloop;
+        emit currentLoop(currLoop);
+        for(quint8 currBlock = 1; currBlock < 5; currBlock++)
         {
+            if(!m_threadActive) goto exitloop;
             #if(DEBUGGING == true)
-            quint32 workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/3600/100;
+            quint32 workingTimeMs = 3600000 * m_timeInputVector[currBlock-1]/3600/100;
             #else
-            quint32 workingTimeMs = 3600000 * m_timeInputVector[m_currentBlock-1]/100;
+            quint32 workingTimeMs = 3600000 * m_timeInputVector[currBlock-1]/100;
             #endif
 
-            if(workingTimeMs!=0)
+            if(workingTimeMs!=0 && m_threadActive)
             {
                 QElapsedTimer timer;
                 timer.start();
-                emit currentBlock(m_currentBlock);
-                while((!timer.hasExpired(workingTimeMs)) &&
-                        m_threadActive)
+                emit currentBlock(currBlock);
+                while((!timer.hasExpired(workingTimeMs)))
                 {
-                    m_currentTime = (workingTimeMs - static_cast<quint32>(timer.elapsed()));
-                    emit currentTime(m_currentTime);
-                    hysteresis();
+                    if(!m_threadActive) goto exitloop;
+                    quint32 currTime = (workingTimeMs - static_cast<quint32>(timer.elapsed()));
+                    emit currentTime(currTime);
+                    hysteresis(currBlock);
                 }
             }
-            if(!m_threadActive) break;
         }
-        if(!m_threadActive) break;
-        m_currentBlock = 1;
     }
+    exitloop:
     qDebug()<<"THREAD: OFF";
 }
-void Worker::hysteresis()
+void Worker::hysteresis(const quint8& currBlock)
 {
     qint16 readTemp = getTempSensor();
 
@@ -92,11 +89,11 @@ void Worker::hysteresis()
 
     emit currentTemp(static_cast<quint16>(readTemp));
 
-    if(readTemp < m_tempInputVector[m_currentBlock-1] + (H/2))
+    if(readTemp < m_tempInputVector[currBlock-1] + (H/2))
     {
         setRelayOn();
     }
-    else if(readTemp > m_tempInputVector[m_currentBlock-1] - (H/2))
+    else if(readTemp > m_tempInputVector[currBlock-1] - (H/2))
     {
         setRelayOff();
     }
