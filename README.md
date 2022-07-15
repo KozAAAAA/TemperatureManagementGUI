@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  The Raspberry Pi GUI that let's you controll the temperature of a chamber.
+  The Raspberry Pi GUI that lets you control the temperature of a chamber.
 </p>
 
 
@@ -28,8 +28,9 @@
 * Displays **error messages** whenever **python script** or **txt file** is unavailable.
 * Checks whether the read **temperature** is valid.
 * Hardware uses **PT100** & **custom PCB** to read the temperature via the **SPI protocol**.
-* Temperature is **controlled** with the use of a **relay**.
-* All of the important data is displayed after the start button has been clicked.
+* Temperature is **controlled** via the **relay**.
+* All of the important data displays if the start button is clicked.
+* made with **C++17**, **QML** & **Python**
 ## User Flow Diagram
 
 <p align="center">
@@ -37,16 +38,25 @@
 </p>
 
 
+## Hardware
+The circuit shown below is the Raspberry Pi hat that makes **temperature reading** & **relay control** possible.
+<p align=“center”>
+  <img src="/readme/render1.png" alt=“Sublime’s custom image”/>
+  <img src="/readme/render2.png" alt=“Sublime’s custom image”/>
+  <img src="/readme/sch.png" alt=“Sublime’s custom image”/>
+</p>
+
 ## Installation
 
 Raspbian installation:
 
 ```bash
-  comming soon...
+  coming soon...
 ```
 
 
 ## License
 
 All code is released under the [MIT](https://choosealicense.com/licenses/mit/) License.
+
 

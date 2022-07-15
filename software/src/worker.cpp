@@ -62,7 +62,6 @@ void Worker::run()
             #else
             quint32 workingTimeMs = 3600000 * m_timeInputVector[currBlock-1]/100;
             #endif
-
             if(workingTimeMs!=0 && m_threadActive)
             {
                 QElapsedTimer timer;
